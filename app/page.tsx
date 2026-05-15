@@ -31,7 +31,7 @@ export default function Home() {
                 width={400}
                 height={400}
                 className="h-[300px] w-[300px] rounded-lg object-contain sm:h-[390px] sm:w-[390px]"
-                style={{ backgroundColor: "#12364a" }}
+                style={{ backgroundColor: "#faf7f1" }}
                 priority
               />
             </div>
