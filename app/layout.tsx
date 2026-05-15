@@ -48,8 +48,8 @@ function Header() {
             priority
           />
           <span>
-            <span className="block text-lg">{SITE.callsign}</span>
-            <span className="block text-xs font-bold uppercase tracking-wide text-pine-700">{SITE.shortName}</span>
+            <span className="block text-lg">{SITE.shortName}</span>
+            <span className="block text-xs font-bold uppercase tracking-wide text-pine-700">{SITE.callsign}</span>
           </span>
         </Link>
         <nav aria-label="Primary navigation">
