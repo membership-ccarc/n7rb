@@ -20,7 +20,7 @@ export const N7RB_HISTORY_URL = "https://n7rb.org/why-n7rb/";
 export const TREASURER_EMAIL = "al@simonshome.org";
 export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
 // TODO: Renew this expiring Slack invite URL monthly.
-export const SLACK_INVITE_URL = "#slack-invite";
+export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
 
 export const LINKS = {
   TECHNICIAN_CLASSROOM_URL,
