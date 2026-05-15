@@ -55,7 +55,7 @@ export default function SlackPage() {
           <div>
             <h3 className="text-lg font-black text-mountain-900">Refrain from Sensitive Topics</h3>
             <p className="mt-2 leading-7 text-stonewarm-700">
-              Please keep discussions clear of the three Ps: politics, partisan issues, and proselytization or religious debate. Avoid overly sensitive content, including explicit sexual content.
+              Please keep discussions clear of the three Ps: politics, partisan issues, and proselytization or religious debate. Avoid overly sensitive content, including explicit content.
             </p>
           </div>
         </div>
