@@ -28,9 +28,9 @@ export default function Home() {
               <Image
                 src="/n7rb_firetower_logo.jpg"
                 alt="N7RB fire tower logo"
-                width={240}
-                height={240}
-                className="h-48 w-48 rounded-lg bg-white object-contain p-1 shadow-soft sm:h-64 sm:w-64"
+                width={400}
+                height={400}
+                className="h-[300px] w-[300px] rounded-lg bg-white object-contain p-1 shadow-soft sm:h-[390px] sm:w-[390px]"
                 priority
               />
             </div>
