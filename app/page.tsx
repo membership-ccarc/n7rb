@@ -8,7 +8,7 @@ export default function Home() {
       <section className="bg-stonewarm-50">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.86fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{SITE.callsign} | {SITE.city}</p>
+            <p className="text-sm font-bold uppercase tracking-wide text-pine-700">CCARC | {SITE.callsign} {SITE.city}</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight text-mountain-900 sm:text-5xl lg:text-6xl">
               Discover Amateur Radio in Helena, Montana
             </h1>
