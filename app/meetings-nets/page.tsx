@@ -51,6 +51,7 @@ export default function MeetingsNetsPage() {
               className="h-72 w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-popups"
             />
           </div>
           <p className="mt-3 text-sm leading-6 text-stonewarm-700">
@@ -88,6 +89,7 @@ export default function MeetingsNetsPage() {
               className="h-72 w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-scripts allow-same-origin allow-popups"
             />
           </div>
           <p className="mt-3 text-sm leading-6 text-stonewarm-700">
