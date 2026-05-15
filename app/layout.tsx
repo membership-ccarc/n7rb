@@ -40,7 +40,7 @@ function Header() {
           aria-label={`${SITE.name} home`}
         >
           <Image
-            src="/favicon.svg"
+            src="/CCARC_firetower.png"
             alt=""
             width={40}
             height={40}

@@ -34,9 +34,6 @@ export default function Home() {
                 priority
               />
             </div>
-            <div className="absolute bottom-6 right-6 rounded-md bg-white/92 px-4 py-3 text-sm font-bold text-mountain-900 shadow-sm">
-              Capital City Amateur Radio Club
-            </div>
           </div>
         </div>
       </section>
