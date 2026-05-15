@@ -24,7 +24,7 @@ export default function Home() {
           <div className="relative min-h-[340px] overflow-hidden rounded-lg bg-mountain-900 shadow-soft sm:min-h-[440px]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(233,191,85,0.45),transparent_30%),linear-gradient(140deg,#12364a_0%,#24556f_38%,#39724f_72%,#f8e9bd_100%)]" />
             <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-[linear-gradient(155deg,transparent_0%,transparent_38%,rgba(23,55,39,0.9)_39%,rgba(23,55,39,0.95)_100%)]" />
-            <div className="relative flex min-h-[340px] items-center justify-center p-8 sm:min-h-[440px]">
+            <div className="relative flex min-h-[340px] items-center justify-center p-3 sm:min-h-[440px]">
               <Image
                 src="/n7rb_firetower_logo.jpg"
                 alt="N7RB fire tower logo"
