@@ -51,6 +51,12 @@ export default function JoinContactPage() {
           <InfoCard title="Newsletter Signup">
             <p>TODO: Add a newsletter signup form or link for CCARC&apos;s monthly club newsletter with articles from club members.</p>
           </InfoCard>
+          <InfoCard title="CCARC Slack">
+            <p>Stay connected between meetings, ask quick questions, share projects, and coordinate local radio activity.</p>
+            <div className="mt-5">
+              <ButtonLink href="/join-contact/slack" variant="light">Join the Slack Workspace</ButtonLink>
+            </div>
+          </InfoCard>
           <article className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
             <h2 className="text-xl font-black text-mountain-900">Meeting Location</h2>
             <p className="mt-3 leading-7 text-stonewarm-700">
