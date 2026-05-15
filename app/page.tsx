@@ -26,11 +26,12 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-[linear-gradient(155deg,transparent_0%,transparent_38%,rgba(23,55,39,0.9)_39%,rgba(23,55,39,0.95)_100%)]" />
             <div className="relative flex min-h-[340px] items-center justify-center p-3 sm:min-h-[440px]">
               <Image
-                src="/n7rb_firetower_logo.jpg"
+                src="/CCARC_firetower.png"
                 alt="N7RB fire tower logo"
                 width={400}
                 height={400}
-                className="h-[300px] w-[300px] rounded-lg bg-white object-contain p-1 shadow-soft sm:h-[390px] sm:w-[390px]"
+                className="h-[300px] w-[300px] rounded-lg object-contain sm:h-[390px] sm:w-[390px]"
+                style={{ backgroundColor: "#12364a" }}
                 priority
               />
             </div>
