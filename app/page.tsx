@@ -30,7 +30,7 @@ export default function Home() {
                 alt="N7RB fire tower logo"
                 width={240}
                 height={240}
-                className="h-48 w-48 rounded-lg bg-white object-contain p-2 shadow-soft sm:h-64 sm:w-64"
+                className="h-48 w-48 rounded-lg bg-white object-contain p-1 shadow-soft sm:h-64 sm:w-64"
                 priority
               />
             </div>
