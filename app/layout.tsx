@@ -7,7 +7,7 @@ import { navItems, SITE } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: {
     default: "Capital City Amateur Radio Club | N7RB Helena, Montana",
-    template: "%s | CCARC N7RB",
+    template: "%s | CCARC | N7RB Helena, Montana",
   },
   description:
     "Discover amateur radio in Helena, Montana with the Capital City Amateur Radio Club. Learn licensing, meetings, exams, nets, emergency communications, and outdoor radio.",
