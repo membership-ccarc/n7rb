@@ -163,8 +163,26 @@ export default function Home() {
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro title="What We Do" />
         <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {whatWeDo.map(([title, text]) => (
-            <InfoCard key={title} title={title}>{text}</InfoCard>
+          {whatWeDo.map(({ title, text, references }) => (
+            <InfoCard key={title} title={title}>
+              <p>{text}</p>
+              {references.length > 0 ? (
+                <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-bold">
+                  {references.map((reference) => (
+                    <li key={reference.href}>
+                      <a
+                        className="text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                        href={reference.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {reference.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </InfoCard>
           ))}
         </div>
       </section>

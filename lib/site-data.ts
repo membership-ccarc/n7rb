@@ -55,12 +55,39 @@ export const amateurRadioCards = [
 ] as const;
 
 export const whatWeDo = [
-  ["Field Day", "A yearly hands-on operating event that combines radio skills, public outreach, and emergency readiness."],
-  ["POTA and SOTA", "Portable operating from parks and summits for people who like radio with fresh air."],
-  ["Emergency Communications", "Training and practice for useful communications when normal systems are unavailable."],
-  ["Repeaters", "Local infrastructure that helps handheld and mobile radios cover the Helena area."],
-  ["Digital Modes", "Computer-assisted radio tools for messaging, long-distance contacts, and experimentation."],
-  ["Mentoring New Hams", "Friendly help choosing gear, making first contacts, and learning local radio habits."],
+  {
+    title: "Field Day",
+    text: "A yearly hands-on operating event that combines radio skills, public outreach, and emergency readiness.",
+    references: [{ label: "ARRL Field Day", href: "https://www.arrl.org/Field-Day" }],
+  },
+  {
+    title: "POTA and SOTA",
+    text: "Portable operating from parks and summits for people who like radio with fresh air.",
+    references: [
+      { label: "Parks on the Air", href: "https://parksontheair.com/" },
+      { label: "Summits on the Air", href: "https://www.sota.org.uk/" },
+    ],
+  },
+  {
+    title: "Emergency Communications",
+    text: "Training and practice for useful communications when normal systems are unavailable.",
+    references: [{ label: "ARRL ARES", href: "https://www.arrl.org/ares" }],
+  },
+  {
+    title: "Repeaters",
+    text: "Local infrastructure that helps handheld and mobile radios cover the Helena area.",
+    references: [],
+  },
+  {
+    title: "Digital Modes",
+    text: "Computer-assisted radio tools for messaging, long-distance contacts, and experimentation.",
+    references: [],
+  },
+  {
+    title: "Mentoring New Hams",
+    text: "Friendly help choosing gear, making first contacts, and learning local radio habits.",
+    references: [],
+  },
 ] as const;
 
 export const nets = [
