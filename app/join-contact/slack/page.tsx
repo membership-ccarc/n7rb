@@ -37,7 +37,30 @@ export default function SlackPage() {
       <div className="mx-auto mt-8 max-w-4xl rounded-lg bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-black text-mountain-900">Friendly Use Expectations</h2>
         <p className="mt-4 leading-7 text-stonewarm-700">
-          Keep conversations welcoming, practical, and respectful. Help beginners feel comfortable asking questions, keep emergency communications discussions clear and serious, and use public channels for topics that benefit the wider club.
+          To keep our community focused, welcoming, and productive, please follow this simple code of conduct while participating in any CCARC Slack channel. Abuse, harassment, or repeated disregard for these expectations may result in removal from the workspace.
+        </p>
+        <div className="mt-6 grid gap-5">
+          <div>
+            <h3 className="text-lg font-black text-mountain-900">Be Respectful and Helpful</h3>
+            <p className="mt-2 leading-7 text-stonewarm-700">
+              Assume positive intent, offer constructive advice, and keep feedback friendly. Personal attacks or harassment will not be tolerated.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-black text-mountain-900">Stay On Topic</h3>
+            <p className="mt-2 leading-7 text-stonewarm-700">
+              Channels are focused on amateur radio, club activity, and specific technical discussions.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-black text-mountain-900">Refrain from Sensitive Topics</h3>
+            <p className="mt-2 leading-7 text-stonewarm-700">
+              Please keep discussions clear of the three Ps: politics, partisan issues, and proselytization or religious debate. Avoid overly sensitive content, including explicit sexual content.
+            </p>
+          </div>
+        </div>
+        <p className="mt-6 leading-7 text-stonewarm-700">
+          Our goal is a fun, technical space where everyone can share their passion for ham radio.
         </p>
       </div>
     </section>
