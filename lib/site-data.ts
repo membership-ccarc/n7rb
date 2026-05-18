@@ -10,8 +10,7 @@ export const SITE = {
 } as const;
 
 // TODO: Replace these placeholder constants with live CCARC URLs and contact details.
-export const TECHNICIAN_CLASSROOM_URL = "#technician-google-classroom";
-export const GENERAL_CLASSROOM_URL = "#general-google-classroom";
+export const CLASS_SIGNUP_URL = "/classes#class-signup";
 export const TESTING_REGISTRATION_URL = "#testing-registration";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
 export const ONLINE_MEETING_URL = "https://meet.google.com/zfs-ctwp-bax";
@@ -23,8 +22,7 @@ export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
 export const SLACK_INVITE_URL = "#slack-invite";
 
 export const LINKS = {
-  TECHNICIAN_CLASSROOM_URL,
-  GENERAL_CLASSROOM_URL,
+  CLASS_SIGNUP_URL,
   TESTING_REGISTRATION_URL,
   MEMBERSHIP_FORM_URL,
   ONLINE_MEETING_URL,

@@ -78,18 +78,18 @@ export default function Home() {
           <InfoCard title="Technician Prep Course">
             <p>Hosted twice per year: Q1 and Q3.</p>
             <div className="mt-5">
-              <ButtonLink href={LINKS.TECHNICIAN_CLASSROOM_URL}>Join Technician Google Classroom</ButtonLink>
+              <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next Technician Class</ButtonLink>
             </div>
           </InfoCard>
           <InfoCard title="General Prep Course">
             <p>Hosted twice per year: Q2 and Q4.</p>
             <div className="mt-5">
-              <ButtonLink href={LINKS.GENERAL_CLASSROOM_URL}>Join General Google Classroom</ButtonLink>
+              <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next General Class</ButtonLink>
             </div>
           </InfoCard>
         </div>
         <p className="mx-auto mt-6 max-w-3xl text-center text-sm font-medium text-stonewarm-700">
-          Google Classroom links will be shared with registered students.
+          Submit the class interest form and a club volunteer will follow up with next steps.
         </p>
       </section>
 

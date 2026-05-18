@@ -18,7 +18,7 @@ export default function GetLicensedPage() {
             You do not need an engineering background to become a ham. Most people start with the Technician license, learn the practical basics, and get on local repeaters with a simple radio.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={LINKS.TECHNICIAN_CLASSROOM_URL}>Join Technician Google Classroom</ButtonLink>
+            <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next Technician Class</ButtonLink>
             <ButtonLink href="https://hamstudy.org" variant="light">Practice with HamStudy.org</ButtonLink>
           </div>
         </div>

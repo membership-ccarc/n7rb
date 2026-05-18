@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { ClassSignupForm } from "@/components/ClassSignupForm";
 import { ButtonLink, InfoCard } from "@/components/ui";
-import { LINKS } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Classes",
@@ -20,15 +20,13 @@ export default function ClassesPage() {
         <InfoCard title="Technician Prep Course">
           <p>Hosted twice per year: Q1 and Q3. This is the recommended entry point for new amateur radio operators.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href={LINKS.TECHNICIAN_CLASSROOM_URL}>Google Classroom placeholder</ButtonLink>
-            <ButtonLink href="#registration-form" variant="light">Registration form placeholder</ButtonLink>
+            <ButtonLink href="#class-signup">Join the Next Technician Class</ButtonLink>
           </div>
         </InfoCard>
         <InfoCard title="General Prep Course">
           <p>Hosted twice per year: Q2 and Q4. This class helps licensed Technicians expand into HF and long-distance operating.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href={LINKS.GENERAL_CLASSROOM_URL}>Google Classroom placeholder</ButtonLink>
-            <ButtonLink href="#registration-form" variant="light">Registration form placeholder</ButtonLink>
+            <ButtonLink href="#class-signup">Join the Next General Class</ButtonLink>
           </div>
         </InfoCard>
       </div>
@@ -42,6 +40,9 @@ export default function ClassesPage() {
         <InfoCard title="Downloadable Syllabus">
           <p>TODO: Link Technician and General syllabi when available.</p>
         </InfoCard>
+      </div>
+      <div className="mx-auto mt-10 max-w-4xl">
+        <ClassSignupForm />
       </div>
     </section>
   );
