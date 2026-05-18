@@ -8,7 +8,7 @@ const mainInterests = [
   "SOTA/POTA",
   "Outdoor/adventure radio",
   "Electronics/maker projects",
-  "Community",
+  "Digital Communications",
   "General curiosity",
 ] as const;
 
