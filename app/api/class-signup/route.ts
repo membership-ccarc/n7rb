@@ -36,6 +36,19 @@ function isAllowedValue<T extends readonly string[]>(value: string, allowedValue
   return allowedValues.includes(value as T[number]);
 }
 
+function getWebhookUrl(value: string | undefined) {
+  if (!value) {
+    return null;
+  }
+
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.toString() : null;
+  } catch {
+    return null;
+  }
+}
+
 function validatePayload(body: unknown): { payload?: ClassSignupPayload; error?: string } {
   if (!isRecord(body)) {
     return { error: "Invalid signup request." };
@@ -99,11 +112,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error }, { status: 400 });
   }
 
-  const webhookUrl = process.env.MAKE_CLASS_SIGNUP_WEBHOOK_URL;
+  const webhookUrl = getWebhookUrl(process.env.MAKE_CLASS_SIGNUP_WEBHOOK_URL);
 
   if (!webhookUrl) {
-    console.error("MAKE_CLASS_SIGNUP_WEBHOOK_URL is not configured.");
-    return NextResponse.json({ error: "Class signup automation is not configured." }, { status: 500 });
+    console.error("MAKE_CLASS_SIGNUP_WEBHOOK_URL is missing or is not a valid URL.");
+    return NextResponse.json({ error: "Class signup automation is not configured correctly." }, { status: 500 });
   }
 
   const webhookPayload = {
