@@ -13,7 +13,7 @@ const externalResources = [
   { href: "https://www.dmr-montana.net/styled-2/index.html", label: "DMR Montana repeater site information" },
   { href: "https://www.macpassradio.com/mprg/", label: "Mac Pass Repeater Group" },
   { href: "https://www.pistar.uk/dmr_bm_talkgroups.php", label: "BrandMeister talk group list" },
-  { href: "https://n7rb.org/wp-content/uploads/2025/02/Belmont-History.pdf", label: "Belmont repeater history PDF" },
+  { href: "/belmont-repeater-history.pdf", label: "Belmont repeater history PDF" },
 ] as const;
 
 function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
