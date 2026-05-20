@@ -10,13 +10,13 @@ export default function Home() {
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-pine-700">CCARC | {SITE.callsign} {SITE.city}</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight text-mountain-900 sm:text-5xl lg:text-6xl">
-              Discover Amateur Radio in Helena, Montana
+              Ready to Get Started in Ham Radio?
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-stonewarm-700">
-              Learn communication skills, emergency preparedness, outdoor radio, and modern wireless technology with the Capital City Amateur Radio Club.
+              CCARC helps new and advancing operators in Helena learn the basics, prepare for license exams, and make their first contacts with support from local ham radio operators.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href="/get-licensed">Get Licensed</ButtonLink>
+              <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next License Class</ButtonLink>
               <ButtonLink href="/meetings-nets" variant="secondary">Visit a Meeting</ButtonLink>
               <ButtonLink href="/testing" variant="light">Take an Exam</ButtonLink>
             </div>
