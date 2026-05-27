@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Capital City Amateur Radio Club | N7RB",
-    description: "A modern onboarding front door for amateur radio in Helena, Montana.",
+    description: "Helena's amateur radio club — licensing classes, nets, exams, and community. Join N7RB.",
     type: "website",
     locale: "en_US",
   },
