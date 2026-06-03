@@ -40,8 +40,10 @@ function Footer() {
           </p>
         </div>
         <div>
-          <p className="font-bold">Meeting Location</p>
-          <p className="mt-2 text-sm leading-6 text-stonewarm-100">{SITE.meetingAddress}</p>
+          <p className="font-bold">Monthly Meeting Location</p>
+          <p className="mt-2 text-sm leading-6 text-stonewarm-100">
+            {SITE.meetingAddress}. 1st non-holiday Monday of the month at 7:00 PM.
+          </p>
         </div>
         <div>
           <p className="font-bold">Local Repeater</p>
