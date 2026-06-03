@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ButtonLink, InfoCard, PlaceholderImage } from "@/components/ui";
+import Image from "next/image";
+import { ButtonLink, InfoCard } from "@/components/ui";
 import { LINKS, SITE } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -18,11 +19,16 @@ export default function AboutPage() {
             The Capital City Amateur Radio Club is Helena&apos;s local amateur radio club. CCARC helps people learn radio, get licensed, practice useful communication skills, support community service, and enjoy radio as an active outdoor and technical hobby.
           </p>
         </div>
-        <PlaceholderImage
-          className="min-h-[320px]"
-          label="Helena amateur radio community"
-          alt="Placeholder illustration of Helena amateur radio operators gathering outdoors"
-        />
+        <div className="flex min-h-[320px] items-center justify-center rounded-lg bg-white p-6 shadow-soft">
+          <Image
+            src="/CCARC_firetower.png"
+            alt="Capital City Amateur Radio Club fire tower logo"
+            width={400}
+            height={400}
+            className="h-auto w-full max-w-sm rounded-lg object-contain"
+            priority
+          />
+        </div>
       </div>
       <div className="mx-auto mt-10 grid max-w-7xl gap-5 md:grid-cols-3">
         <InfoCard title="Club Purpose">
