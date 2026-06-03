@@ -38,7 +38,18 @@ export default function ClassesPage() {
           <p>The next technician class is tentatively planned to begin in September 2026.</p>
         </InfoCard>
         <InfoCard title="Downloadable Syllabus">
-          <p>TODO: Link Technician and General syllabi when available.</p>
+          <ul className="space-y-3">
+            <li>
+              <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="/syllabi/technician-syllabus.pdf" target="_blank" rel="noopener noreferrer">
+                Technician Syllabus
+              </a>
+            </li>
+            <li>
+              <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="/syllabi/general-class-syllabus.pdf" target="_blank" rel="noopener noreferrer">
+                General Class Syllabus
+              </a>
+            </li>
+          </ul>
         </InfoCard>
       </div>
       <div className="mx-auto mt-10 max-w-4xl">
