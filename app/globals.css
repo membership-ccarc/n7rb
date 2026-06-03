@@ -34,3 +34,18 @@ body {
   background: #e9bf55;
   color: #12364a;
 }
+
+.license-path-sway {
+  animation: license-path-sway 7s ease-in-out infinite;
+}
+
+@keyframes license-path-sway {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}

@@ -66,6 +66,31 @@ export default function Home() {
 
       <section className="bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro eyebrow="Start here" title="Your Path to Getting Licensed" />
+        <div className="license-path-sway mx-auto mt-6 max-w-5xl" aria-hidden="true">
+          <svg className="h-24 w-full" viewBox="0 0 960 120" role="img">
+            <path
+              d="M24 88 C120 34 188 44 258 72 C326 100 384 96 450 58 C526 14 604 22 660 58 C730 102 808 98 936 32"
+              fill="none"
+              stroke="#39724f"
+              strokeLinecap="round"
+              strokeWidth="12"
+            />
+            <path
+              d="M24 88 C120 34 188 44 258 72 C326 100 384 96 450 58 C526 14 604 22 660 58 C730 102 808 98 936 32"
+              fill="none"
+              stroke="#e9bf55"
+              strokeDasharray="3 28"
+              strokeLinecap="round"
+              strokeWidth="5"
+            />
+            <path d="M138 75 L162 32 L186 75 Z" fill="#24556f" opacity="0.22" />
+            <path d="M174 75 L205 18 L238 75 Z" fill="#24556f" opacity="0.28" />
+            <path d="M720 92 L743 48 L767 92 Z" fill="#24556f" opacity="0.2" />
+            <path d="M752 92 L786 30 L822 92 Z" fill="#24556f" opacity="0.26" />
+            <circle cx="450" cy="58" r="9" fill="#e9bf55" />
+            <circle cx="936" cy="32" r="10" fill="#39724f" />
+          </svg>
+        </div>
         <div className="mx-auto mt-10 grid max-w-7xl gap-5 md:grid-cols-4">
           {[
             ["1", "Join a Technician Class", "Learn the basics with local instructors and other beginners."],
