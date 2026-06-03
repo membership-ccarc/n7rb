@@ -113,6 +113,16 @@ export const whatWeDo = [
     references: [{ label: "ARRL ARES", href: "https://www.arrl.org/ares" }],
   },
   {
+    title: "Local Event Support",
+    text: "Provide radio communication support for Helena-area races and endurance events throughout the year.",
+    references: [
+      { label: "Elkhorn Endurance Runs", href: "https://hurlelkhorn.com/" },
+      { label: "Governor's Cup", href: "https://govcupmt.com/" },
+      { label: "Just for the Helena of It", href: "https://runhelena.com/" },
+      { label: "Don't Fence Me In", href: "https://pricklypearlt.org/explore/dfmi/" },
+    ],
+  },
+  {
     title: "Repeaters",
     text: "Local infrastructure that helps handheld and mobile radios cover the Helena area.",
     references: [],
