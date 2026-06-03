@@ -27,6 +27,9 @@ export function NewsletterArchive() {
         <p className="mt-3 leading-7 text-stonewarm-700">
           Read the latest CCARC newsletter for club updates, event notes, local radio activity, and member contributions.
         </p>
+        <p className="mt-3 leading-7 text-stonewarm-700">
+          To sign up to receive the monthly newsletter, contact Marla Unruh, KM7LIB, at mkulib@gmail.com.
+        </p>
         <div className="mt-5">
           <a
             className="inline-flex min-h-11 items-center justify-center rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-900"
