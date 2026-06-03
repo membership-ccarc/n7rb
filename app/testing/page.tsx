@@ -47,6 +47,51 @@ export default function TestingPage() {
           </div>
         </InfoCard>
       </div>
+      <div className="mx-auto mt-12 max-w-7xl rounded-lg bg-white p-6 shadow-sm">
+        <h2 className="text-2xl font-black text-mountain-900">Test Preparation</h2>
+        <p className="mt-3 leading-7 text-stonewarm-700">
+          These resources can help new applicants study for the Technician exam before attending a local test session.
+        </p>
+        <div className="mt-6 grid gap-5 lg:grid-cols-2">
+          <div className="rounded-lg bg-stonewarm-50 p-5">
+            <h3 className="text-lg font-black text-mountain-900">Video Courses</h3>
+            <ul className="mt-4 space-y-3 leading-7">
+              <li>
+                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://www.youtube.com/watch?v=DdzQS10JnHU" target="_blank" rel="noopener noreferrer">
+                  Ham Radio Technician Prep Intro (2022-2026)
+                </a>
+              </li>
+              <li>
+                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://www.youtube.com/watch?v=QC3-NZvZgH8" target="_blank" rel="noopener noreferrer">
+                  How To Study and Pass Your Ham Radio Exam
+                </a>
+              </li>
+              <li>
+                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://www.youtube.com/watch?v=bovJEGIunNg&list=PLuapIzKwhZN_30dcgsDbGU3J7C8BAYJcG" target="_blank" rel="noopener noreferrer">
+                  Dave Casler Technician License Series T01
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="rounded-lg bg-stonewarm-50 p-5">
+            <h3 className="text-lg font-black text-mountain-900">License Manuals</h3>
+            <ul className="mt-4 space-y-3 leading-7">
+              <li>
+                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://www.amazon.com/Technician-Element-Amateur-Preparation-2022-2026/dp/1625951906" target="_blank" rel="noopener noreferrer">
+                  Gordon West Technician Class FCC Element 2 Amateur Radio License Preparation
+                </a>
+              </li>
+              <li>
+                ARRL Ham Radio License Manual, 5th Edition. A copy was donated by CCARC to the Lewis and Clark Library, or you can{" "}
+                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://home.arrl.org/action/Store/Product-Details/productId/2003373064" target="_blank" rel="noopener noreferrer">
+                  buy it from ARRL
+                </a>
+                .
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
