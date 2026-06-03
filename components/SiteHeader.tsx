@@ -56,27 +56,55 @@ export function SiteHeader() {
                 className="absolute right-0 mt-2 w-72 rounded-lg border border-stonewarm-100 bg-white p-2 shadow-soft"
               >
                 {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    className="block rounded-md px-3 py-3 text-sm font-bold text-mountain-900 hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700"
-                    href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
+                  <div key={item.href}>
+                    <Link
+                      className="block rounded-md px-3 py-3 text-sm font-bold text-mountain-900 hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700"
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                    {"children" in item ? (
+                      <div className="ml-3 border-l border-stonewarm-100 pl-2">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            className="block rounded-md px-3 py-2 text-sm font-bold text-stonewarm-700 hover:bg-stonewarm-50 hover:text-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700"
+                            href={child.href}
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
                 ))}
               </div>
             ) : null}
           </div>
           <ul className="hidden items-center gap-1 md:flex">
             {navItems.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="group relative">
                 <Link
                   className="rounded-md px-3 py-2 text-sm font-bold text-mountain-900 hover:bg-white hover:text-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
                   href={item.href}
                 >
                   {item.label}
                 </Link>
+                {"children" in item ? (
+                  <div className="invisible absolute right-0 top-full z-50 mt-2 w-56 rounded-lg border border-stonewarm-100 bg-white p-2 opacity-0 shadow-soft transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        className="block rounded-md px-3 py-3 text-sm font-bold text-mountain-900 hover:bg-stonewarm-50 hover:text-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700"
+                        href={child.href}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
               </li>
             ))}
           </ul>

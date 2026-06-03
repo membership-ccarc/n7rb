@@ -40,7 +40,14 @@ export const navItems = [
   { href: "/testing", label: "Testing" },
   { href: "/meetings-nets", label: "Meetings & Nets" },
   { href: "/about", label: "About CCARC" },
-  { href: "/ares", label: "ARES/LCARES" },
+  {
+    href: "/ares",
+    label: "ARES/LCARES",
+    children: [
+      { href: "/ares/ares-training", label: "ARES Training" },
+      { href: "/ares/field-operations-guides", label: "Field Operations Guides" },
+    ],
+  },
   { href: "/join-contact", label: "Join / Contact" },
 ] as const;
 
