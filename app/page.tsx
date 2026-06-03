@@ -1,6 +1,6 @@
 import { amateurRadioCards, LINKS, nets, SITE, whatWeDo } from "@/lib/site-data";
 import Image from "next/image";
-import { ButtonLink, InfoCard, MeetingDetails, PlaceholderImage, SectionIntro } from "@/components/ui";
+import { ButtonLink, InfoCard, MeetingDetails, SectionIntro } from "@/components/ui";
 
 export default function Home() {
   return (
@@ -107,11 +107,15 @@ export default function Home() {
 
       <section className="bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <PlaceholderImage
-            className="min-h-[280px]"
-            label="Monthly club meeting"
-            alt="Placeholder illustration representing a welcoming amateur radio club meeting"
-          />
+          <div className="overflow-hidden rounded-lg bg-mountain-900 shadow-soft">
+            <Image
+              src="/club-meeting.png"
+              alt="Friendly amateur radio club members gathered around radio equipment at a community meeting"
+              width={1672}
+              height={941}
+              className="h-full min-h-[280px] w-full object-cover"
+            />
+          </div>
           <div>
             <h2 className="text-3xl font-black text-mountain-900">Visit a Club Meeting</h2>
             <p className="mt-4 text-lg leading-8 text-stonewarm-700">
