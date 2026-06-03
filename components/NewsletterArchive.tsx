@@ -34,7 +34,7 @@ export function NewsletterArchive() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Open Latest Newsletter
+            Read the Latest Newsletter
           </a>
         </div>
       </article>
