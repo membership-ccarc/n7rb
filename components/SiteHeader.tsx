@@ -26,9 +26,9 @@ export function SiteHeader() {
           <Image
             src="/CCARC_firetower_logo_v2.png"
             alt=""
-            width={48}
-            height={48}
-            className="h-12 w-12 rounded-md object-contain"
+            width={58}
+            height={58}
+            className="h-14 w-14 rounded-md object-contain"
             priority
           />
           <span>
