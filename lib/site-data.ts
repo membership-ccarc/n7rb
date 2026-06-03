@@ -44,12 +44,42 @@ export const navItems = [
 ] as const;
 
 export const amateurRadioCards = [
-  ["Emergency Communication", "Help neighbors stay connected when phones, power, or internet are disrupted."],
-  ["Outdoor Adventure", "Use lightweight radios on trails, summits, parks, and public lands."],
-  ["Talk Around the World", "Make contacts across Montana, the country, and the globe."],
-  ["Digital Technology", "Explore modern wireless data, satellites, weak-signal modes, and software-defined radio."],
-  ["Community Service", "Support events, public safety partners, and community preparedness."],
-  ["Build and Experiment", "Learn antennas, electronics, propagation, and practical problem solving."],
+  {
+    title: "Emergency Communication",
+    text: "Help neighbors stay connected when phones, power, or internet are disrupted.",
+    image: "/amateur-radio/emergency-communication.webp",
+    imageAlt: "Volunteer radio operator with emergency communication equipment",
+  },
+  {
+    title: "Outdoor Adventure",
+    text: "Use lightweight radios on trails, summits, parks, and public lands.",
+    image: "/amateur-radio/outdoor-adventure.webp",
+    imageAlt: "Hiker using a handheld radio in the mountains",
+  },
+  {
+    title: "Talk Around the World",
+    text: "Make contacts across Montana, the country, and the globe.",
+    image: "/amateur-radio/talk-around-the-world.webp",
+    imageAlt: "Amateur radio operator at a radio desk with global contact equipment",
+  },
+  {
+    title: "Digital Technology",
+    text: "Explore modern wireless data, satellites, weak-signal modes, and software-defined radio.",
+    image: "/amateur-radio/digital-technology.webp",
+    imageAlt: "Laptop and radio equipment used for digital amateur radio modes",
+  },
+  {
+    title: "Community Service",
+    text: "Support events, public safety partners, and community preparedness.",
+    image: "/amateur-radio/community-service.webp",
+    imageAlt: "Volunteer radio operators supporting a community event",
+  },
+  {
+    title: "Build and Experiment",
+    text: "Learn antennas, electronics, propagation, and practical problem solving.",
+    image: "/amateur-radio/build-and-experiment.webp",
+    imageAlt: "Electronics workbench with circuit board and soldering tools",
+  },
 ] as const;
 
 export const whatWeDo = [

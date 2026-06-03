@@ -46,8 +46,20 @@ export default function Home() {
           </p>
         </SectionIntro>
         <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {amateurRadioCards.map(([title, text]) => (
-            <InfoCard key={title} title={title}>{text}</InfoCard>
+          {amateurRadioCards.map(({ title, text, image, imageAlt }) => (
+            <article key={title} className="overflow-hidden rounded-lg border border-stonewarm-100 bg-white shadow-sm">
+              <Image
+                src={image}
+                alt={imageAlt}
+                width={640}
+                height={360}
+                className="h-40 w-full object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-xl font-black text-mountain-900">{title}</h3>
+                <p className="mt-3 leading-7 text-stonewarm-700">{text}</p>
+              </div>
+            </article>
           ))}
         </div>
       </section>
