@@ -139,6 +139,22 @@ export const whatWeDo = [
   },
 ] as const;
 
+export const newsletters = [
+  { title: "May 2026", href: "/newsletters/newsletter-2026-05.pdf", year: "2026", month: "May" },
+  { title: "April 2026", href: "/newsletters/newsletter-2026-04.pdf", year: "2026", month: "April" },
+  { title: "March 2026", href: "/newsletters/newsletter-2026-03.pdf", year: "2026", month: "March" },
+  { title: "February 2026", href: "/newsletters/newsletter-2026-02.pdf", year: "2026", month: "February" },
+  { title: "January 2026", href: "/newsletters/newsletter-2026-01.pdf", year: "2026", month: "January" },
+  { title: "December 2025", href: "/newsletters/newsletter-2025-12.pdf", year: "2025", month: "December" },
+  { title: "November 2025", href: "/newsletters/newsletter-2025-11.pdf", year: "2025", month: "November" },
+  { title: "October 2025", href: "/newsletters/newsletter-2025-10.pdf", year: "2025", month: "October" },
+  { title: "September 2025", href: "/newsletters/newsletter-2025-09.pdf", year: "2025", month: "September" },
+  { title: "August 2025", href: "/newsletters/newsletter-2025-08.pdf", year: "2025", month: "August" },
+  { title: "July 2025", href: "/newsletters/newsletter-2025-07.pdf", year: "2025", month: "July" },
+  { title: "June 2025", href: "/newsletters/newsletter-2025-06.pdf", year: "2025", month: "June" },
+  { title: "May 2025", href: "/newsletters/newsletter-2025-05.pdf", year: "2025", month: "May" },
+] as const;
+
 export const nets = [
   { name: "Tuesday ARES Net", time: "7:30 PM", frequency: "147.22+ repeater" },
   { name: "Saturday Coffee Net", time: "9:00 AM", frequency: "147.22+ repeater" },

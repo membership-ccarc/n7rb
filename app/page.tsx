@@ -1,6 +1,7 @@
 import { amateurRadioCards, LINKS, nets, SITE, whatWeDo } from "@/lib/site-data";
 import Image from "next/image";
 import { ButtonLink, InfoCard, MeetingDetails, SectionIntro } from "@/components/ui";
+import { NewsletterArchive } from "@/components/NewsletterArchive";
 
 export default function Home() {
   return (
@@ -253,6 +254,13 @@ export default function Home() {
             </InfoCard>
           ))}
         </div>
+      </section>
+
+      <section className="bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
+        <SectionIntro title="CCARC Newsletters">
+          <p>Catch up on recent club news, operating notes, event reports, and member contributions.</p>
+        </SectionIntro>
+        <NewsletterArchive />
       </section>
 
       <section className="bg-pine-700 px-4 py-16 text-white sm:px-6 lg:px-8">
