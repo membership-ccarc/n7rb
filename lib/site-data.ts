@@ -40,6 +40,7 @@ export const navItems = [
   { href: "/testing", label: "Testing" },
   { href: "/meetings-nets", label: "Meetings & Nets" },
   { href: "/about", label: "About CCARC" },
+  { href: "/ares", label: "ARES/LCARES" },
   { href: "/join-contact", label: "Join / Contact" },
 ] as const;
 
