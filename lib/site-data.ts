@@ -94,7 +94,10 @@ export const whatWeDo = [
   {
     title: "Field Day",
     text: "A yearly hands-on operating event that combines radio skills, public outreach, and emergency readiness.",
-    references: [{ label: "ARRL Field Day", href: "https://www.arrl.org/Field-Day" }],
+    references: [
+      { label: "Facebook Event", href: "https://www.facebook.com/share/14eDkjzrqRU/" },
+      { label: "ARRL Field Day", href: "https://www.arrl.org/Field-Day" },
+    ],
   },
   {
     title: "POTA and SOTA",

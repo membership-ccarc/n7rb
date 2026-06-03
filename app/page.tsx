@@ -173,6 +173,34 @@ export default function Home() {
       </section>
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.58fr] lg:items-center">
+          <div className="overflow-hidden rounded-lg border border-stonewarm-100 bg-mountain-900 shadow-soft">
+            <Image
+              src="/CCARC_FD2026.png"
+              alt="Capital City Amateur Radio Club Field Day 2026 flyer for June 27-28, 2026 in Helena, Montana"
+              width={1732}
+              height={908}
+              className="h-auto w-full"
+            />
+          </div>
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Next Big Event</p>
+            <h2 className="mt-3 text-3xl font-black text-mountain-900 sm:text-4xl">Field Day 2026</h2>
+            <p className="mt-4 text-lg leading-8 text-stonewarm-700">
+              Join CCARC for Field Day on June 27-28, 2026 at Quigley Group Campground atop MacDonald Pass, west of Helena.
+            </p>
+            <p className="mt-3 leading-7 text-stonewarm-700">
+              Coordinates: 46.560979, -112.304516. Operate, learn, connect, and help keep amateur radio strong.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <ButtonLink href="https://www.facebook.com/share/14eDkjzrqRU/">View the Facebook Event</ButtonLink>
+              <ButtonLink href="/join-contact" variant="light">Ask a Question</ButtonLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro title="What We Do" />
         <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {whatWeDo.map(({ title, text, references }) => (
