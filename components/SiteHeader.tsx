@@ -24,11 +24,11 @@ export function SiteHeader() {
           onClick={() => setIsMenuOpen(false)}
         >
           <Image
-            src="/favicon.svg"
+            src="/CCARC_firetower_logo_v2.png"
             alt=""
             width={40}
             height={40}
-            className="h-10 w-10 rounded-md"
+            className="h-10 w-10 rounded-md object-contain"
             priority
           />
           <span>

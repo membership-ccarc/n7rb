@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   icons: {
-    icon: "/favicon.svg",
+    icon: "/CCARC_firetower_logo_v2.png",
   },
 };
 
