@@ -7,10 +7,10 @@ export const metadata: Metadata = {
 };
 
 const basicCourses = [
-  { code: "ICS-100", title: "An Introduction to the Incident Command System", href: "https://emilms.fema.gov/is_0100c/curriculum/1.html" },
-  { code: "ICS-200", title: "Basic Incident Command System for Initial Response", href: "https://emilms.fema.gov/is_0200c/curriculum/1.html" },
-  { code: "ICS-700", title: "An Introduction to the National Incident Management System", href: "https://emilms.fema.gov/is_0700b/curriculum/1.html" },
-  { code: "ICS-800", title: "National Response Framework, An Introduction", href: "https://emilms.fema.gov/is_0800d/curriculum/1.html" },
+  { code: "ICS-100", title: "An Introduction to the Incident Command System", href: "https://training.fema.gov/is/courseoverview.aspx?code=IS-100.c&lang=en" },
+  { code: "ICS-200", title: "Basic Incident Command System for Initial Response", href: "https://training.fema.gov/is/courseoverview.aspx?code=IS-200.c" },
+  { code: "ICS-700", title: "An Introduction to the National Incident Management System", href: "https://training.fema.gov/is/courseoverview.aspx?code=IS-700.b&lang=en" },
+  { code: "ICS-800", title: "National Response Framework, An Introduction", href: "https://training.fema.gov/is/courseoverview.aspx?code=IS-800.d&lang=en" },
 ] as const;
 
 export default function AresTrainingPage() {
