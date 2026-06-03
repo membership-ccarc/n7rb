@@ -45,7 +45,7 @@ export default function AboutPage() {
         <InfoCard title="Officers and Board">
           <ul className="space-y-3">
             <li><strong className="text-mountain-900">President:</strong> Tom Mandera KE7VUX</li>
-            <li><strong className="text-mountain-900">Vice-president:</strong> Brian Lee KM7OUF</li>
+            <li><strong className="text-mountain-900">Vice-president:</strong> Brian Lee KJ7OUF</li>
             <li><strong className="text-mountain-900">Treasurer:</strong> Al Simons WA1TYB</li>
             <li><strong className="text-mountain-900">Secretary:</strong> Oakely Clark-Snustad KE7WWL</li>
           </ul>
