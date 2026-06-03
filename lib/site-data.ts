@@ -118,7 +118,7 @@ export const whatWeDo = [
     references: [
       { label: "Elkhorn Endurance Runs", href: "https://hurlelkhorn.com/" },
       { label: "Governor's Cup", href: "https://govcupmt.com/" },
-      { label: "Just for the Helena of It", href: "https://runhelena.com/" },
+      { label: "Just for the Helena of It", href: "https://www.runhelena.com/" },
       { label: "Don't Fence Me In", href: "https://pricklypearlt.org/explore/dfmi/" },
     ],
   },
