@@ -14,7 +14,7 @@ export default function Home() {
               Ready to Get Started in Ham Radio?
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-stonewarm-700">
-              CCARC helps new and advancing operators in Helena learn the basics, prepare for license exams, and make their first contacts with support from local ham radio operators.
+              {SITE.name} ({SITE.shortName}) helps new and advancing operators in Helena learn the basics, prepare for license exams, and make their first contacts with support from local ham radio operators.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next License Class</ButtonLink>
