@@ -28,7 +28,7 @@ export function SiteHeader() {
             alt=""
             width={58}
             height={58}
-            className="h-12 w-12 rounded-md object-contain"
+            className="h-14 w-14 rounded-md object-contain"
             priority
           />
           <span>
