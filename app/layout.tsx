@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import "./globals.css";
-import { navItems, SITE } from "@/lib/site-data";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SITE } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: {
@@ -29,64 +28,6 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
 };
-
-function Header() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-stonewarm-100 bg-stonewarm-50/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="flex items-center gap-3 rounded-md font-black leading-tight text-mountain-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
-          aria-label={`${SITE.name} home`}
-        >
-          <Image
-            src="/favicon.svg"
-            alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-md"
-            priority
-          />
-          <span>
-            <span className="block text-lg">{SITE.shortName}</span>
-            <span className="block text-xs font-bold uppercase tracking-wide text-pine-700">{SITE.callsign}</span>
-          </span>
-        </Link>
-        <nav aria-label="Primary navigation">
-          <details className="group relative md:hidden">
-            <summary className="flex min-h-11 cursor-pointer list-none items-center rounded-md bg-white px-4 py-2 text-sm font-bold text-mountain-900 shadow-sm ring-1 ring-stonewarm-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700">
-              Menu
-              <span className="ml-2" aria-hidden="true">▾</span>
-            </summary>
-            <div className="absolute right-0 mt-2 w-72 rounded-lg border border-stonewarm-100 bg-white p-2 shadow-soft">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  className="block rounded-md px-3 py-3 text-sm font-bold text-mountain-900 hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700"
-                  href={item.href}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </details>
-          <ul className="hidden items-center gap-1 md:flex">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  className="rounded-md px-3 py-2 text-sm font-bold text-mountain-900 hover:bg-white hover:text-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
-                  href={item.href}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
-}
 
 function Footer() {
   return (
@@ -123,7 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to main content
         </a>
-        <Header />
+        <SiteHeader />
         <main id="main-content">{children}</main>
         <Footer />
       </body>
