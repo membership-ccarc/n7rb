@@ -112,18 +112,22 @@ export default function Home() {
           <p>CCARC offers a friendly path into amateur radio with seasonal courses for new and advancing operators.</p>
         </SectionIntro>
         <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-2">
-          <InfoCard title="Technician Prep Course">
-            <p>Hosted twice per year: Q1 and Q3.</p>
-            <div className="mt-5">
-              <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next Technician Class</ButtonLink>
-            </div>
-          </InfoCard>
-          <InfoCard title="General Prep Course">
-            <p>Hosted twice per year: Q2 and Q4.</p>
-            <div className="mt-5">
-              <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next General Class</ButtonLink>
-            </div>
-          </InfoCard>
+          <div className="text-center">
+            <InfoCard title="Technician Prep Course">
+              <p>Hosted twice per year: Q1 and Q3.</p>
+              <div className="mt-5">
+                <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next Technician Class</ButtonLink>
+              </div>
+            </InfoCard>
+          </div>
+          <div className="text-center">
+            <InfoCard title="General Prep Course">
+              <p>Hosted twice per year: Q2 and Q4.</p>
+              <div className="mt-5">
+                <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next General Class</ButtonLink>
+              </div>
+            </InfoCard>
+          </div>
         </div>
         <p className="mx-auto mt-6 max-w-3xl text-center text-sm font-medium text-stonewarm-700">
           Submit the class interest form and a club volunteer will follow up with next steps.
