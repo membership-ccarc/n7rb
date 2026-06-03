@@ -47,13 +47,13 @@ export default function Home() {
         </SectionIntro>
         <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {amateurRadioCards.map(({ title, text, image, imageAlt }) => (
-            <article key={title} className="overflow-hidden rounded-lg border border-stonewarm-100 bg-white shadow-sm">
+            <article key={title} className="grid overflow-hidden rounded-lg border border-stonewarm-100 bg-white shadow-sm sm:grid-cols-[8.5rem_1fr]">
               <Image
                 src={image}
                 alt={imageAlt}
                 width={640}
-                height={360}
-                className="h-40 w-full object-cover"
+                height={640}
+                className="aspect-square w-full object-cover sm:h-full"
               />
               <div className="p-6">
                 <h3 className="text-xl font-black text-mountain-900">{title}</h3>
