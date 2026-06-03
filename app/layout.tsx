@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SITE } from "@/lib/site-data";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://n7rb.vercel.app"),
   title: {
     default: "Capital City Amateur Radio Club | N7RB Helena, Montana",
     template: "%s | CCARC | N7RB Helena, Montana",
@@ -23,9 +24,18 @@ export const metadata: Metadata = {
     description: "Helena's amateur radio club — licensing classes, nets, exams, and community. Join N7RB.",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/CCARC_firetower_favi.png",
+        width: 842,
+        height: 703,
+        alt: "Capital City Amateur Radio Club logo",
+      },
+    ],
   },
   icons: {
-    icon: "/CCARC_firetower_logo_v2.png",
+    icon: "/CCARC_firetower_favi.png",
+    apple: "/CCARC_firetower_favi.png",
   },
 };
 
