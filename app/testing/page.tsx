@@ -38,6 +38,15 @@ export default function TestingPage() {
             <ButtonLink href={LINKS.TESTING_REGISTRATION_URL}>Register on HamStudy</ButtonLink>
           </div>
         </InfoCard>
+        <InfoCard title="Questions">
+          <p>
+            Please contact John Geach KS7R at{" "}
+            <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="mailto:jcgeach@gmail.com">
+              jcgeach@gmail.com
+            </a>{" "}
+            with any questions.
+          </p>
+        </InfoCard>
       </div>
       <div className="mx-auto mt-12 max-w-7xl rounded-lg bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-black text-mountain-900">Test Preparation</h2>
