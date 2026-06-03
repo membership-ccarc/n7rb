@@ -31,6 +31,7 @@ const initialState: FormState = {
 };
 
 const mainInterestOptions = [
+  "Get My Ham License",
   "Emergency communications",
   "SOTA/POTA",
   "Outdoor/adventure radio",

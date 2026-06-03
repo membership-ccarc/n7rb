@@ -4,6 +4,7 @@ const licenseInterests = ["Technician", "General", "Not sure yet"] as const;
 const experienceLevels = ["Completely new", "Studying now", "Licensed but inactive", "Currently licensed"] as const;
 const contactMethods = ["Email", "Phone", "Text"] as const;
 const mainInterests = [
+  "Get My Ham License",
   "Emergency communications",
   "SOTA/POTA",
   "Outdoor/adventure radio",
