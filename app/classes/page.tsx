@@ -32,10 +32,10 @@ export default function ClassesPage() {
       </div>
       <div className="mx-auto mt-8 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard title="Instructor Contact">
-          <p>TODO: Add the current instructor name and email address.</p>
+          <p>TBD. </p>
         </InfoCard>
         <InfoCard title="Class Calendar">
-          <p>TODO: Add a live class calendar or calendar embed.</p>
+          <p>The next technician class is tentatively planned to begin in September 2026.</p>
         </InfoCard>
         <InfoCard title="Downloadable Syllabus">
           <p>TODO: Link Technician and General syllabi when available.</p>
