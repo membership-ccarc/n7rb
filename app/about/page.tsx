@@ -43,7 +43,12 @@ export default function AboutPage() {
           </div>
         </InfoCard>
         <InfoCard title="Officers and Board">
-          <p>TODO: Add current officers, board members, and role-based contact links.</p>
+          <ul className="space-y-3">
+            <li><strong className="text-mountain-900">President:</strong> Tom Mandera KE7VUX</li>
+            <li><strong className="text-mountain-900">Vice-president:</strong> Brian Lee KM7OUF</li>
+            <li><strong className="text-mountain-900">Treasurer:</strong> Al Simons WA1TYB</li>
+            <li><strong className="text-mountain-900">Secretary:</strong> Oakely Clark-Snustad KE7WWL</li>
+          </ul>
         </InfoCard>
       </div>
     </section>

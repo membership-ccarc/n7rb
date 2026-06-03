@@ -83,9 +83,6 @@ export default function JoinContactPage() {
               Map fallback: Salvation Army church, 1905 Henderson St., Helena, MT.
             </p>
           </article>
-          <InfoCard title="Club Email">
-            <p>TODO: Replace CONTACT_EMAIL with the real public club email address.</p>
-          </InfoCard>
         </div>
       </div>
     </section>
