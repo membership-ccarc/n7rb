@@ -26,14 +26,6 @@ export default function TestingPage() {
         <InfoCard title="Next Exam Date">
           <p>Wednesday, June 17, 2026, from 6:30-7:45 PM MDT in Helena, Montana.</p>
         </InfoCard>
-        <InfoCard title="FCC FRN">
-          <ol className="list-decimal space-y-2 pl-5">
-            <li>Create or log in to an FCC CORES account at <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://apps.fcc.gov/cores/" target="_blank" rel="noopener noreferrer">apps.fcc.gov/cores</a>.</li>
-            <li>Select <span className="font-bold">Register New FRN</span> and choose <span className="font-bold">An Individual</span>.</li>
-            <li>Complete the form using the applicant&apos;s legal name, contact information, and required identification details.</li>
-            <li>Save the assigned 10-digit FRN and bring it to the exam session.</li>
-          </ol>
-        </InfoCard>
         <InfoCard title="Exam Fee">
           <p>$14, payable by cash or check at the exam session.</p>
         </InfoCard>
@@ -41,7 +33,7 @@ export default function TestingPage() {
           <p>Bring a photo ID, your FCC FRN, and $14 cash for the exam fee. If you are upgrading, bring a copy of your current license or any valid CSCE.</p>
         </InfoCard>
         <InfoCard title="Registration Link">
-          <p>Use HamStudy to view upcoming in-person exam sessions near Helena and register for an available seat.</p>
+          <p>Use HamStudy to view upcoming in-person exam sessions near Helena and register for an available seat. HamStudy also guides new applicants through the FCC CORES process to get the required FRN.</p>
           <div className="mt-5">
             <ButtonLink href={LINKS.TESTING_REGISTRATION_URL}>Register on HamStudy</ButtonLink>
           </div>
