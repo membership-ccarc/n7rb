@@ -11,7 +11,7 @@ export const SITE = {
 
 // TODO: Replace these placeholder constants with live CCARC URLs and contact details.
 export const CLASS_SIGNUP_URL = "/classes#class-signup";
-export const TESTING_REGISTRATION_URL = "#testing-registration";
+export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
 export const ONLINE_MEETING_URL = "https://meet.google.com/zfs-ctwp-bax";
 export const CONTACT_EMAIL = "mailto:CONTACT_EMAIL";

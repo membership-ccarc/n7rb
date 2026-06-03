@@ -136,7 +136,7 @@ export default function Home() {
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href="/testing">View Testing Information</ButtonLink>
-              <ButtonLink href={LINKS.TESTING_REGISTRATION_URL} variant="light">Registration/contact placeholder</ButtonLink>
+              <ButtonLink href={LINKS.TESTING_REGISTRATION_URL} variant="light">Register on HamStudy</ButtonLink>
             </div>
           </div>
           <div className="rounded-lg bg-stonewarm-50 p-6">
