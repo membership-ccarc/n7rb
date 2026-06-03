@@ -40,12 +40,14 @@ export default function MeetingsNetsPage() {
       </div>
       <div className="mx-auto mt-10 grid max-w-7xl gap-5 md:grid-cols-3">
         {nets.map((net) => (
-          <InfoCard key={net.name} title={net.name}>
-            <p>{net.time}</p>
-          </InfoCard>
+          <div key={net.name} className="text-center">
+            <InfoCard title={net.name}>
+              <p>{net.time}</p>
+            </InfoCard>
+          </div>
         ))}
       </div>
-      <div className="mx-auto mt-8 max-w-4xl rounded-lg bg-white p-6 shadow-sm">
+      <div className="mx-auto mt-8 max-w-4xl rounded-lg bg-white p-6 text-center shadow-sm">
         <h2 className="text-2xl font-black text-mountain-900">Repeater Information</h2>
         <p className="mt-4 leading-7 text-stonewarm-700">
           Belmont repeater {SITE.repeater} with {SITE.repeaterTone} tone. Backup simplex: {SITE.backupSimplex}.
