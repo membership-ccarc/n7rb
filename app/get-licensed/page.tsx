@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ButtonLink, InfoCard, PlaceholderImage } from "@/components/ui";
+import Image from "next/image";
+import { ButtonLink, InfoCard } from "@/components/ui";
 import { licenseLevels, LINKS } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -22,11 +23,16 @@ export default function GetLicensedPage() {
             <ButtonLink href="https://hamstudy.org" variant="light">Practice with HamStudy.org</ButtonLink>
           </div>
         </div>
-        <PlaceholderImage
-          className="min-h-[320px]"
-          label="First radio license"
-          alt="Placeholder illustration of a beginner learning amateur radio outdoors"
-        />
+        <div className="overflow-hidden rounded-lg bg-mountain-900 shadow-soft">
+          <Image
+            src="/get-licensed.png"
+            alt="Beginner amateur radio students in a Technician license class"
+            width={1672}
+            height={941}
+            className="h-full min-h-[320px] w-full object-cover"
+            priority
+          />
+        </div>
       </div>
       <div className="mx-auto mt-12 grid max-w-7xl gap-5 md:grid-cols-3">
         {licenseLevels.map((level) => (
