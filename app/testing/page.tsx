@@ -33,7 +33,7 @@ export default function TestingPage() {
           <p>Bring a photo ID, your FCC FRN, and $14 cash for the exam fee. If you are upgrading, bring a copy of your current license or any valid CSCE.</p>
         </InfoCard>
         <InfoCard title="Registration Link">
-          <p>Use HamStudy to view upcoming in-person exam sessions near Helena and register for an available seat. HamStudy also guides new applicants through the FCC CORES process to get the required FRN.</p>
+          <p>Use HamStudy to view our upcoming in-person exam sessions and register for an available seat. HamStudy also guides new applicants through the FCC CORES process to get the required FRN.</p>
           <div className="mt-5">
             <ButtonLink href={LINKS.TESTING_REGISTRATION_URL}>Register on HamStudy</ButtonLink>
           </div>
