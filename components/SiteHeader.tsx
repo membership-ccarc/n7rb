@@ -16,7 +16,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-stonewarm-100 bg-stonewarm-50/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="flex items-center gap-3 rounded-md font-black leading-tight text-mountain-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
@@ -26,9 +26,9 @@ export function SiteHeader() {
           <Image
             src="/CCARC_firetower_logo_v2.png"
             alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 rounded-md object-contain"
+            width={48}
+            height={48}
+            className="h-12 w-12 rounded-md object-contain"
             priority
           />
           <span>
