@@ -1,5 +1,6 @@
 import { amateurRadioCards, LINKS, nets, SITE, whatWeDo } from "@/lib/site-data";
 import Image from "next/image";
+import Link from "next/link";
 import { ButtonLink, InfoCard, MeetingDetails, SectionIntro } from "@/components/ui";
 import { NewsletterArchive } from "@/components/NewsletterArchive";
 
@@ -9,7 +10,13 @@ export default function Home() {
       <section className="bg-stonewarm-50">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.86fr] lg:px-8 lg:py-20">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-pine-700">CCARC | {SITE.callsign} {SITE.city}</p>
+            <p className="text-sm font-bold uppercase tracking-wide text-pine-700">
+              CCARC |{" "}
+              <Link className="underline decoration-pine-700/40 underline-offset-4 hover:decoration-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700" href="/about/n7rb-bio">
+                {SITE.callsign}
+              </Link>{" "}
+              {SITE.city}
+            </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight text-mountain-900 sm:text-5xl lg:text-6xl">
               Ready to Get Started in Ham Radio?
             </h1>

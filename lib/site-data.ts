@@ -53,10 +53,10 @@ export const navItems = [
 
 export const amateurRadioCards = [
   {
-    title: "Emergency Communication",
+    title: "Emergency Communications",
     text: "Help neighbors stay connected when phones, power, or internet are disrupted.",
     image: "/amateur-radio/emergency-communication.webp",
-    imageAlt: "Volunteer radio operator with emergency communication equipment",
+    imageAlt: "Volunteer radio operator with emergency communications equipment",
   },
   {
     title: "Outdoor Adventure",
@@ -164,7 +164,7 @@ export const nets = [
 export const licenseLevels = [
   {
     name: "Technician",
-    summary: "The best starting point for most new hams. It opens local repeaters, handheld radios, emergency communication practice, and many VHF/UHF activities.",
+    summary: "The best starting point for most new hams. It opens local repeaters, handheld radios, emergency communications practice, and many VHF/UHF activities.",
   },
   {
     name: "General",
