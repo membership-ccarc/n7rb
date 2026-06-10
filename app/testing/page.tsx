@@ -23,8 +23,11 @@ export default function TestingPage() {
         <InfoCard title="Current Testing Format">
           <p>In-person exams in Helena, tablet-based testing, all license classes available, and no remote exams currently.</p>
         </InfoCard>
-        <InfoCard title="Next Exam Date">
-          <p>Wednesday, June 17, 2026, from 6:30-7:45 PM MDT in Helena, Montana.</p>
+        <InfoCard title="Upcoming Exam Dates">
+          <ul className="space-y-2">
+            <li>Wednesday, June 17, 2026, from 6:30-7:45 PM MDT in Helena, Montana.</li>
+            <li>Wednesday, August 5, 2026, from 6:30-7:45 PM MDT in Helena, Montana.</li>
+          </ul>
         </InfoCard>
         <InfoCard title="Exam Fee">
           <p>$14, payable by cash or check at the exam session.</p>
