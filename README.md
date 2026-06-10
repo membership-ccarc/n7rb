@@ -4,9 +4,9 @@ Website for the Capital City Amateur Radio Club (CCARC), club callsign N7RB, in 
 
 ## Hosting And Ownership
 
-- Source code: GitHub, under the `alevie76-dev` account
-- Repository: `https://github.com/alevie76-dev/n7rb`
-- Hosting: Vercel
+- Source code: GitHub, under the `membership-ccarc` account (login: membership@ccarc-info.org)
+- Repository: `https://github.com/membership-ccarc/n7rb`
+- Hosting: Vercel (connected to the `membership-ccarc` GitHub account)
 - Framework: Next.js App Router
 
 The usual deployment flow is:
@@ -82,7 +82,6 @@ Most routine content updates should start in `lib/site-data.ts` before editing p
 - Syllabi live in `public/syllabi/`.
 - The Field Day flyer is currently `public/CCARC_FD2026.png`; the homepage references it directly.
 - The Slack invite URL in `lib/site-data.ts` is marked as expiring and should be renewed when needed.
-- `CONTACT_EMAIL` in `lib/site-data.ts` is currently a placeholder and should be replaced with the real contact email.
 - The membership application PDF is `public/membership_application.pdf`.
 - Use `Emergency Communications` for radio/public-safety contexts.
 - The homepage links `N7RB` to `/about/n7rb-bio` for visitors who do not know what the callsign means.
@@ -91,7 +90,7 @@ Most routine content updates should start in `lib/site-data.ts` before editing p
 
 In Vercel, check these items if a deployment fails or forms stop working:
 
-- The project is connected to `alevie76-dev/n7rb` on GitHub.
+- The project is connected to `membership-ccarc/n7rb` on GitHub (login: membership@ccarc-info.org).
 - The production branch is the branch you are pushing to.
 - `MAKE_CLASS_SIGNUP_WEBHOOK_URL` is set in the Vercel project environment variables.
 - The build command is `npm run build`.
