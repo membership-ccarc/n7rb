@@ -14,7 +14,7 @@ export const CLASS_SIGNUP_URL = "/classes#class-signup";
 export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
 export const ONLINE_MEETING_URL = "https://meet.google.com/zfs-ctwp-bax";
-export const CONTACT_EMAIL = "mailto:CONTACT_EMAIL";
+export const CONTACT_EMAIL = "mailto:membership@ccarc-info.org?subject=CCARC%20Website%20Inquiry";
 export const N7RB_HISTORY_URL = "https://n7rb.org/why-n7rb/";
 export const TREASURER_EMAIL = "al@simonshome.org";
 export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
