@@ -25,8 +25,8 @@ export default function TestingPage() {
         </InfoCard>
         <InfoCard title="Upcoming Exam Dates">
           <ul className="space-y-2">
-            <li>Wednesday, June 17, 2026, from 6:30-7:45 PM MDT in Helena, Montana.</li>
-            <li>Wednesday, August 5, 2026, from 6:30-7:45 PM MDT in Helena, Montana.</li>
+            <li>Wednesday, June 17, 2026, from 6:30-7:45 PM MDT.</li>
+            <li>Wednesday, August 5, 2026, from 6:30-7:45 PM MDT.</li>
           </ul>
         </InfoCard>
         <InfoCard title="Exam Fee">
