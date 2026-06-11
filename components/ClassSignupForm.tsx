@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useRef, useState } from "react";
 
 type LicenseInterest = "Technician" | "General" | "Not sure yet";
 type ExperienceLevel = "Completely new" | "Studying now" | "Licensed but inactive" | "Currently licensed";
@@ -57,6 +57,7 @@ export function ClassSignupForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [error, setError] = useState("");
+  const messageRef = useRef<HTMLParagraphElement>(null);
 
   function toggleMainInterest(interest: string) {
     setForm((current) => {
@@ -103,6 +104,7 @@ export function ClassSignupForm() {
 
       setForm(initialState);
       setStatus("success");
+      setTimeout(() => messageRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 50);
     } catch {
       setStatus("idle");
       setError("Something went wrong while sending your request. Please try again, or contact the club directly if the problem continues.");
@@ -124,11 +126,11 @@ export function ClassSignupForm() {
       </p>
 
       {status === "success" ? (
-        <p id="class-signup-message" className="mt-4 rounded-md border border-pine-700 bg-stonewarm-50 px-4 py-3 font-bold text-pine-900">
+        <p ref={messageRef} id="class-signup-message" className="mt-4 rounded-md border border-pine-700 bg-stonewarm-50 px-4 py-3 font-bold text-pine-900">
           Thanks! Your request has been received. A club volunteer will follow up soon. In the meantime, we&apos;ll send you a few study resources to help you get started.
         </p>
       ) : error ? (
-        <p id="class-signup-message" className="mt-4 rounded-md border border-red-300 bg-red-50 px-4 py-3 font-bold text-red-800">
+        <p ref={messageRef} id="class-signup-message" className="mt-4 rounded-md border border-red-300 bg-red-50 px-4 py-3 font-bold text-red-800">
           {error}
         </p>
       ) : (
