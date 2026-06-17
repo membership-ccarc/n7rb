@@ -50,7 +50,7 @@ export default function JoinContactPage() {
         <div className="grid gap-5">
           <InfoCard title="Newsletter Signup">
             <p>
-              Have news, photos, event reports, or article ideas for the club newsletter? Contact Marla Unruh, KM7LIB, at{" "}
+              Have news, photos, event reports, or article ideas for the club newsletter? Want to sign up to receive the monthly newsletter? Contact Marla Unruh, KM7LIB, at{" "}
               <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="mailto:mkulib@gmail.com">
                 mkulib@gmail.com
               </a>
