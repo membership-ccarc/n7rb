@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SITE } from "@/lib/site-data";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteHeader />
         <main id="main-content">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
