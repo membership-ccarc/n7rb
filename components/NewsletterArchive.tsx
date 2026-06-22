@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { newsletters } from "@/lib/site-data";
+import { LINKS, newsletters } from "@/lib/site-data";
 
 export function NewsletterArchive() {
   const [query, setQuery] = useState("");
@@ -30,7 +30,7 @@ export function NewsletterArchive() {
         <p className="mt-3 leading-7 text-stonewarm-700">
           To sign up to receive the monthly newsletter, contact Marla Unruh, KM7LIB, at mkulib@gmail.com.
         </p>
-        <div className="mt-5">
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
           <a
             className="inline-flex min-h-11 items-center justify-center rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-900"
             href={latest.href}
@@ -38,6 +38,14 @@ export function NewsletterArchive() {
             rel="noopener noreferrer"
           >
             Read the Latest Newsletter
+          </a>
+          <a
+            className="inline-flex min-h-11 items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-bold text-mountain-900 shadow-sm ring-1 ring-stonewarm-100 transition hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
+            href={LINKS.NEWSLETTER_ARCHIVE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Browse Full Archive
           </a>
         </div>
       </article>

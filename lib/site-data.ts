@@ -18,6 +18,7 @@ export const CONTACT_EMAIL = "mailto:membership@ccarc-info.org?subject=CCARC%20W
 export const N7RB_HISTORY_URL = "https://n7rb.org/why-n7rb/";
 export const TREASURER_EMAIL = "al@simonshome.org";
 export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
+export const NEWSLETTER_ARCHIVE_URL = "https://drive.google.com/drive/folders/0AE0_b2Wq_AhkUk9PVA";
 // TODO: Renew this expiring Slack invite URL monthly.
 export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
 
@@ -30,6 +31,7 @@ export const LINKS = {
   N7RB_HISTORY_URL,
   TREASURER_EMAIL,
   MEMBERSHIP_APPLICATION_PDF_URL,
+  NEWSLETTER_ARCHIVE_URL,
   SLACK_INVITE_URL,
 } as const;
 

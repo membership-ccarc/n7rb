@@ -228,6 +228,15 @@ export default function Home() {
             <p className="mt-3 leading-7 text-stonewarm-700">
               Coordinates: 46.560979, -112.304516. Operate, learn, connect, and help keep amateur radio strong.
             </p>
+            <p className="mt-3 leading-7 text-stonewarm-700">
+              POC: Allen (KH7AL),{" "}
+              <a
+                className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                href="tel:+14063040325"
+              >
+                406-304-0325
+              </a>
+            </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
               <ButtonLink href="https://www.facebook.com/share/14eDkjzrqRU/">View the Facebook Event</ButtonLink>
               <ButtonLink href="/join-contact" variant="light">Ask a Question</ButtonLink>
