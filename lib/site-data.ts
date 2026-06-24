@@ -18,7 +18,7 @@ export const CONTACT_EMAIL = "mailto:membership@ccarc-info.org?subject=CCARC%20W
 export const N7RB_HISTORY_URL = "https://n7rb.org/why-n7rb/";
 export const TREASURER_EMAIL = "al@simonshome.org";
 export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
-export const NEWSLETTER_ARCHIVE_URL = "https://drive.google.com/drive/folders/0AE0_b2Wq_AhkUk9PVA";
+export const NEWSLETTER_ARCHIVE_URL = "https://drive.google.com/drive/folders/1kHy8ILAoDxdaguP4rmM0f1W6D3c4IK0l?usp=drive_link";
 // TODO: Renew this expiring Slack invite URL monthly.
 export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
 
@@ -155,6 +155,21 @@ export const newsletters = [
   { title: "July 2025", href: "/newsletters/newsletter-2025-07.pdf", year: "2025", month: "July" },
   { title: "June 2025", href: "/newsletters/newsletter-2025-06.pdf", year: "2025", month: "June" },
   { title: "May 2025", href: "/newsletters/newsletter-2025-05.pdf", year: "2025", month: "May" },
+] as const;
+
+export const newsletterArchiveFolders = [
+  {
+    year: "2025",
+    href: "https://drive.google.com/drive/folders/1kHy8ILAoDxdaguP4rmM0f1W6D3c4IK0l?usp=drive_link",
+  },
+  {
+    year: "2024",
+    href: "https://drive.google.com/drive/folders/1RqKktFHfwZhEgYT8U-PGhFsrdgQqJBp3?usp=drive_link",
+  },
+  {
+    year: "2023",
+    href: "https://drive.google.com/drive/folders/1j5oOK7xjob5QYovBSnp7Fph3hJRpMwdd?usp=drive_link",
+  },
 ] as const;
 
 export const nets = [

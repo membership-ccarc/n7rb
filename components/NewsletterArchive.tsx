@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { LINKS, newsletters } from "@/lib/site-data";
+import { newsletterArchiveFolders, newsletters } from "@/lib/site-data";
 
 export function NewsletterArchive() {
   const [query, setQuery] = useState("");
@@ -39,14 +39,22 @@ export function NewsletterArchive() {
           >
             Read the Latest Newsletter
           </a>
-          <a
-            className="inline-flex min-h-11 items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-bold text-mountain-900 shadow-sm ring-1 ring-stonewarm-100 transition hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
-            href={LINKS.NEWSLETTER_ARCHIVE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Browse Full Archive
-          </a>
+        </div>
+        <div className="mt-6">
+          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Past Editions</p>
+          <div className="mt-3 grid grid-cols-3 gap-3">
+            {newsletterArchiveFolders.map((folder) => (
+              <a
+                key={folder.year}
+                className="inline-flex min-h-11 items-center justify-center rounded-md bg-white px-3 py-2 text-sm font-bold text-mountain-900 shadow-sm ring-1 ring-stonewarm-100 transition hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
+                href={folder.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {folder.year}
+              </a>
+            ))}
+          </div>
         </div>
       </article>
 
