@@ -57,11 +57,10 @@ export default function JoinContactPage() {
               .
             </p>
           </InfoCard>
-          <InfoCard title="CCARC Slack">
-            <p>Stay connected between meetings, ask quick questions, share projects, and coordinate local radio activity.</p>
-            <div className="mt-5">
-              <ButtonLink href="/join-contact/slack" variant="light">Join the Slack Workspace</ButtonLink>
-            </div>
+          <InfoCard title="Join Our Slack Community">
+            <p>
+              We&apos;d love to have you! Use our Contact Us form and let us know you&apos;d like access to our Slack workspace. Whether you&apos;re a long-time amateur radio operator or just getting started, we&apos;ll send you an invitation after a quick review.
+            </p>
           </InfoCard>
           <article className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
             <h2 className="text-xl font-black text-mountain-900">Meeting Location</h2>

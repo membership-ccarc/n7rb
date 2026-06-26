@@ -128,7 +128,7 @@ export default function MeetingsNetsPage() {
           CCARC uses Slack for quick questions, project photos, activity planning, and casual conversation between nets, meetings, and coffee gatherings.
         </p>
         <div className="mt-5">
-          <ButtonLink href="/join-contact/slack" variant="light">Join the Slack Workspace</ButtonLink>
+          <ButtonLink href="/join-contact" variant="light">Request to Join Slack</ButtonLink>
         </div>
       </div>
 
