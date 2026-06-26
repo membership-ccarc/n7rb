@@ -44,16 +44,21 @@ npm run start
 
 ## Environment Variables
 
-The class signup form posts to a Make.com webhook secured with an API key.
+The class signup and contact forms each post to their own Make.com webhook, both secured with an API key.
 
 Create `.env.local` from `.env.example` and set:
 
 ```bash
 MAKE_CLASS_SIGNUP_WEBHOOK_URL=https://hook.us2.make.com/your-real-webhook
 MAKE_CLASS_SIGNUP_API_KEY=your-make-keychain-api-key
+
+MAKE_CONTACT_WEBHOOK_URL=https://hook.us2.make.com/your-contact-webhook
+MAKE_CONTACT_API_KEY=your-contact-api-key
 ```
 
-The webhook URL comes from the Make.com scenario (module 1). The API key is the value set in the Make keychain (named `CCARC_Webhook`) and is sent via the `x-make-apikey` header. Both variables must also be configured in Vercel for production deployments.
+The webhook URLs come from their respective Make.com scenarios (module 1 of each). The API keys are sent via the `x-make-apikey` header. All four variables must also be configured in Vercel for production deployments.
+
+The contact form Make.com scenario appends a row to the "Contact Us" tab in the club Google Sheet and posts a Slack notification to the designated channel.
 
 ## Important Files
 
@@ -61,12 +66,13 @@ The webhook URL comes from the Make.com scenario (module 1). The API key is the 
 - `app/layout.tsx`: global metadata, shell, header, footer
 - `app/classes/page.tsx`: license class page
 - `app/api/class-signup/route.ts`: class signup form API endpoint
+- `app/api/contact/route.ts`: contact form API endpoint
+- `app/join-contact/page.tsx`: join/contact page with working contact form (client component)
 - `app/testing/page.tsx`: exam testing information
 - `app/meetings-nets/page.tsx`: meetings, nets, repeater, Slack promo
 - `app/ares/page.tsx`: ARES/LCARES landing page
 - `app/about/page.tsx`: club overview
 - `app/about/n7rb-bio/page.tsx`: explanation/history for N7RB
-- `app/join-contact/page.tsx`: join/contact page
 - `lib/site-data.ts`: shared site constants, navigation, links, cards, newsletters, license levels
 - `components/ui.tsx`: shared UI building blocks
 - `components/SiteHeader.tsx`: site navigation/header
@@ -93,7 +99,7 @@ In Vercel, check these items if a deployment fails or forms stop working:
 
 - The project is connected to `membership-ccarc/n7rb` on GitHub (login: membership@ccarc-info.org).
 - The production branch is the branch you are pushing to.
-- `MAKE_CLASS_SIGNUP_WEBHOOK_URL` and `MAKE_CLASS_SIGNUP_API_KEY` are set in the Vercel project environment variables.
+- All four Make.com env vars (`MAKE_CLASS_SIGNUP_WEBHOOK_URL`, `MAKE_CLASS_SIGNUP_API_KEY`, `MAKE_CONTACT_WEBHOOK_URL`, `MAKE_CONTACT_API_KEY`) are set in the Vercel project environment variables.
 - The build command is `npm run build`.
 - The app should deploy as a standard Next.js project.
 
