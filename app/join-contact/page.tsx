@@ -9,6 +9,7 @@ type FormState = "idle" | "submitting" | "success" | "error";
 export default function JoinContactPage() {
   const [formState, setFormState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [renderedAt] = useState(() => Date.now().toString());
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -20,6 +21,8 @@ export default function JoinContactPage() {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      website: (form.elements.namedItem("website") as HTMLInputElement).value,
+      renderedAt: (form.elements.namedItem("renderedAt") as HTMLInputElement).value,
     };
 
     try {
@@ -77,6 +80,20 @@ export default function JoinContactPage() {
           )}
 
           <div className="mt-6 grid gap-5">
+            <label className="sr-only" htmlFor="website">
+              Website
+            </label>
+            <input
+              id="website"
+              className="sr-only"
+              name="website"
+              type="text"
+              autoComplete="off"
+              tabIndex={-1}
+              aria-hidden="true"
+              disabled={formState === "submitting"}
+            />
+            <input name="renderedAt" type="hidden" defaultValue={renderedAt} />
             <label className="grid gap-2 font-bold text-mountain-900">
               Name
               <input
