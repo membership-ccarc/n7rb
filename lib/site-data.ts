@@ -9,7 +9,6 @@ export const SITE = {
   backupSimplex: "147.50 MHz",
 } as const;
 
-// TODO: Replace these placeholder constants with live CCARC URLs and contact details.
 export const CLASS_SIGNUP_URL = "/classes#class-signup";
 export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
@@ -19,7 +18,7 @@ export const N7RB_HISTORY_URL = "https://n7rb.org/why-n7rb/";
 export const TREASURER_EMAIL = "al@simonshome.org";
 export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
 export const NEWSLETTER_ARCHIVE_URL = "https://drive.google.com/drive/folders/1kHy8ILAoDxdaguP4rmM0f1W6D3c4IK0l?usp=drive_link";
-// TODO: Renew this expiring Slack invite URL monthly.
+// Slack invite links expire and should be refreshed as needed.
 export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
 
 export const LINKS = {

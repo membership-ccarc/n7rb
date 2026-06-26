@@ -99,7 +99,6 @@ export function MembershipApplicationForm() {
       "Dues note: Annual dues are $25 for a single member or $31.25 for a family membership. Dues for new members may be pro-rated for the first year.",
     ].join("\n");
 
-    // TODO: Replace this mailto handoff with a server-side email action once SMTP or an email API is configured.
     window.location.href = `mailto:${LINKS.TREASURER_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 

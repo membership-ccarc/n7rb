@@ -32,7 +32,7 @@ export default function ClassesPage() {
       </div>
       <div className="mx-auto mt-8 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard title="Instructor Contact">
-          <p>TBD. </p>
+          <p>Use the class signup form below for instructor questions, schedule needs, or help choosing the right class.</p>
         </InfoCard>
         <InfoCard title="Class Calendar">
           <p>The next technician class is tentatively planned to begin in September 2026.</p>
