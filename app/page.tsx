@@ -209,37 +209,30 @@ export default function Home() {
       </section>
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.58fr] lg:items-center">
-          <div className="overflow-hidden rounded-lg border border-stonewarm-100 bg-mountain-900 shadow-soft">
-            <Image
-              src="/CCARC_FD2026.png"
-              alt="Capital City Amateur Radio Club Field Day 2026 flyer for June 27-28, 2026 in Helena, Montana"
-              width={1732}
-              height={908}
-              className="h-auto w-full"
-            />
-          </div>
-          <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Next Big Event</p>
-            <h2 className="mt-3 text-3xl font-black text-mountain-900 sm:text-4xl">Field Day 2026</h2>
-            <p className="mt-4 text-lg leading-8 text-stonewarm-700">
-              Join CCARC for Field Day on June 27-28, 2026 at Quigley Group Campground atop MacDonald Pass, west of Helena.
-            </p>
-            <p className="mt-3 leading-7 text-stonewarm-700">
-              Coordinates: 46.560979, -112.304516. Operate, learn, connect, and help keep amateur radio strong.
-            </p>
-            <p className="mt-3 leading-7 text-stonewarm-700">
-              POC: Allen (KH7AL),{" "}
-              <a
-                className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                href="tel:+14063040325"
-              >
-                406-304-0325
-              </a>
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <ButtonLink href="https://www.facebook.com/share/14eDkjzrqRU/">View the Facebook Event</ButtonLink>
-              <ButtonLink href="/join-contact" variant="light">Ask a Question</ButtonLink>
+        <div className="mx-auto max-w-7xl">
+          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Next Big Event</p>
+          <div className="mt-3 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+            <div>
+              <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">Upcoming Club Events</h2>
+              <p className="mt-4 text-lg leading-8 text-stonewarm-700">
+                Join CCARC members for regional amateur radio gatherings and local race support opportunities.
+              </p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              <InfoCard title="Glacier-Waterton Hamfest">
+                <p>Glacier-Waterton Hamfest - July 17-19. Visit GWHamfest.org for registration details.</p>
+                <div className="mt-5">
+                  <ButtonLink href="https://gwhamfest.org/" variant="light">View Registration Details</ButtonLink>
+                </div>
+              </InfoCard>
+              <InfoCard title="Elkhorn Endurance Run">
+                <p>
+                  Race support on August 1, 2026. Contact Rob, AE7AP, if you would like to help with this event.
+                </p>
+                <div className="mt-5">
+                  <ButtonLink href="/join-contact" variant="light">Contact the Club</ButtonLink>
+                </div>
+              </InfoCard>
             </div>
           </div>
         </div>

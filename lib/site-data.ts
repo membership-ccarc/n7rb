@@ -141,6 +141,7 @@ export const whatWeDo = [
 ] as const;
 
 export const newsletters = [
+  { title: "July 2026", href: "/newsletters/newsletter-2026-07.pdf", year: "2026", month: "July" },
   { title: "May 2026", href: "/newsletters/newsletter-2026-05.pdf", year: "2026", month: "May" },
   { title: "April 2026", href: "/newsletters/newsletter-2026-04.pdf", year: "2026", month: "April" },
   { title: "March 2026", href: "/newsletters/newsletter-2026-03.pdf", year: "2026", month: "March" },
