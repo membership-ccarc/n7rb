@@ -233,6 +233,11 @@ export default function Home() {
                   <ButtonLink href="/join-contact" variant="light">Contact the Club</ButtonLink>
                 </div>
               </InfoCard>
+              <InfoCard title="Annual Club Picnic">
+                <p>
+                  September 12, 2026, from 3-6 PM at the Lewis and Clark County Fairgrounds. Everyone is invited.
+                </p>
+              </InfoCard>
             </div>
           </div>
         </div>
