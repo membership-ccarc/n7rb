@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ButtonLink, InfoCard, MeetingDetails } from "@/components/ui";
+import { COFFEE_NET_SCHEDULE_URL, getCoffeeNetSchedule, type CoffeeNetSlot } from "@/lib/coffee-net-schedule";
 import { LINKS, nets, SITE } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -29,7 +30,37 @@ function ExternalLink({ href, children }: { href: string; children: ReactNode })
   );
 }
 
-export default function MeetingsNetsPage() {
+function CoffeeNetControllerSlot({ label, slot }: { label: string; slot?: CoffeeNetSlot }) {
+  if (!slot) {
+    return (
+      <div className="rounded-lg border border-stonewarm-100 bg-stonewarm-50 p-4">
+        <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{label}</p>
+        <p className="mt-2 font-bold text-mountain-900">Schedule updating</p>
+        <p className="mt-1 text-sm leading-6 text-stonewarm-700">Check back soon for the latest coffee net roster.</p>
+      </div>
+    );
+  }
+
+  const controller =
+    slot.status === "available"
+      ? "Volunteer needed"
+      : slot.status === "canceled"
+        ? "No net scheduled"
+        : `${slot.callsign} - ${slot.name}`;
+
+  return (
+    <div className="rounded-lg border border-stonewarm-100 bg-stonewarm-50 p-4">
+      <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{label}</p>
+      <p className="mt-2 text-sm font-bold text-mountain-900">{slot.displayDate}</p>
+      <p className="mt-1 text-lg font-black text-mountain-900">{controller}</p>
+      {slot.note ? <p className="mt-1 text-sm leading-6 text-stonewarm-700">{slot.note}</p> : null}
+    </div>
+  );
+}
+
+export default async function MeetingsNetsPage() {
+  const coffeeNetSchedule = await getCoffeeNetSchedule();
+
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
@@ -100,6 +131,22 @@ export default function MeetingsNetsPage() {
               <dd className="mt-1 text-stonewarm-700">Staggering Ox, 400 Euclid Ave, Helena, MT 59601</dd>
             </div>
           </dl>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <CoffeeNetControllerSlot label="Next controller" slot={coffeeNetSchedule.next} />
+            <CoffeeNetControllerSlot label="On deck" slot={coffeeNetSchedule.onDeck} />
+          </div>
+          <p className="mt-5 leading-7 text-stonewarm-700">
+            Interested in becoming a{" "}
+            <a
+              className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+              href={COFFEE_NET_SCHEDULE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Coffee Net Controller?
+            </a>{" "}
+            Contact Allen KH7AL. It is a friendly way to practice running an easy net before operating during a real event.
+          </p>
         </div>
         <div className="rounded-lg bg-white p-6 shadow-sm">
           <h2 className="text-2xl font-black text-mountain-900">Coffee Meeting Map</h2>
