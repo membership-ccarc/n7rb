@@ -233,11 +233,20 @@ export default function Home() {
                   <ButtonLink href="/join-contact" variant="light">Contact the Club</ButtonLink>
                 </div>
               </InfoCard>
-              <InfoCard title="Annual Club Picnic">
-                <p>
-                  September 12, 2026, from 3-6 PM at the Lewis and Clark County Fairgrounds. Everyone is invited.
-                </p>
-              </InfoCard>
+              <div className="md:col-span-2">
+                <InfoCard title="CCARC Annual Picnic & Ham Radio Tailgate Swap Meet">
+                  <p>
+                    September 12, 2026, from 3-6 PM at the Lewis and Clark County Fairgrounds Picnic Shelter. Free and open to the public — come meet local ham radio operators and find out what the hobby is all about in a relaxed, no-pressure setting. Whether you are curious about amateur radio, studying for your license, or a longtime operator, you are welcome.
+                  </p>
+                  <p className="mt-3">
+                    <span className="font-bold text-mountain-900">Tailgate Swap Meet, 3-4 PM:</span> Bring your surplus gear, browse what others have, and find a deal. Ham radio equipment, electronics, and accessories are all welcome.
+                  </p>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                    <ButtonLink href={LINKS.PICNIC_MAP_URL} variant="light">Get Directions</ButtonLink>
+                    <ButtonLink href={LINKS.CONTACT_EMAIL} variant="light">Email the Club</ButtonLink>
+                  </div>
+                </InfoCard>
+              </div>
             </div>
           </div>
         </div>
