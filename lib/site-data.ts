@@ -93,13 +93,20 @@ export const amateurRadioCards = [
   },
 ] as const;
 
-export const whatWeDo = [
+type WhatWeDoReference = { label: string; href: string; description?: string };
+
+type WhatWeDoItem = {
+  title: string;
+  text: string;
+  references: WhatWeDoReference[];
+  video?: { youtubeId: string; title: string };
+};
+
+export const whatWeDo: WhatWeDoItem[] = [
   {
-    title: "Field Day",
-    text: "A yearly hands-on operating event that combines radio skills, public outreach, and emergency readiness.",
-    references: [
-      { label: "ARRL Field Day", href: "https://www.arrl.org/Field-Day" },
-    ],
+    title: "Mentoring New Hams",
+    text: "Friendly help choosing gear, making first contacts, and learning local radio habits.",
+    references: [],
   },
   {
     title: "POTA and SOTA",
@@ -135,11 +142,22 @@ export const whatWeDo = [
     references: [],
   },
   {
-    title: "Mentoring New Hams",
-    text: "Friendly help choosing gear, making first contacts, and learning local radio habits.",
-    references: [],
+    title: "Field Day",
+    text: "A yearly hands-on operating event that combines radio skills, public outreach, and emergency readiness.",
+    references: [
+      { label: "ARRL Field Day", href: "https://www.arrl.org/Field-Day" },
+      {
+        label: "2021 Balloon Launch",
+        href: "https://sites.google.com/view/ccarcfieldday2021/home",
+        description: "During this Field Day event the club launched an amateur radio balloon that rose to over 115,000 feet. Click the link for more information about the project.",
+      },
+    ],
+    video: {
+      youtubeId: "OxHCNbb3Nq0",
+      title: "CCARC 2021 Field Day High-Altitude Balloon Launch",
+    },
   },
-] as const;
+];
 
 export const newsletters = [
   { title: "July 2026", href: "/newsletters/newsletter-2026-07.pdf", year: "2026", month: "July" },

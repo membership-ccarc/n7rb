@@ -255,26 +255,63 @@ export default function Home() {
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro title="What We Do" />
         <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {whatWeDo.map(({ title, text, references }) => (
-            <InfoCard key={title} title={title}>
-              <p>{text}</p>
-              {references.length > 0 ? (
-                <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-bold">
-                  {references.map((reference) => (
-                    <li key={reference.href}>
-                      <a
-                        className="text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                        href={reference.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {reference.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </InfoCard>
+          {whatWeDo.map(({ title, text, references, video }) => (
+            <div key={title} className={video ? "sm:col-span-2 lg:col-span-3" : undefined}>
+              <InfoCard title={title}>
+                <div className={video ? "grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-start" : undefined}>
+                  <div>
+                    <p>{text}</p>
+                    {references.length > 0 ? (
+                      video ? (
+                        <ul className="mt-4 space-y-3 text-sm font-bold">
+                          {references.map((reference) => (
+                            <li key={reference.href}>
+                              <a
+                                className="text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                                href={reference.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {reference.label}
+                              </a>
+                              {reference.description ? (
+                                <p className="mt-1 font-normal leading-6 text-stonewarm-700">{reference.description}</p>
+                              ) : null}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-bold">
+                          {references.map((reference) => (
+                            <li key={reference.href}>
+                              <a
+                                className="text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                                href={reference.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {reference.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )
+                    ) : null}
+                  </div>
+                  {video ? (
+                    <div className="mt-5 aspect-video w-full overflow-hidden rounded-lg shadow-sm lg:mt-0">
+                      <iframe
+                        className="h-full w-full"
+                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                  ) : null}
+                </div>
+              </InfoCard>
+            </div>
           ))}
         </div>
       </section>
