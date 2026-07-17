@@ -219,12 +219,6 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
-              <InfoCard title="Glacier-Waterton Hamfest">
-                <p>Glacier-Waterton Hamfest - July 17-19. Visit GWHamfest.org for registration details.</p>
-                <div className="mt-5">
-                  <ButtonLink href="https://gwhamfest.org/" variant="light">View Registration Details</ButtonLink>
-                </div>
-              </InfoCard>
               <InfoCard title="Elkhorn Endurance Run">
                 <p>
                   Race support on August 1, 2026. Contact Rob, AE7AP, if you would like to help with this event.
