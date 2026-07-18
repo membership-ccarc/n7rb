@@ -60,6 +60,17 @@ The webhook URLs come from their respective Make.com scenarios (module 1 of each
 
 The contact form Make.com scenario appends a row to the "Contact Us" tab in the club Google Sheet and posts a Slack notification to the designated channel.
 
+## Form Spam Safeguards
+
+Both `app/api/class-signup/route.ts` and `app/api/contact/route.ts` share the same layered anti-spam approach. Submissions that trip any layer get a silent `{ ok: true }` response (not an error) so bots can't tell what was rejected, and the reason is logged server-side via `console.warn`.
+
+1. **Honeypot field** — a `website` input rendered `sr-only`/`aria-hidden` and excluded from tab order. Real users never see or fill it; bots that auto-fill every field do. Any non-empty value is treated as spam.
+2. **Timing gate** — the form captures a `renderedAt` timestamp on mount and submits it alongside the payload. If the server receives the submission less than `MIN_SUBMIT_SECONDS` (4s) after render, it's rejected as too fast for a human to have filled out the form.
+3. **Rate limiting** — an in-memory, per-IP counter (`RATE_LIMIT_MAX` = 3 submissions per `RATE_LIMIT_WINDOW_MS` = 1 hour). This is a best-effort fallback only: on serverless platforms each instance has its own map, so it resets on cold starts and isn't reliable across instances.
+4. **Pattern/gibberish detection** — regex heuristics applied to names, email local-parts, and free-text message/notes fields: long no-space mixed-case tokens, low vowel ratios, long consonant runs, and dotted-noise email addresses (the kind of random strings bot-generated form fills tend to produce). Free-text fields are also checked for excess links (`MAX_LINKS` = 2) and script/SQL injection patterns.
+
+When adding a new public-facing form, port these same checks from `app/api/contact/route.ts` rather than inventing a new approach.
+
 ## Important Files
 
 - `app/page.tsx`: homepage
