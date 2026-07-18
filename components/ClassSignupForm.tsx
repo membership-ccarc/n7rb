@@ -57,6 +57,8 @@ export function ClassSignupForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
   const [error, setError] = useState("");
+  const [website, setWebsite] = useState("");
+  const [renderedAt] = useState(() => Date.now().toString());
   const messageRef = useRef<HTMLParagraphElement>(null);
 
   function toggleMainInterest(interest: string) {
@@ -95,7 +97,7 @@ export function ClassSignupForm() {
       const response = await fetch("/api/class-signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website, renderedAt }),
       });
 
       if (!response.ok) {
@@ -140,6 +142,22 @@ export function ClassSignupForm() {
       )}
 
       <div className="mt-6 grid gap-5 md:grid-cols-2">
+        <label className="sr-only" htmlFor="website">
+          Website
+        </label>
+        <input
+          id="website"
+          className="sr-only"
+          name="website"
+          type="text"
+          value={website}
+          onChange={(event) => setWebsite(event.target.value)}
+          autoComplete="off"
+          tabIndex={-1}
+          aria-hidden="true"
+          disabled={status === "submitting"}
+        />
+        <input name="renderedAt" type="hidden" value={renderedAt} readOnly />
         <label className="grid gap-2 font-bold text-mountain-900" htmlFor="firstName">
           First name
           <input
