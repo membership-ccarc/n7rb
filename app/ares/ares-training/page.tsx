@@ -4,6 +4,7 @@ import { ButtonLink, InfoCard } from "@/components/ui";
 export const metadata: Metadata = {
   title: "ARES Training",
   description: "ARES initial and advanced Incident Command System training resources for LCARES volunteers.",
+  alternates: { canonical: "/ares/ares-training" },
 };
 
 const basicCourses = [

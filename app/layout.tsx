@@ -5,7 +5,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SITE } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://n7rb.vercel.app"),
+  metadataBase: new URL(SITE.url),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Capital City Amateur Radio Club | N7RB Helena, Montana",
     template: "%s | CCARC | N7RB Helena, Montana",

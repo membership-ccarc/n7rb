@@ -5,6 +5,7 @@ import { LINKS } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Membership Application",
   description: "Apply for Capital City Amateur Radio Club membership online.",
+  alternates: { canonical: "/join-contact/membership-application" },
 };
 
 export default function MembershipApplicationPage() {

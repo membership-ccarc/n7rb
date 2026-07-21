@@ -6,6 +6,7 @@ import { licenseLevels, LINKS } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Get Licensed",
   description: "Beginner-friendly guide to getting an amateur radio license with CCARC in Helena, Montana.",
+  alternates: { canonical: "/get-licensed" },
 };
 
 export default function GetLicensedPage() {

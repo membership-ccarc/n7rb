@@ -5,6 +5,7 @@ import { ButtonLink, InfoCard } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Classes",
   description: "Technician and General amateur radio license classes from CCARC in Helena, Montana.",
+  alternates: { canonical: "/classes" },
 };
 
 export default function ClassesPage() {

@@ -7,6 +7,7 @@ import { LINKS, nets, SITE } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Meetings & Nets",
   description: "CCARC club meetings, local nets, repeater information, and meeting location in Helena, Montana.",
+  alternates: { canonical: "/meetings-nets" },
 };
 
 const externalResources = [

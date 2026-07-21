@@ -4,6 +4,7 @@ import { ButtonLink } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Field Operations Guides",
   description: "Emergency communications field operations guides and public safety reference resources.",
+  alternates: { canonical: "/ares/field-operations-guides" },
 };
 
 const guides = [

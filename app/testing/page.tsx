@@ -5,6 +5,7 @@ import { LINKS } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Testing",
   description: "In-person Volunteer Examiner amateur radio testing information for Helena, Montana.",
+  alternates: { canonical: "/testing" },
 };
 
 export default function TestingPage() {

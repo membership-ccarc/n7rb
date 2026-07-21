@@ -5,6 +5,7 @@ import { SITE } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "ARES/LCARES",
   description: "Lewis and Clark County Amateur Radio Emergency Service information, contacts, and frequency plan.",
+  alternates: { canonical: "/ares" },
 };
 
 const frequencySections = [

@@ -6,6 +6,7 @@ import { LINKS, SITE } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "About CCARC",
   description: "About the Capital City Amateur Radio Club, callsign N7RB, in Helena, Montana.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
