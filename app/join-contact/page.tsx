@@ -161,7 +161,7 @@ export default function JoinContactPage() {
                 src="https://www.google.com/maps?q=Salvation%20Army%20church%201905%20Henderson%20St%20Helena%20MT&output=embed"
                 className="h-72 w-full"
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
                 sandbox="allow-scripts allow-same-origin allow-popups"
               />
             </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import Link from "next/link";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SITE } from "@/lib/site-data";
@@ -63,6 +64,14 @@ function Footer() {
           <p className="font-bold">Local Repeater</p>
           <p className="mt-2 text-sm leading-6 text-stonewarm-100">
             Belmont repeater {SITE.repeater}, {SITE.repeaterTone} tone. Backup simplex {SITE.backupSimplex}.
+          </p>
+          <p className="mt-4 text-sm">
+            <Link
+              className="font-bold text-white underline decoration-stonewarm-100 underline-offset-4 hover:decoration-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              href="/privacy"
+            >
+              Privacy
+            </Link>
           </p>
         </div>
       </div>

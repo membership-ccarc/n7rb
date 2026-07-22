@@ -296,7 +296,7 @@ export default function Home() {
                     <div className="mt-5 aspect-video w-full overflow-hidden rounded-lg shadow-sm lg:mt-0">
                       <iframe
                         className="h-full w-full"
-                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                        src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
                         title={video.title}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen

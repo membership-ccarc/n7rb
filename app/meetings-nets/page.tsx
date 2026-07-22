@@ -106,7 +106,7 @@ export default async function MeetingsNetsPage() {
               src="https://www.google.com/maps?q=Salvation%20Army%20church%201905%20Henderson%20St%20Helena%20MT&output=embed"
               className="h-72 w-full"
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
               sandbox="allow-scripts allow-same-origin allow-popups"
             />
           </div>
@@ -160,7 +160,7 @@ export default async function MeetingsNetsPage() {
               src="https://www.google.com/maps?q=Staggering%20Ox%20400%20Euclid%20Ave%20Helena%20MT%2059601&output=embed"
               className="h-72 w-full"
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
               sandbox="allow-scripts allow-same-origin allow-popups"
             />
           </div>
