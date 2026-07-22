@@ -47,8 +47,12 @@ export default function AboutPage() {
           <ul className="space-y-3">
             <li><strong className="text-mountain-900">President:</strong> Tom Mandera KE7VUX</li>
             <li><strong className="text-mountain-900">Vice-president:</strong> Brian Lee KJ7OUF</li>
-            <li><strong className="text-mountain-900">Treasurer:</strong> Al Simons WA1TYB</li>
+            <li><strong className="text-mountain-900">Treasurer/ARES:</strong> Al Simons WA1TYB</li>
             <li><strong className="text-mountain-900">Secretary:</strong> Oakley Clark-Snustad KE7WWL</li>
+            <li><strong className="text-mountain-900">Newsletter:</strong> Marla Unruh KM7LIB</li>
+            <li><strong className="text-mountain-900">Repeaters:</strong> Dan Hawkins N7SHM</li>
+            <li><strong className="text-mountain-900">Membership Growth:</strong> Allen Le Vie KH7AL</li>
+            <li><strong className="text-mountain-900">Testing &amp; Training:</strong> John Geach KS7R</li>
           </ul>
         </InfoCard>
       </div>
