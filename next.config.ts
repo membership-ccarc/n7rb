@@ -52,6 +52,21 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/sample-page/ares",
+        destination: "/ares",
+        permanent: true,
+      },
+      {
+        source: "/sample-page/licensing-testing",
+        destination: "/testing",
+        permanent: true,
+      },
+      {
+        source: "/sample-page/why-n7rb",
+        destination: "/about/n7rb-bio",
+        permanent: true,
+      },
+      {
         source: "/wp-content/uploads/2025/05/May-2025.pdf",
         destination: "/newsletters/newsletter-2025-05.pdf",
         permanent: true,
