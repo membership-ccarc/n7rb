@@ -67,7 +67,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
+      <section id="newsletters" className="scroll-mt-24 bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro eyebrow="Start here" title="Your Path to Getting Licensed" />
         <div className="license-path-sway mx-auto mt-6 max-w-5xl" aria-hidden="true">
           <svg className="h-24 w-full" viewBox="0 0 960 120" role="img">

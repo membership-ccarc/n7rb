@@ -170,7 +170,7 @@ export default async function MeetingsNetsPage() {
         </div>
       </div>
 
-      <div className="mx-auto mt-8 max-w-4xl rounded-lg bg-white p-6 shadow-sm">
+      <div id="stay-connected" className="mx-auto mt-8 max-w-4xl scroll-mt-24 rounded-lg bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-black text-mountain-900">Stay Connected Between Meetings</h2>
         <p className="mt-4 leading-7 text-stonewarm-700">
           CCARC uses Slack for quick questions, project photos, activity planning, and casual conversation between nets, meetings, and coffee gatherings.
@@ -180,7 +180,7 @@ export default async function MeetingsNetsPage() {
         </div>
       </div>
 
-      <div className="mx-auto mt-8 max-w-7xl rounded-lg bg-white p-6 shadow-sm">
+      <div id="repeater-information" className="mx-auto mt-8 max-w-7xl scroll-mt-24 rounded-lg bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-black text-mountain-900">Additional Repeater Information</h2>
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
           <div>

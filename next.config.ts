@@ -27,6 +27,31 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/nets",
+        destination: "/meetings-nets",
+        permanent: true,
+      },
+      {
+        source: "/local-repeater-information",
+        destination: "/meetings-nets#repeater-information",
+        permanent: true,
+      },
+      {
+        source: "/licensing-testing",
+        destination: "/testing",
+        permanent: true,
+      },
+      {
+        source: "/newsletter",
+        destination: "/#newsletters",
+        permanent: true,
+      },
+      {
+        source: "/ccarc-social-media",
+        destination: "/meetings-nets#stay-connected",
+        permanent: true,
+      },
+      {
         source: "/wp-content/uploads/2025/05/May-2025.pdf",
         destination: "/newsletters/newsletter-2025-05.pdf",
         permanent: true,
