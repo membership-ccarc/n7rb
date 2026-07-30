@@ -24,6 +24,20 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/wp-content/uploads/2025/05/May-2025.pdf",
+        destination: "/newsletters/newsletter-2025-05.pdf",
+        permanent: true,
+      },
+      {
+        source: "/wp-content/uploads/2025/05/Newsletter-June-2025.pdf",
+        destination: "/newsletters/newsletter-2025-06.pdf",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
