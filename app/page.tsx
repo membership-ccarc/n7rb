@@ -240,8 +240,12 @@ export default function Home() {
               </div>
               <div className="md:col-span-2">
                 <InfoCard title="CCARC Annual Picnic & Ham Radio Tailgate Swap Meet">
-                  <p>
-                    September 12, 2026, from 3-6 PM at the Lewis and Clark County Fairgrounds Picnic Shelter. Free and open to the public — come meet local ham radio operators and find out what the hobby is all about in a relaxed, no-pressure setting. Whether you are curious about amateur radio, studying for your license, or a longtime operator, you are welcome.
+                  <p className="font-bold text-mountain-900">
+                    Saturday, September 12, 2026 · 3:00–6:00 PM
+                  </p>
+                  <p className="mt-1">Lewis and Clark County Fairgrounds Picnic Shelter · 98 W Custer Ave · Helena</p>
+                  <p className="mt-3">
+                    Free and open to the public — come meet local ham radio operators and find out what the hobby is all about in a relaxed, no-pressure setting. Whether you are curious about amateur radio, studying for your license, or a longtime operator, you are welcome.
                   </p>
                   <p className="mt-3">
                     <span className="font-bold text-mountain-900">Tailgate Swap Meet, 3-4 PM:</span> Bring your surplus gear, browse what others have, and find a deal. Ham radio equipment, electronics, and accessories are all welcome.
