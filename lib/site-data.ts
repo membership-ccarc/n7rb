@@ -21,6 +21,7 @@ export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
 export const NEWSLETTER_ARCHIVE_URL = "https://drive.google.com/drive/folders/1kHy8ILAoDxdaguP4rmM0f1W6D3c4IK0l?usp=drive_link";
 export const PICNIC_MAP_URL = "https://maps.app.goo.gl/Vi3ERZ3qc8rMMzF76";
 export const JFK_PARK_MAP_URL = "https://www.google.com/maps/search/?api=1&query=JFK+Park%2C+309+Harrison+Ave+N%2C+East+Helena%2C+MT+59635";
+export const CLASS_LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=Salvation+Army%2C+1905+Henderson+St%2C+Helena%2C+MT+59601";
 // Slack invite links expire and should be refreshed as needed.
 export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
 
@@ -37,6 +38,7 @@ export const LINKS = {
   SLACK_INVITE_URL,
   PICNIC_MAP_URL,
   JFK_PARK_MAP_URL,
+  CLASS_LOCATION_MAP_URL,
 } as const;
 
 export const navItems = [
