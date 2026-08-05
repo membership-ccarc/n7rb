@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Link from "next/link";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -93,6 +94,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main-content">{children}</main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
