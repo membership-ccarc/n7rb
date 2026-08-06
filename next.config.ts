@@ -42,11 +42,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/newsletter",
-        destination: "/#newsletters",
-        permanent: true,
-      },
-      {
         source: "/ccarc-social-media",
         destination: "/meetings-nets#stay-connected",
         permanent: true,

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TrackedNewsletterLink } from "@/components/TrackedNewsletterLink";
 import { newsletters } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -31,14 +32,14 @@ export default function NewsletterPage() {
               <p className="mt-3 leading-7 text-stonewarm-700">{newsletter.description}</p>
             </div>
             <div className="mt-5 shrink-0 sm:mt-0">
-              <a
+              <TrackedNewsletterLink
                 className="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-900 sm:w-auto"
                 href={newsletter.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                newsletterTitle={newsletter.title}
+                source="newsletter-page"
               >
                 View Newsletter PDF
-              </a>
+              </TrackedNewsletterLink>
             </div>
           </article>
         ))}

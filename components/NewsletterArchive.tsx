@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { TrackedNewsletterLink } from "@/components/TrackedNewsletterLink";
 import { newsletterArchiveFolders, newsletters } from "@/lib/site-data";
 
 export function NewsletterArchive() {
@@ -31,14 +32,14 @@ export function NewsletterArchive() {
           To sign up to receive the monthly newsletter, contact Marla Unruh, KM7LIB, at mkulib@gmail.com.
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-          <a
+          <TrackedNewsletterLink
             className="inline-flex min-h-11 items-center justify-center rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-900"
             href={latest.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            newsletterTitle={latest.title}
+            source="homepage-archive"
           >
             Read the Latest Newsletter
-          </a>
+          </TrackedNewsletterLink>
         </div>
         <div className="mt-6">
           <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Past Editions</p>
@@ -73,14 +74,14 @@ export function NewsletterArchive() {
         <ul className="mt-5 grid max-h-80 gap-3 overflow-y-auto pr-1 sm:grid-cols-2">
           {filteredNewsletters.map((newsletter) => (
             <li key={newsletter.href}>
-              <a
+              <TrackedNewsletterLink
                 className="block rounded-md border border-stonewarm-100 px-4 py-3 font-bold text-pine-700 hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700"
                 href={newsletter.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                newsletterTitle={newsletter.title}
+                source="homepage-archive"
               >
                 {newsletter.title}
-              </a>
+              </TrackedNewsletterLink>
             </li>
           ))}
         </ul>
