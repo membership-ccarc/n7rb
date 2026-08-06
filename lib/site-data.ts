@@ -165,21 +165,21 @@ export const whatWeDo: WhatWeDoItem[] = [
 ];
 
 export const newsletters = [
-  { title: "August 2026", href: "/newsletters/newsletter-2026-08.pdf", year: "2026", month: "August" },
-  { title: "July 2026", href: "/newsletters/newsletter-2026-07.pdf", year: "2026", month: "July" },
-  { title: "May 2026", href: "/newsletters/newsletter-2026-05.pdf", year: "2026", month: "May" },
-  { title: "April 2026", href: "/newsletters/newsletter-2026-04.pdf", year: "2026", month: "April" },
-  { title: "March 2026", href: "/newsletters/newsletter-2026-03.pdf", year: "2026", month: "March" },
-  { title: "February 2026", href: "/newsletters/newsletter-2026-02.pdf", year: "2026", month: "February" },
-  { title: "January 2026", href: "/newsletters/newsletter-2026-01.pdf", year: "2026", month: "January" },
-  { title: "December 2025", href: "/newsletters/newsletter-2025-12.pdf", year: "2025", month: "December" },
-  { title: "November 2025", href: "/newsletters/newsletter-2025-11.pdf", year: "2025", month: "November" },
-  { title: "October 2025", href: "/newsletters/newsletter-2025-10.pdf", year: "2025", month: "October" },
-  { title: "September 2025", href: "/newsletters/newsletter-2025-09.pdf", year: "2025", month: "September" },
-  { title: "August 2025", href: "/newsletters/newsletter-2025-08.pdf", year: "2025", month: "August" },
-  { title: "July 2025", href: "/newsletters/newsletter-2025-07.pdf", year: "2025", month: "July" },
-  { title: "June 2025", href: "/newsletters/newsletter-2025-06.pdf", year: "2025", month: "June" },
-  { title: "May 2025", href: "/newsletters/newsletter-2025-05.pdf", year: "2025", month: "May" },
+  { title: "August 2026", date: "2026-08-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-08.pdf", year: "2026", month: "August" },
+  { title: "July 2026", date: "2026-07-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-07.pdf", year: "2026", month: "July" },
+  { title: "May 2026", date: "2026-05-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-05.pdf", year: "2026", month: "May" },
+  { title: "April 2026", date: "2026-04-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-04.pdf", year: "2026", month: "April" },
+  { title: "March 2026", date: "2026-03-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-03.pdf", year: "2026", month: "March" },
+  { title: "February 2026", date: "2026-02-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-02.pdf", year: "2026", month: "February" },
+  { title: "January 2026", date: "2026-01-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-01.pdf", year: "2026", month: "January" },
+  { title: "December 2025", date: "2025-12-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-12.pdf", year: "2025", month: "December" },
+  { title: "November 2025", date: "2025-11-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-11.pdf", year: "2025", month: "November" },
+  { title: "October 2025", date: "2025-10-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-10.pdf", year: "2025", month: "October" },
+  { title: "September 2025", date: "2025-09-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-09.pdf", year: "2025", month: "September" },
+  { title: "August 2025", date: "2025-08-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-08.pdf", year: "2025", month: "August" },
+  { title: "July 2025", date: "2025-07-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-07.pdf", year: "2025", month: "July" },
+  { title: "June 2025", date: "2025-06-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-06.pdf", year: "2025", month: "June" },
+  { title: "May 2025", date: "2025-05-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2025-05.pdf", year: "2025", month: "May" },
 ] as const;
 
 export const newsletterArchiveFolders = [
