@@ -20,6 +20,8 @@ export default function JoinContactPage() {
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      callsign: (form.elements.namedItem("callsign") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
       website: (form.elements.namedItem("website") as HTMLInputElement).value,
       renderedAt: (form.elements.namedItem("renderedAt") as HTMLInputElement).value,
@@ -116,6 +118,30 @@ export default function JoinContactPage() {
                 disabled={formState === "submitting"}
               />
             </label>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="grid gap-2 font-bold text-mountain-900">
+                Callsign <span className="text-sm font-medium text-stonewarm-700">Optional</span>
+                <input
+                  className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal uppercase text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
+                  name="callsign"
+                  type="text"
+                  autoComplete="off"
+                  maxLength={20}
+                  disabled={formState === "submitting"}
+                />
+              </label>
+              <label className="grid gap-2 font-bold text-mountain-900">
+                Phone <span className="text-sm font-medium text-stonewarm-700">Optional</span>
+                <input
+                  className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  maxLength={30}
+                  disabled={formState === "submitting"}
+                />
+              </label>
+            </div>
             <label className="grid gap-2 font-bold text-mountain-900">
               Message
               <textarea

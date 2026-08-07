@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 type ContactPayload = {
   name: string;
   email: string;
+  callsign: string;
+  phone: string;
   message: string;
 };
 
@@ -122,6 +124,8 @@ function validatePayload(body: unknown): { payload?: ContactPayload; spamReason?
   const candidate: SpamCheckBody = {
     name: asTrimmedString(body.name),
     email: asTrimmedString(body.email),
+    callsign: asTrimmedString(body.callsign),
+    phone: asTrimmedString(body.phone),
     message: asTrimmedString(body.message),
     website: asTrimmedString(body.website),
     renderedAt: asTrimmedString(body.renderedAt),
@@ -135,9 +139,10 @@ function validatePayload(body: unknown): { payload?: ContactPayload; spamReason?
 
   if (candidate.name.length < 2 || candidate.name.length > 60) return { error: GENERIC_VALIDATION_ERROR };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(candidate.email)) return { error: GENERIC_VALIDATION_ERROR };
+  if (candidate.callsign.length > 20 || candidate.phone.length > 30) return { error: GENERIC_VALIDATION_ERROR };
   if (candidate.message.length < 10 || candidate.message.length > 2000) return { error: GENERIC_VALIDATION_ERROR };
 
-  const combinedText = `${candidate.name}\n${candidate.email}\n${candidate.message}`;
+  const combinedText = `${candidate.name}\n${candidate.email}\n${candidate.callsign}\n${candidate.phone}\n${candidate.message}`;
   if (hasSuspiciousSingleToken(candidate.name)) return { spamReason: "suspicious name" };
   if (hasSuspiciousEmailLocalPart(candidate.email)) return { spamReason: "suspicious email local part" };
   if (hasSuspiciousShortMessage(candidate.message)) return { spamReason: "suspicious short message" };
@@ -149,6 +154,8 @@ function validatePayload(body: unknown): { payload?: ContactPayload; spamReason?
     payload: {
       name: candidate.name,
       email: candidate.email.toLowerCase(),
+      callsign: candidate.callsign.toUpperCase(),
+      phone: candidate.phone,
       message: candidate.message,
     },
   };
