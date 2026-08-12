@@ -8,7 +8,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/testing" },
 };
 
+export const revalidate = 3600;
+
+const EXAM_DATES = [
+  { date: "2026-09-23", label: "Wednesday, September 23, 2026, from 6:30-7:45 PM MDT." },
+];
+
+function isUpcoming(dateStr: string) {
+  return new Date(`${dateStr}T23:59:59`) >= new Date();
+}
+
 export default function TestingPage() {
+  const upcomingExamDates = EXAM_DATES.filter((d) => isUpcoming(d.date));
+
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl">
@@ -25,10 +37,21 @@ export default function TestingPage() {
           <p>In-person exams in Helena, tablet-based testing, all license classes available, and no remote exams currently.</p>
         </InfoCard>
         <InfoCard title="Upcoming Exam Dates">
-          <ul className="space-y-2">
-            <li>Wednesday, June 17, 2026, from 6:30-7:45 PM MDT.</li>
-            <li>Wednesday, August 5, 2026, from 6:30-7:45 PM MDT.</li>
-          </ul>
+          {upcomingExamDates.length > 0 ? (
+            <ul className="space-y-2">
+              {upcomingExamDates.map((d) => (
+                <li key={d.date}>{d.label}</li>
+              ))}
+            </ul>
+          ) : (
+            <p>
+              Dates coming soon. Contact John Geach KS7R at{" "}
+              <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="mailto:jcgeach@gmail.com">
+                jcgeach@gmail.com
+              </a>{" "}
+              for the next scheduled session.
+            </p>
+          )}
         </InfoCard>
         <InfoCard title="Exam Fee">
           <p>$14, payable by cash or check at the exam session.</p>
