@@ -50,7 +50,7 @@ export default function ClassesPage() {
             </div>
           </dl>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="#class-signup" variant="secondary">Reserve Your Spot</ButtonLink>
+            <ButtonLink href="#class-signup-form" variant="secondary">Reserve Your Spot</ButtonLink>
             <ButtonLink href={LINKS.CLASS_LOCATION_MAP_URL} variant="light">Get Directions</ButtonLink>
           </div>
         </div>
@@ -60,13 +60,13 @@ export default function ClassesPage() {
         <InfoCard title="Technician Prep Course">
           <p>This is the recommended entry point for new amateur radio operators. The next confirmed session is the Fall 2026 class detailed above.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href="#class-signup">Join the Next Technician Class</ButtonLink>
+            <ButtonLink href="#class-signup-form">Join the Next Technician Class</ButtonLink>
           </div>
         </InfoCard>
         <InfoCard title="General Prep Course">
           <p>Hosted twice per year: Q2 and Q4. This class helps licensed Technicians expand into HF and long-distance operating.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href="#class-signup">Join the Next General Class</ButtonLink>
+            <ButtonLink href="#class-signup-form">Join the Next General Class</ButtonLink>
           </div>
         </InfoCard>
       </div>
