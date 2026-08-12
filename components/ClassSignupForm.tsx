@@ -110,7 +110,7 @@ export function ClassSignupForm() {
         throw new Error("Signup request failed");
       }
 
-      window.gtag?.("event", "class_signup_form_submission", {
+      window.gtag!("event", "class_signup_form_submission", {
         form_id: "class-signup-form",
         license_interest: form.licenseInterest,
         transport_type: "beacon",
