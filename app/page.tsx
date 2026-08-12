@@ -11,7 +11,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.86fr] lg:px-8 lg:py-20">
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-pine-700">
-              Helena&apos;s 501(c)(3) nonprofit for amateur radio education and community service · CCARC |{" "}
+              Helena, Montana&apos;s 501(c)(3) nonprofit for amateur radio education and community service · CCARC |{" "}
               <Link className="underline decoration-pine-700/40 underline-offset-4 hover:decoration-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700" href="/about/n7rb-bio">
                 {SITE.callsign}
               </Link>{" "}

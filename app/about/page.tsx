@@ -17,7 +17,7 @@ export default function AboutPage() {
           <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{SITE.nonprofitStatus} · {SITE.callsign}</p>
           <h1 className="mt-3 text-4xl font-black text-mountain-900 sm:text-5xl">About CCARC</h1>
           <p className="mt-6 text-lg leading-8 text-stonewarm-700">
-            We are a 501(c)(3) nonprofit dedicated to amateur radio education, licensing, emergency communications, and community service in Helena and Lewis and Clark County. CCARC helps people learn radio, get licensed, practice useful communication skills, and enjoy radio as an active outdoor and technical hobby.
+            We are a 501(c)(3) nonprofit dedicated to amateur radio education, licensing, emergency communications, and community service in Helena, Montana and Lewis and Clark County. CCARC helps people learn radio, get licensed, practice useful communication skills, and enjoy radio as an active outdoor and technical hobby.
           </p>
           <div className="mt-6 rounded-lg border-l-4 border-gold-300 bg-white p-6 shadow-sm">
             <h2 className="text-xl font-black text-mountain-900">Our Mission</h2>
