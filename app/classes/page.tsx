@@ -17,6 +17,9 @@ export default function ClassesPage() {
         <p className="mt-5 text-lg leading-8 text-stonewarm-700">
           Seasonal classes help new and advancing hams study with local support, clear expectations, and a path to the exam.
         </p>
+        <p className="mt-3 leading-7 text-stonewarm-700">
+          This free public education program advances CCARC&apos;s nonprofit mission by helping people in Helena and Lewis and Clark County earn an amateur radio license and build useful communication skills.
+        </p>
       </div>
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">

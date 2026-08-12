@@ -4,13 +4,15 @@ export const SITE = {
   shortName: "CCARC",
   callsign: "N7RB",
   city: "Helena, Montana",
+  nonprofitStatus: "501(c)(3) nonprofit organization",
+  mission: "Our mission is to make amateur radio accessible in Helena and Lewis and Clark County through education, license testing, mentoring, emergency communications training, and volunteer community service.",
   meetingAddress: "Salvation Army church, 1905 Henderson St., Helena, MT",
   repeater: "147.22+",
   repeaterTone: "100.0 Hz",
   backupSimplex: "147.50 MHz",
 } as const;
 
-export const CLASS_SIGNUP_URL = "/classes#class-signup";
+export const CLASS_SIGNUP_URL = "/classes#class-signup-form";
 export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
 export const ONLINE_MEETING_URL = "https://meet.google.com/zfs-ctwp-bax";

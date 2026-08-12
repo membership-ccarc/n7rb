@@ -53,8 +53,9 @@ function Footer() {
         <div>
           <p className="text-lg font-black">{SITE.name}</p>
           <p className="mt-2 max-w-md text-sm leading-6 text-stonewarm-100">
-            Helena&apos;s friendly amateur radio club for licensing, learning, outdoor radio, emergency communications, and community service.
+            Capital City Amateur Radio Club is a 501(c)(3) nonprofit organization serving Helena and Lewis and Clark County through education, testing, mentoring, emergency communications, and community service.
           </p>
+          <p className="mt-3 text-sm"><Link className="font-bold underline underline-offset-4" href="/about">Mission and nonprofit information</Link></p>
         </div>
         <div>
           <p className="font-bold">Monthly Meeting Location</p>

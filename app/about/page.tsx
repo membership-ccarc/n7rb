@@ -14,11 +14,15 @@ export default function AboutPage() {
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.9fr]">
         <div>
-          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{SITE.callsign}</p>
+          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{SITE.nonprofitStatus} · {SITE.callsign}</p>
           <h1 className="mt-3 text-4xl font-black text-mountain-900 sm:text-5xl">About CCARC</h1>
           <p className="mt-6 text-lg leading-8 text-stonewarm-700">
-            The Capital City Amateur Radio Club is Helena&apos;s local amateur radio club. CCARC helps people learn radio, get licensed, practice useful communication skills, support community service, and enjoy radio as an active outdoor and technical hobby.
+            We are a 501(c)(3) nonprofit dedicated to amateur radio education, licensing, emergency communications, and community service in Helena and Lewis and Clark County. CCARC helps people learn radio, get licensed, practice useful communication skills, and enjoy radio as an active outdoor and technical hobby.
           </p>
+          <div className="mt-6 rounded-lg border-l-4 border-gold-300 bg-white p-6 shadow-sm">
+            <h2 className="text-xl font-black text-mountain-900">Our Mission</h2>
+            <p className="mt-3 leading-7 text-stonewarm-700">{SITE.mission}</p>
+          </div>
         </div>
         <div className="flex min-h-[320px] items-center justify-center rounded-lg bg-white p-6 shadow-soft">
           <Image
@@ -32,8 +36,8 @@ export default function AboutPage() {
         </div>
       </div>
       <div className="mx-auto mt-10 grid max-w-7xl gap-5 md:grid-cols-3">
-        <InfoCard title="Club Purpose">
-          <p>Make amateur radio approachable, useful, and welcoming for beginners and experienced operators alike.</p>
+        <InfoCard title="A Community Nonprofit">
+          <p>Capital City Amateur Radio Club Incorporated is a tax-exempt 501(c)(3) charitable organization. Our classes, exam sessions, public events, radio nets, mentoring, and emergency-communications activities are organized to benefit the community.</p>
         </InfoCard>
         <InfoCard title="History of N7RB">
           <p>

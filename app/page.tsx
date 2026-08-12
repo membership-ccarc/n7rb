@@ -11,7 +11,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.86fr] lg:px-8 lg:py-20">
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-pine-700">
-              CCARC |{" "}
+              Helena&apos;s 501(c)(3) nonprofit for amateur radio education and community service · CCARC |{" "}
               <Link className="underline decoration-pine-700/40 underline-offset-4 hover:decoration-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700" href="/about/n7rb-bio">
                 {SITE.callsign}
               </Link>{" "}
@@ -31,13 +31,27 @@ export default function Home() {
           </div>
           <div className="relative min-h-[340px] overflow-hidden rounded-lg bg-mountain-900 shadow-soft sm:min-h-[440px]">
             <Image
-              src="/firetower.png"
+              src="/firetower-optimized.jpg"
               alt="Helena fire tower overlooking the city and surrounding hills"
-              width={3629}
-              height={2258}
+              width={2000}
+              height={1244}
               className="absolute inset-0 h-full w-full object-cover"
               priority
             />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-pine-700 px-4 py-12 text-white sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Our nonprofit mission</p>
+            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Radio education and service for the Helena community</h2>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-pine-50">{SITE.mission}</p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <ButtonLink href="/about" variant="light">Learn About Our Mission</ButtonLink>
+            <ButtonLink href="/join-contact" variant="secondary">Join or Volunteer</ButtonLink>
           </div>
         </div>
       </section>
