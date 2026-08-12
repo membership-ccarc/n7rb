@@ -2,6 +2,12 @@
 
 import { Dispatch, FormEvent, SetStateAction, useRef, useState } from "react";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 type LicenseInterest = "Technician" | "General" | "Not sure yet";
 type ExperienceLevel = "Completely new" | "Studying now" | "Licensed but inactive" | "Currently licensed";
 type ContactMethod = "Email" | "Phone" | "Text";
@@ -104,6 +110,12 @@ export function ClassSignupForm() {
         throw new Error("Signup request failed");
       }
 
+      window.gtag?.("event", "class_signup_form_submission", {
+        form_id: "class-signup-form",
+        license_interest: form.licenseInterest,
+        transport_type: "beacon",
+      });
+
       setForm(initialState);
       setStatus("success");
       setTimeout(() => messageRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 50);
@@ -115,7 +127,7 @@ export function ClassSignupForm() {
 
   return (
     <form
-      id="class-signup"
+      id="class-signup-form"
       className="rounded-lg bg-white p-6 shadow-sm"
       onSubmit={submitSignup}
       noValidate

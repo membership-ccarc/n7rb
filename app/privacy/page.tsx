@@ -60,7 +60,10 @@ export default function PrivacyPage() {
               We use Vercel Web Analytics to understand aggregate traffic, including page views, referrers, general location, browser, operating system, and device type. Vercel states that this service does not use cookies. It derives a visitor hash from request information, rotates it daily, and does not enable us to identify a visitor or follow a visitor across websites.
             </p>
             <p>
-              We found no advertising pixels, remarketing tools, session recording, fingerprinting, or site code that stores information in localStorage, sessionStorage, or first-party cookies. We therefore do not currently display a cookie-consent banner. The third-party content described below can make its own requests and may use cookies under the provider&apos;s policies.
+              We also use Google Analytics 4 to measure website usage and successful class-signup submissions, including traffic attributable to our Google Ad Grants campaigns. Google Analytics may use cookies or similar identifiers and may process information such as pages visited, referral and campaign information, approximate location, and browser or device details. We do not send names, email addresses, phone numbers, form notes, or other submitted contact information to Google Analytics.
+            </p>
+            <p>
+              We do not use session recording or fingerprinting. Third-party content and analytics services can make their own requests and may use cookies or similar technologies under the providers&apos; policies.
             </p>
           </PolicySection>
 
@@ -68,6 +71,7 @@ export default function PrivacyPage() {
             <p>We disclose information when needed to operate the website and respond to requests:</p>
             <ul className="list-disc space-y-2 pl-6">
               <li><strong className="text-mountain-900">Vercel</strong> hosts the site, processes requests, provides security and operational logs, and provides cookieless web analytics.</li>
+              <li><strong className="text-mountain-900">Google Analytics</strong> measures site usage, campaign traffic, and successful class-signup events without receiving the personal information entered into the form.</li>
               <li><strong className="text-mountain-900">Make.com</strong> receives contact and class signup submissions from our server and routes them for club follow-up.</li>
               <li><strong className="text-mountain-900">Google Sheets</strong> receives contact-form submissions through our Make.com workflow. The site also retrieves a public club schedule spreadsheet from Google on the server; that schedule request does not include a visitor&apos;s submitted form information.</li>
               <li><strong className="text-mountain-900">Slack</strong> receives a notification containing contact-form information through our Make.com workflow so club volunteers can respond.</li>

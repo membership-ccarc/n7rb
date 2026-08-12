@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Link from "next/link";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SITE } from "@/lib/site-data";
 
@@ -83,6 +84,9 @@ function Footer() {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className="min-h-screen antialiased">
         <a
           href="#main-content"
