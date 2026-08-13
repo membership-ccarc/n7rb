@@ -5,7 +5,7 @@ import Link from "next/link";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SITE } from "@/lib/site-data";
+import { LINKS, SITE } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -56,6 +56,17 @@ function Footer() {
             Capital City Amateur Radio Club is a 501(c)(3) nonprofit organization serving Helena and Lewis and Clark County through education, testing, mentoring, emergency communications, and community service.
           </p>
           <p className="mt-3 text-sm"><Link className="font-bold underline underline-offset-4" href="/about">Mission and nonprofit information</Link></p>
+          <a
+            className="mt-5 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-stonewarm-100/50 text-white transition hover:border-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            href={LINKS.FACEBOOK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit CCARC on Facebook (opens in a new tab)"
+          >
+            <svg aria-hidden="true" className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.436H7.078v-3.491h3.047V9.413c0-3.026 1.792-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.973h-1.513c-1.49 0-1.956.931-1.956 1.887v2.261h3.328l-.532 3.491h-2.796V24C19.612 23.094 24 18.1 24 12.073Z" />
+            </svg>
+          </a>
         </div>
         <div>
           <p className="font-bold">Monthly Meeting Location</p>

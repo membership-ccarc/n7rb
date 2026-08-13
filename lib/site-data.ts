@@ -26,6 +26,7 @@ export const JFK_PARK_MAP_URL = "https://www.google.com/maps/search/?api=1&query
 export const CLASS_LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=Salvation+Army%2C+1905+Henderson+St%2C+Helena%2C+MT+59601";
 // Slack invite links expire and should be refreshed as needed.
 export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
+export const FACEBOOK_URL = "https://www.facebook.com/CCARCHelena/";
 
 export const LINKS = {
   CLASS_SIGNUP_URL,
@@ -38,6 +39,7 @@ export const LINKS = {
   MEMBERSHIP_APPLICATION_PDF_URL,
   NEWSLETTER_ARCHIVE_URL,
   SLACK_INVITE_URL,
+  FACEBOOK_URL,
   PICNIC_MAP_URL,
   JFK_PARK_MAP_URL,
   CLASS_LOCATION_MAP_URL,

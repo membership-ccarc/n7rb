@@ -175,6 +175,14 @@ export default function JoinContactPage() {
               We&apos;d love to have you! Use our Contact Us form and let us know you&apos;d like access to our Slack workspace. Whether you&apos;re a long-time amateur radio operator or just getting started, we&apos;ll send you an invitation after a quick review.
             </p>
           </InfoCard>
+          <InfoCard title="Follow Us on Facebook">
+            <p>
+              Keep up with club news, activities, photos, and upcoming events on the Capital City Amateur Radio Club Facebook page.
+            </p>
+            <div className="mt-5">
+              <ButtonLink href={LINKS.FACEBOOK_URL}>Visit CCARC on Facebook</ButtonLink>
+            </div>
+          </InfoCard>
           <article className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
             <h2 className="text-xl font-black text-mountain-900">Meeting Location</h2>
             <p className="mt-3 leading-7 text-stonewarm-700">
