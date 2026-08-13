@@ -46,6 +46,17 @@ export default function GetLicensedPage() {
           Take the CCARC Technician class, practice with HamStudy.org, then register for a local exam session. After your license appears in the FCC database, club members can help you make your first contacts.
         </p>
       </div>
+      <div className="mx-auto mt-8 max-w-3xl rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
+        <h2 className="text-2xl font-black text-mountain-900">Study Resources</h2>
+        <p className="mt-4 leading-7 text-stonewarm-700">To prepare for the exam, we recommend:</p>
+        <ul className="mt-4 list-disc space-y-4 pl-5 leading-7 text-stonewarm-700">
+          <li><a className="font-bold text-pine-700 underline-offset-4 hover:underline" href={LINKS.HAMSTUDY_URL} target="_blank" rel="noopener noreferrer">HamStudy.org</a> — Free online study guide and practice exams. Start here for self-paced learning.</li>
+          <li><strong className="text-mountain-900">ARRL Technician License Manual</strong> (about $36) — The definitive reference for exam topics. Available through <a className="font-bold text-pine-700 underline-offset-4 hover:underline" href={LINKS.AMAZON_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">Amazon</a> or <a className="font-bold text-pine-700 underline-offset-4 hover:underline" href={LINKS.ARRL_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">ARRL.org</a>.</li>
+          <li><strong className="text-mountain-900">Practice exams</strong> — Available free online; HamStudy and other sites offer full-length practice tests to build exam confidence.</li>
+        </ul>
+        <p className="mt-5 leading-7 text-stonewarm-700">Study materials and resources will be sent to you after you sign up for class.</p>
+        <div className="mt-6"><ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Sign Up for Class</ButtonLink></div>
+      </div>
     </section>
   );
 }

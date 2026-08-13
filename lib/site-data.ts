@@ -27,6 +27,10 @@ export const CLASS_LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1
 // Slack invite links expire and should be refreshed as needed.
 export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
 export const FACEBOOK_URL = "https://www.facebook.com/CCARCHelena/";
+// Search by the 2026–2030 sixth-edition ISBN so students do not buy the expired fifth edition.
+export const AMAZON_TECHNICIAN_MANUAL_URL = "https://www.amazon.com/s?k=9781625952934";
+export const ARRL_TECHNICIAN_MANUAL_URL = "https://home.arrl.org/action/Store/Product-Details/productId/2097393415";
+export const HAMSTUDY_URL = "https://hamstudy.org";
 
 export const LINKS = {
   CLASS_SIGNUP_URL,
@@ -40,6 +44,9 @@ export const LINKS = {
   NEWSLETTER_ARCHIVE_URL,
   SLACK_INVITE_URL,
   FACEBOOK_URL,
+  AMAZON_TECHNICIAN_MANUAL_URL,
+  ARRL_TECHNICIAN_MANUAL_URL,
+  HAMSTUDY_URL,
   PICNIC_MAP_URL,
   JFK_PARK_MAP_URL,
   CLASS_LOCATION_MAP_URL,
@@ -51,6 +58,7 @@ export const navItems = [
   { href: "/classes", label: "Classes" },
   { href: "/testing", label: "Testing" },
   { href: "/meetings-nets", label: "Meetings & Nets" },
+  { href: "/news", label: "News & Updates" },
   { href: "/about", label: "About CCARC" },
   {
     href: "/ares",

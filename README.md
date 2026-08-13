@@ -81,6 +81,7 @@ When adding a new public-facing form, port these same checks from `app/api/conta
 - `app/join-contact/page.tsx`: join/contact page with working contact form (client component)
 - `app/testing/page.tsx`: exam testing information
 - `app/meetings-nets/page.tsx`: meetings, nets, repeater, Slack promo
+- `app/news/page.tsx`: dated club news, activity updates, minutes, and calls to action
 - `app/ares/page.tsx`: ARES/LCARES landing page
 - `app/about/page.tsx`: club overview
 - `app/about/n7rb-bio/page.tsx`: explanation/history for N7RB
@@ -98,6 +99,7 @@ Most routine content updates should start in `lib/site-data.ts` before editing p
 
 - Newsletter PDFs live in `public/newsletters/`; update `newsletterIssues` in `lib/site-data.ts` after adding a new PDF.
 - Syllabi live in `public/syllabi/`.
+- Official nonprofit records and board minutes live in `public/docs/` and use stable `/docs/...` URLs.
 - The Field Day flyer is currently `public/CCARC_FD2026.png`; the homepage references it directly.
 - The Slack invite URL in `lib/site-data.ts` is marked as expiring and should be renewed when needed.
 - The membership application PDF is `public/membership_application.pdf`.

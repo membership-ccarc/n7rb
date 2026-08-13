@@ -12,6 +12,7 @@ const routes = [
   "/join-contact",
   "/join-contact/membership-application",
   "/meetings-nets",
+  "/news",
   "/newsletter",
   "/privacy",
   "/testing",

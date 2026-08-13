@@ -37,7 +37,7 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav aria-label="Primary navigation">
-          <div className="relative md:hidden">
+          <div className="relative lg:hidden">
             <button
               type="button"
               className="flex min-h-11 items-center rounded-md bg-white px-4 py-2 text-sm font-bold text-mountain-900 shadow-sm ring-1 ring-stonewarm-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700"
@@ -83,7 +83,7 @@ export function SiteHeader() {
               </div>
             ) : null}
           </div>
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <li key={item.href} className="group relative">
                 <Link
