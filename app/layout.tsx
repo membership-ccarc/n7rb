@@ -44,6 +44,9 @@ export const metadata: Metadata = {
     icon: "/CCARC_firetower_favi.png",
     apple: "/CCARC_firetower_favi.png",
   },
+  verification: {
+    google: "grop3QNfGTRi6JW_E7xWdRJz6slOw3cR6Khzpd_bqIw",
+  },
 };
 
 function Footer() {
