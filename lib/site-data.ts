@@ -17,7 +17,7 @@ export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inp
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
 export const ONLINE_MEETING_URL = "https://meet.google.com/zfs-ctwp-bax";
 export const CONTACT_EMAIL = "mailto:membership@ccarc-info.org?subject=CCARC%20Website%20Inquiry";
-export const N7RB_HISTORY_URL = "https://n7rb.org/why-n7rb/";
+export const N7RB_HISTORY_URL = "/about/n7rb-bio";
 export const TREASURER_EMAIL = "al@simonshome.org";
 export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
 export const NEWSLETTER_ARCHIVE_URL = "https://drive.google.com/drive/folders/1kHy8ILAoDxdaguP4rmM0f1W6D3c4IK0l?usp=drive_link";

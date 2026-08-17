@@ -62,6 +62,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/why-n7rb",
+        destination: "/about/n7rb-bio",
+        permanent: true,
+      },
+      {
+        source: "/membership",
+        destination: "/join-contact/membership-application",
+        permanent: true,
+      },
+      {
         source: "/wp-content/uploads/2025/05/May-2025.pdf",
         destination: "/newsletters/newsletter-2025-05.pdf",
         permanent: true,
