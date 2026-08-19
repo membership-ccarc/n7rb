@@ -7,10 +7,6 @@ export const metadata: Metadata = {
   title: "Dick Beaton, N7RB",
   description: "The full CCARC profile of Dick Beaton, N7RB, whose callsign became the club callsign.",
   alternates: { canonical: "/about/n7rb-bio" },
-  robots: {
-    index: false,
-    follow: true,
-  },
 };
 
 function TextLink({ href, children }: { href: string; children: React.ReactNode }) {
