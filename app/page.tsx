@@ -18,7 +18,7 @@ export default function Home() {
               {SITE.city}
             </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight text-mountain-900 sm:text-5xl lg:text-6xl">
-              Ready to Get Started in Ham Radio?
+              Ready to Get Started in Ham Radio in Helena, Montana?
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-stonewarm-700">
               {SITE.name} ({SITE.shortName}) helps new and advancing operators in Helena learn the basics, prepare for license exams, and make their first contacts with support from local ham radio operators.
