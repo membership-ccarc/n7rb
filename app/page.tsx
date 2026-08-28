@@ -234,25 +234,6 @@ export default function Home() {
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               <div className="md:col-span-2">
-                <InfoCard title="Ham Radio in the Park — Open House">
-                  <p className="font-bold text-mountain-900">
-                    Saturday, August 15, 2026 · 9:00 AM–12:00 Noon
-                  </p>
-                  <p className="mt-1">JFK Park · 309 Harrison Ave N · East Helena</p>
-                  <p className="mt-3">
-                    See a portable Parks on the Air station built from scratch, hear live on-air contacts, and explore handheld radios on local repeaters and simplex frequencies. CCARC members will be available to answer questions, and no experience is needed.
-                  </p>
-                  <p className="mt-3">
-                    Free and open to everyone—no registration required. Curious about getting licensed? Our free Technician class starts in September.
-                  </p>
-                  <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                    <ButtonLink href="/classes" variant="light">Sign Up for the September Class</ButtonLink>
-                    <ButtonLink href={LINKS.JFK_PARK_MAP_URL} variant="light">Get Directions</ButtonLink>
-                    <ButtonLink href={LINKS.CONTACT_EMAIL} variant="light">Email Questions</ButtonLink>
-                  </div>
-                </InfoCard>
-              </div>
-              <div className="md:col-span-2">
                 <InfoCard title="CCARC Annual Picnic & Ham Radio Tailgate Swap Meet">
                   <p className="font-bold text-mountain-900">
                     Saturday, September 12, 2026 · 3:00–6:00 PM
