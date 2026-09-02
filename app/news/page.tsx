@@ -27,6 +27,9 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="September 2, 2026" title="RSVP Now: CCARC Annual Picnic & Tailgate Swap Meet, September 12">
+            Join us Saturday, September 12, 2026 from 3:00–6:00 PM at the Lewis and Clark County Fairgrounds Picnic Shelter (98 W Custer Ave, Helena) for our Annual Picnic and Ham Radio Tailgate Swap Meet. The event is free and open to the public — come meet local ham radio operators, browse the 3–4 PM tailgate swap meet, and find out what the hobby is all about in a relaxed, no-pressure setting. Please RSVP with Marla at <a className={linkClasses} href="mailto:mkulib@gmail.com?subject=CCARC%20Picnic%20RSVP">mkulib@gmail.com</a> so we can get a head count and have enough food. The club is supplying grill items — we&apos;re asking members to bring a side dish: if your last name starts with A&ndash;L, please bring a salad; if it starts with M&ndash;Z, please bring a dessert.
+          </NewsItem>
           <NewsItem date="August 10, 2026" title="Capital City Amateur Radio Club Is Now on Facebook">
             Keep up with club news, activities, photos, and upcoming events by following <a className={linkClasses} href={LINKS.FACEBOOK_URL} target="_blank" rel="noopener noreferrer">CCARC on Facebook</a>.
           </NewsItem>
