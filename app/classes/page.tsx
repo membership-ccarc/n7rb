@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { ClassSignupForm } from "@/components/ClassSignupForm";
 import { ButtonLink, InfoCard } from "@/components/ui";
 import { LINKS } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Classes",
-  description: "Free Technician License Class in Helena, Montana. Six weekly sessions Sept 9-Oct 14, 2026. No experience required. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
+  description: "Free Technician License Class in Helena, Montana. Enrollment for the Fall 2026 session is closed; the next class is being planned for Q1 2027. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
   alternates: { canonical: "/classes" },
 };
 
@@ -24,36 +23,13 @@ export default function ClassesPage() {
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
         <div className="px-6 py-8 sm:px-10 sm:py-10">
-          <h2 className="text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Fall 2026</h2>
-          <dl className="mt-8 grid gap-6 sm:grid-cols-2">
-            <div>
-              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Starts</dt>
-              <dd className="mt-1 text-lg font-bold text-white">Wednesday, September 9, 2026</dd>
-            </div>
-            <div>
-              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Schedule</dt>
-              <dd className="mt-1 text-lg font-bold text-white">Six consecutive Wednesdays, September 9 – October 14</dd>
-            </div>
-            <div>
-              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Time</dt>
-              <dd className="mt-1 text-lg font-bold text-white">6:00–7:30 PM <span className="font-medium text-stonewarm-50">(Q&amp;A until 8:00 PM)</span></dd>
-            </div>
-            <div>
-              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Location</dt>
-              <dd className="mt-1 text-lg font-bold text-white">Helena Salvation Army <span className="font-medium text-stonewarm-50">(1905 Henderson St., Helena, MT)</span></dd>
-            </div>
-            <div>
-              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Cost</dt>
-              <dd className="mt-1 text-lg font-bold text-white">Free</dd>
-            </div>
-            <div>
-              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Class Size</dt>
-              <dd className="mt-1 text-lg font-bold text-white">Limited to 15 students</dd>
-            </div>
-          </dl>
+          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Enrollment Closed</p>
+          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Fall 2026</h2>
+          <p className="mt-5 text-lg leading-8 text-stonewarm-50">
+            Enrollment for the Fall 2026 Technician class starting September 9 is now closed. Our next Technician class is being planned for the first quarter of 2027 — exact dates to be announced.
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="#class-signup-form" variant="secondary">Reserve Your Spot</ButtonLink>
-            <ButtonLink href={LINKS.CLASS_LOCATION_MAP_URL} variant="light">Get Directions</ButtonLink>
+            <ButtonLink href="/join-contact" variant="secondary">Get Notified About the Next Class</ButtonLink>
           </div>
         </div>
       </div>
@@ -66,12 +42,12 @@ export default function ClassesPage() {
         </div>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {[
-            { title: "Session 1 (September 9) — FCC Rules & Radio Regulations", instructor: "Allen KH7AL with Devon N7HNT", points: ["Understand what amateur radio is and why people participate in the hobby", "Learn basic FCC licensing structure and frequency allocations", "Understand call signs and operating etiquette", "Learn about the amateur radio frequency bands and their uses"] },
-            { title: "Session 2 (September 16) — Radio Fundamentals & Electronics", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand basic electricity concepts: voltage, current, resistance, and Ohm’s Law", "Learn frequency and wavelength basics", "Understand modulation and how radio signals work", "Learn about basic radio components and circuits"] },
-            { title: "Session 3 (September 23) — Antennas, Feedlines & Propagation", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand basic antenna types and their practical uses", "Learn about feedline choices and transmission line theory", "Discover how radio signals propagate across distance", "Understand line-of-sight communication and skip propagation", "Learn why antenna placement matters for signal strength"] },
-            { title: "Session 4 (September 30) — Operating Practices & Emergency Communications", instructor: "Allen KH7AL with Al Simons (WA1TYB)", points: ["Learn proper repeater operation and etiquette", "Understand local and regional nets and how to participate", "Learn the basics of emergency communications", "Discover tactical communication concepts", "Understand logging and Q-signals for efficient communication"] },
-            { title: "Session 5 (October 7) — Station Setup, Safety & Digital Modes", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand station grounding and electrical safety practices", "Learn power supply and battery basics for portable operation", "Explore digital modes including FT8, Winlink, and packet radio", "Understand RF exposure and safe operating practices"] },
-            { title: "Session 6 (October 14) — Exam Review & Getting On the Air", instructor: "Allen KH7AL with Rob Kingery (AE7AP)", points: ["Review common weak exam areas and practice questions", "Learn realistic first-station recommendations and equipment choices", "Understand next steps after getting your license", "Build confidence for exam day", "Optional: Take your FCC Technician exam the same day"] },
+            { title: "Session 1 — FCC Rules & Radio Regulations", instructor: "Allen KH7AL with Devon N7HNT", points: ["Understand what amateur radio is and why people participate in the hobby", "Learn basic FCC licensing structure and frequency allocations", "Understand call signs and operating etiquette", "Learn about the amateur radio frequency bands and their uses"] },
+            { title: "Session 2 — Radio Fundamentals & Electronics", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand basic electricity concepts: voltage, current, resistance, and Ohm’s Law", "Learn frequency and wavelength basics", "Understand modulation and how radio signals work", "Learn about basic radio components and circuits"] },
+            { title: "Session 3 — Antennas, Feedlines & Propagation", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand basic antenna types and their practical uses", "Learn about feedline choices and transmission line theory", "Discover how radio signals propagate across distance", "Understand line-of-sight communication and skip propagation", "Learn why antenna placement matters for signal strength"] },
+            { title: "Session 4 — Operating Practices & Emergency Communications", instructor: "Allen KH7AL with Al Simons (WA1TYB)", points: ["Learn proper repeater operation and etiquette", "Understand local and regional nets and how to participate", "Learn the basics of emergency communications", "Discover tactical communication concepts", "Understand logging and Q-signals for efficient communication"] },
+            { title: "Session 5 — Station Setup, Safety & Digital Modes", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand station grounding and electrical safety practices", "Learn power supply and battery basics for portable operation", "Explore digital modes including FT8, Winlink, and packet radio", "Understand RF exposure and safe operating practices"] },
+            { title: "Session 6 — Exam Review & Getting On the Air", instructor: "Allen KH7AL with Rob Kingery (AE7AP)", points: ["Review common weak exam areas and practice questions", "Learn realistic first-station recommendations and equipment choices", "Understand next steps after getting your license", "Build confidence for exam day", "Optional: Take your FCC Technician exam the same day"] },
           ].map((session) => (
             <article key={session.title} className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
               <h3 className="text-xl font-black text-mountain-900">{session.title}</h3>
@@ -86,25 +62,25 @@ export default function ClassesPage() {
 
       <div className="mx-auto mt-10 grid max-w-6xl gap-5 md:grid-cols-2">
         <InfoCard title="Technician Prep Course">
-          <p>This is the recommended entry point for new amateur radio operators. The next confirmed session is the Fall 2026 class detailed above.</p>
+          <p>This is the recommended entry point for new amateur radio operators. Enrollment for the Fall 2026 session is closed; the next Technician class is being planned for Q1 2027.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href="#class-signup-form">Join the Next Technician Class</ButtonLink>
+            <ButtonLink href="/join-contact">Get Notified About the Next Class</ButtonLink>
           </div>
         </InfoCard>
         <InfoCard title="General Prep Course">
           <p>Hosted twice per year: Q2 and Q4. This class helps licensed Technicians expand into HF and long-distance operating.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href="#class-signup-form">Join the Next General Class</ButtonLink>
+            <ButtonLink href="/join-contact">Get Notified About the Next Class</ButtonLink>
           </div>
         </InfoCard>
       </div>
       <div className="mx-auto mt-8 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard title="Instructor Contact">
-          <p>Use the class signup form below for instructor questions, schedule needs, or help choosing the right class.</p>
+          <p>Use the <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="/join-contact">Join / Contact page</a> for instructor questions, schedule needs, or help choosing the right class.</p>
           <p className="mt-4"><a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#instructors">Meet your instructors</a></p>
         </InfoCard>
         <InfoCard title="Enrollment">
-          <p>Class size is capped at 15 students to keep hands-on time with the instructor. Reserve your spot early using the form below.</p>
+          <p>Class size is capped at 15 students to keep hands-on time with the instructor. Enrollment for the Fall 2026 class is closed; the next Technician class is planned for Q1 2027.</p>
         </InfoCard>
         <InfoCard title="Downloadable Syllabus">
           <ul className="space-y-3">
@@ -143,9 +119,6 @@ export default function ClassesPage() {
         </ul>
         <div className="mt-7"><ButtonLink href="/join-contact" variant="secondary">Ask About Ham-101 Mentorship</ButtonLink></div>
       </div>
-      <div className="mx-auto mt-10 max-w-4xl">
-        <ClassSignupForm />
-      </div>
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">Frequently Asked Questions</h2>
         <div className="mt-7 space-y-4">
@@ -156,7 +129,7 @@ export default function ClassesPage() {
             ["What should I bring to class?", <>Bring a notebook and something to write with. Questions and curiosity are also welcome.</>],
             ["Is there a cost to take the FCC exam?", <>The Volunteer Examiner session has a small exam fee (about $15) to cover testing administration costs. CCARC volunteers administer the exam at no additional charge beyond the standard VE fee.</>],
             ["What happens after I pass the exam?", <>Welcome to the hobby! CCARC&apos;s Ham-101 mentorship program matches you with a club mentor based on your interests. Your mentor helps you set up your first station, make your first on-air contacts, and become a confident operator.</>],
-            ["Can I still join if I’m a licensed ham looking to upgrade to General?", <>Yes. We offer General class twice per year, in Q2 and Q4. Sign up using the form above and indicate your experience level and interest in General class.</>],
+            ["Can I still join if I’m a licensed ham looking to upgrade to General?", <>Yes. We offer General class twice per year, in Q2 and Q4. Reach out through the <a className="font-bold text-pine-700 underline hover:no-underline" href="/join-contact">Join / Contact page</a> and indicate your experience level and interest in General class.</>],
           ].map(([question, answer]) => (
             <article key={question as string} className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
               <h3 className="text-lg font-black text-mountain-900">{question}</h3><div className="mt-3 leading-7 text-stonewarm-700">{answer}</div>
