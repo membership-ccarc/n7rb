@@ -24,8 +24,7 @@ export default function ClassesPage() {
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
         <div className="px-6 py-8 sm:px-10 sm:py-10">
-          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Confirmed &amp; Open for Enrollment</p>
-          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Fall 2026</h2>
+          <h2 className="text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Fall 2026</h2>
           <dl className="mt-8 grid gap-6 sm:grid-cols-2">
             <div>
               <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Starts</dt>
