@@ -4,7 +4,7 @@ import { LINKS } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Testing",
-  description: "In-person Volunteer Examiner amateur radio testing information for Helena, Montana. Sessions are typically held at the Lewis and Clark Library, 120 South Last Chance Gulch, Helena, MT.",
+  description: "In-person Volunteer Examiner amateur radio testing information for Helena, Montana.",
   alternates: { canonical: "/testing" },
 };
 
@@ -35,7 +35,7 @@ export default function TestingPage() {
       </div>
       <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard title="Current Testing Format">
-          <p>In-person exams in Helena, tablet-based testing, all license classes available, and no remote exams currently.</p>
+          <p>In-person exams in Helena, tablet-based testing, all license classes available, and no remote exams currently. Sessions are typically held at the Lewis and Clark Library, 120 South Last Chance Gulch, Helena, MT.</p>
         </InfoCard>
         <InfoCard title="Upcoming Exam Dates">
           {upcomingExamDates.length > 0 ? (
