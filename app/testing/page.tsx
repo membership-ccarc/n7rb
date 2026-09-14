@@ -4,8 +4,8 @@ import { LINKS } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Testing",
-  description: "In-person Volunteer Examiner amateur radio testing information for Helena, Montana. Sessions are typically held at the Lewis and Clark Library in Helena. 120 S Last Chance Gulch
-Helena, MT ",
+  description: "In-person Volunteer Examiner amateur radio testing information for Helena, Montana. Sessions are typically held at the Lewis and Clark Library in Helena at 120 South Last Chance Gulch
+Helena, MT.",
   alternates: { canonical: "/testing" },
 };
 
