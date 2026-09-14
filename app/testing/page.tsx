@@ -12,6 +12,7 @@ export const revalidate = 3600;
 
 const EXAM_DATES = [
   { date: "2026-09-23", label: "Wednesday, September 23, 2026, from 6:30-7:45 PM MDT." },
+  { date: "2026-11-04", label: "Wednesday, November 4, 2026." },
 ];
 
 function isUpcoming(dateStr: string) {
