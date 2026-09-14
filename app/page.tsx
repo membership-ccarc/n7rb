@@ -234,20 +234,14 @@ export default function Home() {
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               <div className="md:col-span-2">
-                <InfoCard title="CCARC Annual Picnic & Ham Radio Tailgate Swap Meet">
-                  <p className="font-bold text-mountain-900">
-                    Saturday, September 12, 2026 · 3:00–6:00 PM
-                  </p>
-                  <p className="mt-1">Lewis and Clark County Fairgrounds Picnic Shelter · 98 W Custer Ave · Helena</p>
-                  <p className="mt-3">
-                    Free and open to the public — come meet local ham radio operators and find out what the hobby is all about in a relaxed, no-pressure setting. Whether you are curious about amateur radio, studying for your license, or a longtime operator, you are welcome.
-                  </p>
-                  <p className="mt-3">
-                    <span className="font-bold text-mountain-900">Tailgate Swap Meet, 3-4 PM:</span> Bring your surplus gear, browse what others have, and find a deal. Ham radio equipment, electronics, and accessories are all welcome.
-                  </p>
-                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                    <ButtonLink href={LINKS.PICNIC_MAP_URL} variant="light">Get Directions</ButtonLink>
-                    <ButtonLink href={LINKS.CONTACT_EMAIL} variant="light">Email the Club</ButtonLink>
+                <InfoCard title="October Volunteer Opportunities">
+                  <ul className="list-disc space-y-3 pl-6">
+                    <li><span className="font-bold text-mountain-900">October 6:</span> Help activate four pre-positioned radio stations for the Montana State Exercise.</li>
+                    <li><span className="font-bold text-mountain-900">October 15:</span> Participate in the Great Montana ShakeOut earthquake-preparedness net.</li>
+                    <li><span className="font-bold text-mountain-900">October 18:</span> Support the Just for the Helena of It race from checkpoints along the course.</li>
+                  </ul>
+                  <div className="mt-5">
+                    <ButtonLink href="/news" variant="light">Volunteer Details</ButtonLink>
                   </div>
                 </InfoCard>
               </div>

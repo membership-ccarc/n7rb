@@ -27,6 +27,18 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="September 14, 2026" title="Volunteers Needed for Three October Events">
+            <p>We have a few events coming up in October that Al Simons is looking for volunteers to help support:</p>
+            <ul className="mt-4 list-disc space-y-2 pl-6">
+              <li>Montana State Exercise on October 6</li>
+              <li>The Great Montana ShakeOut 2026 on October 15</li>
+              <li>Just for the Helena of It race on October 18</li>
+            </ul>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Montana State Exercise</strong> — New this year, we have been requested to participate in a state exercise on October 6. We will activate the four stations we have pre-positioned around town at the State DES, Department of Public Health and Human Services (DPHHS) Emergency Preparedness Division, St. Peter&apos;s Health, and the Lewis and Clark County EOC at the airport.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">The Great Montana ShakeOut</strong> — This is an earthquake-based exercise raising awareness of how to prepare for and behave during an earthquake. Lynn, K7WGR, will conduct a net on the morning of October 15 at a time to be determined, as he has done for several years. More information is available on the <a className={linkClasses} href="https://www.shakeout.org/montana/" target="_blank" rel="noopener noreferrer">Great Montana ShakeOut website</a>.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Just for the Helena of It</strong> — This is a running race we support with amateur radio operators at various checkpoints to track runners and keep race officials informed. All profits from Just for the Helena of It will be donated to The Friendship Center and Girls Thrive.</p>
+            <p className="mt-4">If you are interested in learning about one or more of these opportunities, please contact Al Simons at <a className={linkClasses} href="mailto:al@simonshome.org?subject=October%202026%20Volunteer%20Opportunities">al@simonshome.org</a>.</p>
+          </NewsItem>
           <NewsItem date="September 2, 2026" title="RSVP Now: CCARC Annual Picnic & Tailgate Swap Meet, September 12">
             Join us Saturday, September 12, 2026 from 3:00–6:00 PM at the Lewis and Clark County Fairgrounds Picnic Shelter (98 W Custer Ave, Helena) for our Annual Picnic and Ham Radio Tailgate Swap Meet. The event is free and open to the public — come meet local ham radio operators, browse the 3–4 PM tailgate swap meet, and find out what the hobby is all about in a relaxed, no-pressure setting. Please RSVP with Marla at <a className={linkClasses} href="mailto:mkulib@gmail.com?subject=CCARC%20Picnic%20RSVP">mkulib@gmail.com</a> so we can get a head count and have enough food. The club is supplying grill items — we&apos;re asking members to bring a side dish: if your last name starts with A&ndash;L, please bring a salad; if it starts with M&ndash;Z, please bring a dessert.
           </NewsItem>
@@ -73,7 +85,7 @@ function NewsItem({ date, title, children }: { date: string; title: string; chil
     <article className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm sm:p-8">
       <time className="text-sm font-bold uppercase tracking-wide text-pine-700">{date}</time>
       <h3 className="mt-2 text-2xl font-black text-mountain-900">{title}</h3>
-      <p className="mt-4 leading-7 text-stonewarm-700">{children}</p>
+      <div className="mt-4 leading-7 text-stonewarm-700">{children}</div>
     </article>
   );
 }
