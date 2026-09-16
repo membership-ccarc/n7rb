@@ -7,6 +7,9 @@ type FormState = {
   name: string;
   callSign: string;
   mailingAddress: string;
+  city: string;
+  state: string;
+  zipCode: string;
   homePhone: string;
   cellPhone: string;
   email: string;
@@ -19,6 +22,9 @@ const initialState: FormState = {
   name: "",
   callSign: "",
   mailingAddress: "",
+  city: "",
+  state: "",
+  zipCode: "",
   homePhone: "",
   cellPhone: "",
   email: "",
@@ -73,8 +79,8 @@ export function MembershipApplicationForm() {
   function submitApplication(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!form.name.trim() || !form.mailingAddress.trim() || !form.email.trim()) {
-      setError("Please enter your name, mailing address, and email address before sending.");
+    if (!form.name.trim() || !form.mailingAddress.trim() || !form.city.trim() || !form.state.trim() || !form.zipCode.trim() || !form.email.trim()) {
+      setError("Please enter your name, complete mailing address, and email address before sending.");
       return;
     }
 
@@ -85,6 +91,9 @@ export function MembershipApplicationForm() {
       `Name: ${form.name}`,
       `Call Sign: ${form.callSign || "None provided"}`,
       `Mailing Address: ${form.mailingAddress}`,
+      `City: ${form.city}`,
+      `State: ${form.state}`,
+      `ZIP Code: ${form.zipCode}`,
       `Home Phone: ${form.homePhone || "None provided"}`,
       `Cell Phone: ${form.cellPhone || "None provided"}`,
       `Email Address: ${form.email}`,
@@ -113,7 +122,7 @@ export function MembershipApplicationForm() {
           {error}
         </p>
       ) : (
-        <p id="membership-error" className="sr-only">Required fields are name, mailing address, and email address.</p>
+        <p id="membership-error" className="sr-only">Required fields are name, mailing address, city, state, ZIP Code, and email address.</p>
       )}
 
       <div className="mt-6 grid gap-5 md:grid-cols-2">
@@ -121,6 +130,11 @@ export function MembershipApplicationForm() {
         <Field id="callSign" label="Call Sign" value={form.callSign} onChange={updateField} autoComplete="off" />
         <div className="md:col-span-2">
           <Field id="mailingAddress" label="Mailing Address" value={form.mailingAddress} onChange={updateField} required autoComplete="street-address" />
+        </div>
+        <div className="grid gap-5 md:col-span-2 md:grid-cols-[2fr_1fr_1fr]">
+          <Field id="city" label="City" value={form.city} onChange={updateField} required autoComplete="address-level2" />
+          <Field id="state" label="State" value={form.state} onChange={updateField} required autoComplete="address-level1" />
+          <Field id="zipCode" label="ZIP Code" value={form.zipCode} onChange={updateField} required autoComplete="postal-code" />
         </div>
         <Field id="homePhone" label="Home Phone" value={form.homePhone} onChange={updateField} type="tel" autoComplete="tel" />
         <Field id="cellPhone" label="Cell Phone" value={form.cellPhone} onChange={updateField} type="tel" autoComplete="tel" />
