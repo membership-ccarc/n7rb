@@ -100,6 +100,36 @@ export default function AresPage() {
       </div>
 
       <div className="mx-auto mt-10 max-w-7xl rounded-lg bg-white p-6 shadow-sm">
+        <h2 className="text-2xl font-black text-mountain-900">Family Emergency Communication Plan</h2>
+        <div className="mt-3 max-w-4xl space-y-3 leading-7 text-stonewarm-700">
+          <p>
+            In a real emergency, it is hard to help your community if you don&apos;t know whether your own family is safe. During wildfires, severe storms, and other disasters, cell networks are often overloaded or down, and calls and texts may not get through.
+          </p>
+          <p>
+            This fill-in plan helps you build a personal communication plan ahead of time, so everyone in your household knows how to check in, where to meet, and who to contact if they can&apos;t reach each other. Fill it out together, share copies with your family, and keep one in your go-bag.
+          </p>
+        </div>
+        <h3 className="mt-6 text-lg font-black text-mountain-900">What&apos;s inside</h3>
+        <ul className="mt-3 grid max-w-4xl list-disc gap-x-8 gap-y-2 pl-5 leading-7 text-stonewarm-700 md:grid-cols-2">
+          <li>Family contact sheet: names, cell phone numbers, and email addresses</li>
+          <li>Out-of-area contact information</li>
+          <li>Local and regional designated meeting places</li>
+          <li>Radio check-in protocol tips and battery-saving techniques</li>
+          <li>Key frequencies and net procedures</li>
+          <li>Go-bag and bug-out essentials checklists</li>
+          <li>Key county and state resources, with websites and phone numbers</li>
+          <li>Recommended training: FEMA ICS-100, ICS-200, IS-700, and ARRL EC-001</li>
+        </ul>
+        <a
+          className="mt-5 inline-flex min-h-11 items-center justify-center rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-900"
+          href="/docs/CCARC_Family_Emergency_Comm_Plan.pdf"
+          download
+        >
+          Download the Family Emergency Communication Plan (PDF)
+        </a>
+      </div>
+
+      <div className="mx-auto mt-10 max-w-7xl rounded-lg bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-black text-mountain-900">Frequency Plan</h2>
         <p className="mt-3 leading-7 text-stonewarm-700">Lewis and Clark County, Montana emergency communications reference.</p>
         <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
