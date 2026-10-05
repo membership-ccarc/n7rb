@@ -27,6 +27,18 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="October 5, 2026" title="Join the Great Montana ShakeOut Net on October 15">
+            <p>International ShakeOut Day is Thursday, October 15 (10/15 at 10:15 a.m. local time), when millions of people worldwide will practice earthquake safety with drills at work, school, or home. At 10:15 a.m., you can join people across Montana in practicing earthquake safety.</p>
+            <p className="mt-4">Local hams can take part in a directed net exercise shortly after 10:15 a.m. on the Belmont repeater: <strong className="font-bold text-mountain-900">147.22 MHz (+), 100 Hz tone</strong>. CCARC has registered as a group, so you do not need to register individually to participate.</p>
+            <p className="mt-4">For more on earthquake safety and the event, visit the <a className={linkClasses} href="https://www.shakeout.org/montana/" target="_blank" rel="noopener noreferrer">Great Montana ShakeOut website</a> or contact Lynn Wagner, K7WGR. Details are also in our <a className={linkClasses} href="/newsletters/newsletter-2026-10.pdf" target="_blank" rel="noopener noreferrer">October 2026 newsletter →</a></p>
+          </NewsItem>
+          <NewsItem date="September 25, 2026" title="Belmont Repeater Tower Maintenance Completed">
+            <p>After more than a year of discussion and months of planning, a crew of CCARC members headed up Mount Belmont on Thursday, September 24 to improve the N7RB repeater tower&apos;s guy wires and grounding.</p>
+            <p className="mt-4">The Belmont repeater endures extreme weather and high winds most of the year, and that wear had been making the repeater hard to use on windy days. Loose connections or grounding on the tower and guy wires were suspected of causing radio frequency interference (RFI), filling the repeater&apos;s signal with static and noise and hitting weaker stations such as handheld radios hardest.</p>
+            <p className="mt-4">The crew installed new guy clamps and insulators to stop stray currents between the guy wires, and properly re-tensioned the guys to keep the tower upright. The work came none too soon: they found one guy wire significantly under tension and worn bolts that needed replacing. Early reports since the work have been very positive, with many operators noting greatly improved audio and signals.</p>
+            <p className="mt-4">This is part two of the club&apos;s ongoing repeater improvements funded by your dues. Last summer the repeater itself was replaced with a newer, more capable and reliable model, and next year the club may look at adding solar power.</p>
+            <p className="mt-4">Special thanks to the repeater maintenance crew: Brian Lee (KJ7OUF), Al Simons (WA1TYB), Bill McGuire (N7MSI), Eric Webb (KE7NLU), Stacy Webb (KK7CJV), Matt Gould (AA7MG), Keith Platts (KM7AEM), Mark Heckenlaible (W7HS), Dan Hawkins (N7SHM), and Steve Miller (KF7HJS). Read the full story with photos in our <a className={linkClasses} href="/newsletters/newsletter-2026-10.pdf" target="_blank" rel="noopener noreferrer">October 2026 newsletter →</a></p>
+          </NewsItem>
           <NewsItem date="September 14, 2026" title="Volunteers Needed for Three October Events">
             <p>We have a few events coming up in October that Al Simons is looking for volunteers to help support:</p>
             <ul className="mt-4 list-disc space-y-2 pl-6">
