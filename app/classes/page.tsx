@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { ClassSignupForm } from "@/components/ClassSignupForm";
 import { ButtonLink, InfoCard } from "@/components/ui";
 import { LINKS } from "@/lib/site-data";
 
@@ -23,26 +25,26 @@ export default function ClassesPage() {
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
         <div className="px-6 py-8 sm:px-10 sm:py-10">
-          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Pre-Enrollment Open</p>
-          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Q1 2027</h2>
-          <p className="mt-5 text-lg leading-8 text-stonewarm-50">
-            Our next Technician class is planned for the first quarter of 2027. Dates are not set yet, but we are taking names now for pre-enrollment. Add your name and you&apos;ll be among the first to hear when the schedule is announced.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/join-contact" variant="secondary">Pre-Enroll for Q1 2027</ButtonLink>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
-        <div className="px-6 py-8 sm:px-10 sm:py-10">
           <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Gauging Interest</p>
           <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC General License Class</h2>
           <p className="mt-5 text-lg leading-8 text-stonewarm-50">
             Already hold a Technician license? We&apos;re considering offering a General License Class and want to hear from you. If now is the right time for you to upgrade and open up HF and long-distance operating, let us know you&apos;re interested.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/join-contact" variant="secondary">I&apos;m Interested in General Class</ButtonLink>
+            <ButtonLink href="/classes?interest=General#class-signup-form" variant="secondary">I&apos;m Interested in General Class</ButtonLink>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
+        <div className="px-6 py-8 sm:px-10 sm:py-10">
+          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Pre-Enrollment Open</p>
+          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Q1 2027</h2>
+          <p className="mt-5 text-lg leading-8 text-stonewarm-50">
+            Our next Technician class is planned for the first quarter of 2027. Dates are not set yet, but we are taking names now for pre-enrollment. Add your name and you&apos;ll be among the first to hear when the schedule is announced.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <ButtonLink href="/classes?interest=Technician#class-signup-form" variant="secondary">Pre-Enroll for Q1 2027</ButtonLink>
           </div>
         </div>
       </div>
@@ -122,6 +124,11 @@ export default function ClassesPage() {
         </ul>
         <div className="mt-7"><ButtonLink href="/join-contact" variant="secondary">Ask About Ham-101 Mentorship</ButtonLink></div>
       </div>
+      <div className="mx-auto mt-10 max-w-4xl">
+        <Suspense>
+          <ClassSignupForm />
+        </Suspense>
+      </div>
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">Frequently Asked Questions</h2>
         <div className="mt-7 space-y-4">
@@ -130,7 +137,7 @@ export default function ClassesPage() {
             ["What if I can’t make every session?", <>Missing one session is understandable — just communicate with your instructor. Missing multiple sessions may make it harder to keep up because the material builds on itself, so consistent attendance is important for exam readiness.</>],
             ["Do I need to buy anything?", <>The class and study materials are free. We highly recommend the ARRL Technician License Manual (about $36) as a study reference. It is available through <a className="font-bold text-pine-700 underline hover:no-underline" href={LINKS.AMAZON_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">Amazon</a> or <a className="font-bold text-pine-700 underline hover:no-underline" href={LINKS.ARRL_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">ARRL.org</a>. Many students also use free resources such as <a className="font-bold text-pine-700 underline hover:no-underline" href={LINKS.HAMSTUDY_URL} target="_blank" rel="noopener noreferrer">HamStudy.org</a>.</>],
             ["What should I bring to class?", <>Bring a notebook and something to write with. Questions and curiosity are also welcome.</>],
-            ["Is there a cost to take the FCC exam?", <>The Volunteer Examiner session has a small exam fee (about $15) to cover testing administration costs. CCARC volunteers administer the exam at no additional charge beyond the standard VE fee.</>],
+            ["Is there a cost to take the FCC exam?", <>The exam fee with CCARC is $14, which covers testing administration costs. CCARC volunteers administer the exam at no additional charge.</>],
             ["What happens after I pass the exam?", <>Welcome to the hobby! CCARC&apos;s Ham-101 mentorship program matches you with a club mentor based on your interests. Your mentor helps you set up your first station, make your first on-air contacts, and become a confident operator.</>],
             ["Can I still join if I’m a licensed ham looking to upgrade to General?", <>Yes. We offer General class twice per year, in Q2 and Q4. Reach out through the <a className="font-bold text-pine-700 underline hover:no-underline" href="/join-contact">Join / Contact page</a> and indicate your experience level and interest in General class.</>],
           ].map(([question, answer]) => (

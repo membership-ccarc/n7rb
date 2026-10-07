@@ -1,6 +1,7 @@
 "use client";
 
-import { Dispatch, FormEvent, SetStateAction, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Dispatch, FormEvent, SetStateAction, useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -66,6 +67,14 @@ export function ClassSignupForm() {
   const [website, setWebsite] = useState("");
   const [renderedAt] = useState(() => Date.now().toString());
   const messageRef = useRef<HTMLParagraphElement>(null);
+  const interestParam = useSearchParams().get("interest");
+
+  // Class CTAs link here with ?interest=Technician|General to preselect the class.
+  useEffect(() => {
+    if (interestParam === "Technician" || interestParam === "General") {
+      setForm((current) => ({ ...current, licenseInterest: interestParam }));
+    }
+  }, [interestParam]);
 
   function toggleMainInterest(interest: string) {
     setForm((current) => {
@@ -110,7 +119,7 @@ export function ClassSignupForm() {
         throw new Error("Signup request failed");
       }
 
-      window.gtag!("event", "class_signup_form_submission", {
+      window.gtag?.("event", "class_signup_form_submission", {
         form_id: "class-signup-form",
         license_interest: form.licenseInterest,
         transport_type: "beacon",
@@ -128,15 +137,15 @@ export function ClassSignupForm() {
   return (
     <form
       id="class-signup-form"
-      className="rounded-lg bg-white p-6 shadow-sm"
+      className="scroll-mt-28 rounded-lg bg-white p-6 shadow-sm"
       onSubmit={submitSignup}
       noValidate
       aria-describedby="class-signup-help class-signup-message"
     >
       <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Get Started in Ham Radio</p>
-      <h2 className="mt-2 text-2xl font-black text-mountain-900">Reserve a Spot</h2>
+      <h2 className="mt-2 text-2xl font-black text-mountain-900">Pre-Enroll or Share Your Interest</h2>
       <p id="class-signup-help" className="mt-3 leading-7 text-stonewarm-700">
-        Tell us which class you are interested in. A club volunteer will follow up with next steps and beginner-friendly study resources.
+        Tell us which class you are interested in. A club volunteer will follow up when dates are set, along with beginner-friendly study resources.
       </p>
 
       {status === "success" ? (
@@ -321,7 +330,7 @@ export function ClassSignupForm() {
           type="submit"
           disabled={status === "submitting"}
         >
-          {status === "submitting" ? "Sending..." : "Reserve a Spot"}
+          {status === "submitting" ? "Sending..." : "Sign Me Up"}
         </button>
       </div>
     </form>
