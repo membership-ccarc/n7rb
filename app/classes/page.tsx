@@ -4,7 +4,7 @@ import { LINKS } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Classes",
-  description: "Free Technician License Class in Helena, Montana. Enrollment for the Fall 2026 session is closed; the next class is being planned for Q1 2027. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
+  description: "Free Technician License Class in Helena, Montana. Pre-enrollment is open for the Q1 2027 Technician class, and CCARC is gauging interest in a General License Class. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
   alternates: { canonical: "/classes" },
 };
 
@@ -23,13 +23,26 @@ export default function ClassesPage() {
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
         <div className="px-6 py-8 sm:px-10 sm:py-10">
-          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Enrollment Closed</p>
-          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Fall 2026</h2>
+          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Pre-Enrollment Open</p>
+          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Q1 2027</h2>
           <p className="mt-5 text-lg leading-8 text-stonewarm-50">
-            Enrollment for the Fall 2026 Technician class starting September 9 is now closed. Our next Technician class is being planned for the first quarter of 2027 — exact dates to be announced.
+            Our next Technician class is planned for the first quarter of 2027. Dates are not set yet, but we are taking names now for pre-enrollment. Add your name and you&apos;ll be among the first to hear when the schedule is announced.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/join-contact" variant="secondary">Get Notified About the Next Class</ButtonLink>
+            <ButtonLink href="/join-contact" variant="secondary">Pre-Enroll for Q1 2027</ButtonLink>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
+        <div className="px-6 py-8 sm:px-10 sm:py-10">
+          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Gauging Interest</p>
+          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC General License Class</h2>
+          <p className="mt-5 text-lg leading-8 text-stonewarm-50">
+            Already hold a Technician license? We&apos;re considering offering a General License Class and want to hear from you. If now is the right time for you to upgrade and open up HF and long-distance operating, let us know you&apos;re interested.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <ButtonLink href="/join-contact" variant="secondary">I&apos;m Interested in General Class</ButtonLink>
           </div>
         </div>
       </div>
@@ -38,31 +51,28 @@ export default function ClassesPage() {
         <div className="max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Six-week curriculum</p>
           <h2 className="mt-3 text-3xl font-black text-mountain-900 sm:text-4xl">What You&apos;ll Learn in Technician Class</h2>
-          <p className="mt-4 text-lg leading-8 text-stonewarm-700">Each session combines clear instruction, practical examples, and time for questions. Allen KH7AL leads every class with support from experienced session mentors.</p>
+          <p className="mt-4 text-lg leading-8 text-stonewarm-700">Each session combines clear instruction, practical examples, and time for questions.</p>
         </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
+        <ol className="mt-8 grid gap-4 md:grid-cols-2">
           {[
-            { title: "Session 1 — FCC Rules & Radio Regulations", instructor: "Allen KH7AL with Devon N7HNT", points: ["Understand what amateur radio is and why people participate in the hobby", "Learn basic FCC licensing structure and frequency allocations", "Understand call signs and operating etiquette", "Learn about the amateur radio frequency bands and their uses"] },
-            { title: "Session 2 — Radio Fundamentals & Electronics", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand basic electricity concepts: voltage, current, resistance, and Ohm’s Law", "Learn frequency and wavelength basics", "Understand modulation and how radio signals work", "Learn about basic radio components and circuits"] },
-            { title: "Session 3 — Antennas, Feedlines & Propagation", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand basic antenna types and their practical uses", "Learn about feedline choices and transmission line theory", "Discover how radio signals propagate across distance", "Understand line-of-sight communication and skip propagation", "Learn why antenna placement matters for signal strength"] },
-            { title: "Session 4 — Operating Practices & Emergency Communications", instructor: "Allen KH7AL with Al Simons (WA1TYB)", points: ["Learn proper repeater operation and etiquette", "Understand local and regional nets and how to participate", "Learn the basics of emergency communications", "Discover tactical communication concepts", "Understand logging and Q-signals for efficient communication"] },
-            { title: "Session 5 — Station Setup, Safety & Digital Modes", instructor: "Allen KH7AL with a session mentor to be announced", points: ["Understand station grounding and electrical safety practices", "Learn power supply and battery basics for portable operation", "Explore digital modes including FT8, Winlink, and packet radio", "Understand RF exposure and safe operating practices"] },
-            { title: "Session 6 — Exam Review & Getting On the Air", instructor: "Allen KH7AL with Rob Kingery (AE7AP)", points: ["Review common weak exam areas and practice questions", "Learn realistic first-station recommendations and equipment choices", "Understand next steps after getting your license", "Build confidence for exam day", "Optional: Take your FCC Technician exam the same day"] },
-          ].map((session) => (
-            <article key={session.title} className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
-              <h3 className="text-xl font-black text-mountain-900">{session.title}</h3>
-              <p className="mt-3 font-bold text-pine-700">{session.instructor}</p>
-              <ul className="mt-4 list-disc space-y-2 pl-5 leading-7 text-stonewarm-700">
-                {session.points.map((point) => <li key={point}>{point}</li>)}
-              </ul>
-            </article>
+            "FCC Rules & Radio Regulations",
+            "Radio Fundamentals & Electronics",
+            "Antennas, Feedlines & Propagation",
+            "Operating Practices & Emergency Communications",
+            "Station Setup, Safety & Digital Modes",
+            "Exam Review & Getting On the Air",
+          ].map((topic, i) => (
+            <li key={topic} className="flex items-center gap-4 rounded-lg border border-stonewarm-100 bg-white p-5 shadow-sm">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-mountain-900 font-black text-gold-300">{i + 1}</span>
+              <span className="text-lg font-black text-mountain-900">{topic}</span>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
 
       <div className="mx-auto mt-10 grid max-w-6xl gap-5 md:grid-cols-2">
         <InfoCard title="Technician Prep Course">
-          <p>This is the recommended entry point for new amateur radio operators. Enrollment for the Fall 2026 session is closed; the next Technician class is being planned for Q1 2027.</p>
+          <p>This is the recommended entry point for new amateur radio operators. Pre-enrollment is open for the Q1 2027 Technician class.</p>
           <div className="mt-5 flex flex-col gap-3">
             <ButtonLink href="/join-contact">Get Notified About the Next Class</ButtonLink>
           </div>
@@ -80,7 +90,7 @@ export default function ClassesPage() {
           <p className="mt-4"><a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#instructors">Meet your instructors</a></p>
         </InfoCard>
         <InfoCard title="Enrollment">
-          <p>Class size is capped at 15 students to keep hands-on time with the instructor. Enrollment for the Fall 2026 class is closed; the next Technician class is planned for Q1 2027.</p>
+          <p>Class size is capped at 15 students to keep hands-on time with the instructor.</p>
         </InfoCard>
         <InfoCard title="Downloadable Syllabus">
           <ul className="space-y-3">
@@ -99,14 +109,7 @@ export default function ClassesPage() {
       </div>
       <div id="instructors" className="mx-auto mt-12 max-w-4xl scroll-mt-28 rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm sm:p-8">
         <h2 className="text-3xl font-black text-mountain-900">About Your Instructors</h2>
-        <p className="mt-5 leading-7 text-stonewarm-700"><strong className="text-mountain-900">Allen Le Vie (KH7AL)</strong> leads all Technician class sessions, bringing hands-on experience and a patient teaching style. Allen learned basic and advanced electronic systems theory through 23 years in the USAF before retiring in 2020. He is also CCARC&apos;s Membership Growth Committee Chair and has mentored dozens of new operators through their first on-air contacts.</p>
-        <p className="mt-5 leading-7 text-stonewarm-700"><strong className="text-mountain-900">Session mentors and guest instructors</strong> add depth and real-world perspective to specific topics:</p>
-        <ul className="mt-4 list-disc space-y-3 pl-5 leading-7 text-stonewarm-700">
-          <li><strong className="text-mountain-900">Devon N7HNT</strong> — Session 1, FCC Rules &amp; Regulations</li>
-          <li><strong className="text-mountain-900">Al Simons (WA1TYB)</strong> — Session 4, Operating Practices &amp; Emergency Communications. Al is CCARC&apos;s Treasurer and ARES Coordinator.</li>
-          <li><strong className="text-mountain-900">Rob Kingery (AE7AP)</strong> — Session 6, Exam Review &amp; First Station Guidance. Rob is the Montana SOTA Association Manager and brings active outdoor radio experience.</li>
-        </ul>
-        <p className="mt-5 leading-7 text-stonewarm-700">More mentors are being added to provide well-rounded perspectives across the diverse hobby.</p>
+        <p className="mt-5 leading-7 text-stonewarm-700">CCARC&apos;s class instructors are club members with a vast wealth of ham radio knowledge and experience. They are focused on helping anyone with an interest in amateur radio get started in the hobby, from first questions through exam day and beyond.</p>
       </div>
       <div className="mx-auto mt-10 max-w-4xl rounded-lg bg-mountain-900 p-6 text-white shadow-soft sm:p-8">
         <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Support beyond the classroom</p>
