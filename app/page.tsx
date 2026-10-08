@@ -236,7 +236,6 @@ export default function Home() {
               <div className="md:col-span-2">
                 <InfoCard title="October Volunteer Opportunities">
                   <ul className="list-disc space-y-3 pl-6">
-                    <li><span className="font-bold text-mountain-900">October 6:</span> Help activate four pre-positioned radio stations for the Montana State Exercise.</li>
                     <li><span className="font-bold text-mountain-900">October 15:</span> Participate in the Great Montana ShakeOut earthquake-preparedness net.</li>
                     <li><span className="font-bold text-mountain-900">October 18:</span> Support the Just for the Helena of It race from checkpoints along the course.</li>
                   </ul>
@@ -325,7 +324,7 @@ export default function Home() {
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-black sm:text-4xl">Ready to Start?</h2>
           <p className="mt-4 text-lg leading-8 text-pine-50">
-            Whether you are curious about preparedness, hiking, electronics, STEM, or community service, CCARC can help you take the next step.
+            Whether you are curious about emergency preparedness, outdoor adventure radio, electronics, STEM, or community service, CCARC can help you take the next step.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <ButtonLink href="/get-licensed" variant="secondary">Get Licensed</ButtonLink>
