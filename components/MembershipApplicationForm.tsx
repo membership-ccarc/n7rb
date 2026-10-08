@@ -152,7 +152,7 @@ export function MembershipApplicationForm() {
           >
             <option>Single membership - $25</option>
             <option>Family membership - $31.25</option>
-            <option>Newly Licensed Ham - please contact treasurer for pro-rated amount</option>
+            <option>Newly Licensed Ham - Elligible for 1-year Free Membership</option>
           </select>
         </label>
         <label className="grid gap-2 font-bold text-mountain-900 md:col-span-2" htmlFor="radioInterests">
