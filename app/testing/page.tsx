@@ -114,6 +114,10 @@ export default function TestingPage() {
                 ARRL Ham Radio License Manual, 5th Edition. A copy was donated by CCARC to the Lewis and Clark Library, or you can{" "}
                 <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://home.arrl.org/action/Store/Product-Details/productId/2003373064" target="_blank" rel="noopener noreferrer">
                   buy it from ARRL
+                </a>{" "}
+                or{" "}
+                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href={LINKS.AMAZON_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">
+                  Amazon
                 </a>
                 .
               </li>
