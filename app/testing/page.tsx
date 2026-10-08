@@ -106,7 +106,7 @@ export default function TestingPage() {
             <h3 className="text-lg font-black text-mountain-900">License Manuals</h3>
             <ul className="mt-4 space-y-3 leading-7">
               <li>
-                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://www.amazon.com/Technician-Element-Amateur-Preparation-2022-2026/dp/1625951906" target="_blank" rel="noopener noreferrer">
+                <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="https://www.amazon.com/dp/1625952384" target="_blank" rel="noopener noreferrer">
                   Gordon West Technician Class FCC Element 2 Amateur Radio License Preparation
                 </a>
               </li>
