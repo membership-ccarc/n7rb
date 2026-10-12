@@ -66,9 +66,9 @@ export default function JoinContactPage() {
       <div className="mx-auto mt-10 grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.85fr]">
         <div className="grid content-start gap-6">
           <div className="rounded-lg bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-black text-mountain-900">Quick Sign-Up</h2>
+            <h2 className="text-2xl font-black text-mountain-900">Join the CCARC Community</h2>
             <p className="mt-2 text-sm leading-6 text-stonewarm-700">
-              The fastest way to get connected with CCARC. Sign up here and we&apos;ll follow up with next steps.
+              Sign up to receive club updates direct to your inbox.
             </p>
             <div className="kit-signup mt-4">
               <KitSignupForm />
