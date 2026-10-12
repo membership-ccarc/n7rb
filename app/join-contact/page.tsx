@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import KitSignupForm from "@/components/KitSignupForm";
 import { ButtonLink, InfoCard } from "@/components/ui";
 import { LINKS, SITE } from "@/lib/site-data";
 
@@ -55,7 +56,7 @@ export default function JoinContactPage() {
       <div className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-black text-mountain-900 sm:text-5xl">Join / Contact</h1>
         <p className="mt-5 text-lg leading-8 text-stonewarm-700">
-          Ready to join, visit, or ask a beginner question? Fill out the form below or reach out directly.
+          Ready to join, visit, or ask a beginner question? Use the quick sign-up form below, send us a message, or reach out directly.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <ButtonLink href={LINKS.MEMBERSHIP_FORM_URL}>Apply for Membership</ButtonLink>
@@ -63,103 +64,114 @@ export default function JoinContactPage() {
         </div>
       </div>
       <div className="mx-auto mt-10 grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.85fr]">
-        <form className="rounded-lg bg-white p-6 shadow-sm" onSubmit={handleSubmit} noValidate>
-          <h2 className="text-2xl font-black text-mountain-900">Contact Us</h2>
-          <p className="mt-2 text-sm leading-6 text-stonewarm-700">
-            Have a question or want to get involved? We&apos;ll get back to you soon.
-          </p>
-
-          {formState === "success" && (
-            <div role="status" className="mt-4 rounded-md bg-pine-50 px-4 py-3 text-sm font-medium text-pine-700">
-              Message sent! We&apos;ll be in touch soon.
+        <div className="grid content-start gap-6">
+          <div className="rounded-lg bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-black text-mountain-900">Quick Sign-Up</h2>
+            <p className="mt-2 text-sm leading-6 text-stonewarm-700">
+              The fastest way to get connected with CCARC. Sign up here and we&apos;ll follow up with next steps.
+            </p>
+            <div className="mt-6">
+              <KitSignupForm />
             </div>
-          )}
+          </div>
+          <form className="rounded-lg bg-white p-6 shadow-sm" onSubmit={handleSubmit} noValidate>
+            <h2 className="text-2xl font-black text-mountain-900">Contact Us</h2>
+            <p className="mt-2 text-sm leading-6 text-stonewarm-700">
+              Have a question or want to get involved? We&apos;ll get back to you soon.
+            </p>
 
-          {formState === "error" && errorMessage && (
-            <div role="alert" className="mt-4 rounded-md bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
-              {errorMessage}
-            </div>
-          )}
+            {formState === "success" && (
+              <div role="status" className="mt-4 rounded-md bg-pine-50 px-4 py-3 text-sm font-medium text-pine-700">
+                Message sent! We&apos;ll be in touch soon.
+              </div>
+            )}
 
-          <div className="mt-6 grid gap-5">
-            <label className="sr-only" htmlFor="website">
-              Website
-            </label>
-            <input
-              id="website"
-              className="sr-only"
-              name="website"
-              type="text"
-              autoComplete="off"
-              tabIndex={-1}
-              aria-hidden="true"
-              disabled={formState === "submitting"}
-            />
-            <input name="renderedAt" type="hidden" defaultValue={renderedAt} />
-            <label className="grid gap-2 font-bold text-mountain-900">
-              Name
-              <input
-                className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                disabled={formState === "submitting"}
-              />
-            </label>
-            <label className="grid gap-2 font-bold text-mountain-900">
-              Email
-              <input
-                className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                disabled={formState === "submitting"}
-              />
-            </label>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <label className="grid gap-2 font-bold text-mountain-900">
-                Callsign <span className="text-sm font-medium text-stonewarm-700">Optional</span>
-                <input
-                  className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal uppercase text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
-                  name="callsign"
-                  type="text"
-                  autoComplete="off"
-                  maxLength={20}
-                  disabled={formState === "submitting"}
-                />
+            {formState === "error" && errorMessage && (
+              <div role="alert" className="mt-4 rounded-md bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                {errorMessage}
+              </div>
+            )}
+
+            <div className="mt-6 grid gap-5">
+              <label className="sr-only" htmlFor="website">
+                Website
               </label>
+              <input
+                id="website"
+                className="sr-only"
+                name="website"
+                type="text"
+                autoComplete="off"
+                tabIndex={-1}
+                aria-hidden="true"
+                disabled={formState === "submitting"}
+              />
+              <input name="renderedAt" type="hidden" defaultValue={renderedAt} />
               <label className="grid gap-2 font-bold text-mountain-900">
-                Phone <span className="text-sm font-medium text-stonewarm-700">Optional</span>
+                Name
                 <input
                   className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  maxLength={30}
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
                   disabled={formState === "submitting"}
                 />
               </label>
-            </div>
-            <label className="grid gap-2 font-bold text-mountain-900">
-              Message
-              <textarea
-                className="min-h-32 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
-                name="message"
-                required
+              <label className="grid gap-2 font-bold text-mountain-900">
+                Email
+                <input
+                  className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  disabled={formState === "submitting"}
+                />
+              </label>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="grid gap-2 font-bold text-mountain-900">
+                  Callsign <span className="text-sm font-medium text-stonewarm-700">Optional</span>
+                  <input
+                    className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal uppercase text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
+                    name="callsign"
+                    type="text"
+                    autoComplete="off"
+                    maxLength={20}
+                    disabled={formState === "submitting"}
+                  />
+                </label>
+                <label className="grid gap-2 font-bold text-mountain-900">
+                  Phone <span className="text-sm font-medium text-stonewarm-700">Optional</span>
+                  <input
+                    className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    maxLength={30}
+                    disabled={formState === "submitting"}
+                  />
+                </label>
+              </div>
+              <label className="grid gap-2 font-bold text-mountain-900">
+                Message
+                <textarea
+                  className="min-h-32 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
+                  name="message"
+                  required
+                  disabled={formState === "submitting"}
+                />
+              </label>
+              <button
+                className="min-h-11 rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700 disabled:opacity-60 disabled:cursor-not-allowed"
+                type="submit"
                 disabled={formState === "submitting"}
-              />
-            </label>
-            <button
-              className="min-h-11 rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700 disabled:opacity-60 disabled:cursor-not-allowed"
-              type="submit"
-              disabled={formState === "submitting"}
-            >
-              {formState === "submitting" ? "Sending…" : "Send Message"}
-            </button>
-          </div>
-        </form>
+              >
+                {formState === "submitting" ? "Sending…" : "Send Message"}
+              </button>
+            </div>
+          </form>
+        </div>
         <div className="grid gap-5">
           <InfoCard title="Newsletter Signup">
             <p>
