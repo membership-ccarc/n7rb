@@ -49,3 +49,57 @@ body {
     transform: translateY(6px);
   }
 }
+
+/* Kit sign-up embed (Join / Contact): drop Kit's own header and padding so the
+   form sits flush inside the site card, and lay fields out in a row on wider screens. */
+.kit-signup .formkit-form[data-uid][data-format] {
+  background-color: transparent !important;
+  max-width: none;
+}
+
+.kit-signup .formkit-form[data-uid][data-format] [data-style="minimal"] {
+  padding: 0;
+}
+
+.kit-signup .formkit-form[data-uid][data-format] .formkit-header,
+.kit-signup .formkit-form[data-uid][data-format] .formkit-subheader {
+  display: none;
+}
+
+.kit-signup .formkit-form[data-uid][data-format] .formkit-fields {
+  margin: 0;
+  gap: 0.75rem;
+}
+
+.kit-signup .formkit-form[data-uid][data-format] .formkit-field,
+.kit-signup .formkit-form[data-uid][data-format] .formkit-submit {
+  margin: 0;
+}
+
+.kit-signup .formkit-form[data-uid][data-format] .formkit-guarantee {
+  margin: 0.75rem 0 0;
+  text-align: left;
+}
+
+.kit-signup .formkit-form[data-uid][data-format] .formkit-powered-by-convertkit-container {
+  margin: 0.25rem 0 0;
+}
+
+.kit-signup .formkit-form[data-uid][data-format] .formkit-powered-by-convertkit {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .kit-signup .formkit-form[data-uid][data-format] .formkit-fields {
+    flex-wrap: nowrap;
+  }
+
+  .kit-signup .formkit-form[data-uid][data-format] .formkit-field {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .kit-signup .formkit-form[data-uid][data-format] .formkit-submit {
+    flex: 0 0 auto;
+  }
+}

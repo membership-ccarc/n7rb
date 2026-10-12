@@ -70,7 +70,7 @@ export default function JoinContactPage() {
             <p className="mt-2 text-sm leading-6 text-stonewarm-700">
               The fastest way to get connected with CCARC. Sign up here and we&apos;ll follow up with next steps.
             </p>
-            <div className="mt-6">
+            <div className="kit-signup mt-4">
               <KitSignupForm />
             </div>
           </div>
@@ -173,16 +173,6 @@ export default function JoinContactPage() {
           </form>
         </div>
         <div className="grid gap-5">
-          <InfoCard title="Newsletter Signup">
-            <p>
-              Want to sign up to receive the monthly newsletter? Use the Contact From to request being added to the distro list. 
-              Have news, photos, event reports, or article ideas for the club newsletter? Contact Allen Le Vie, KH7AL, at{" "}
-              <a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="mailto:membership@ccarc-info.org">
-                membership@ccarc-info.org
-              </a>
-              .
-            </p>
-          </InfoCard>
           <InfoCard title="Join Our Slack Community">
             <p>
               We&apos;d love to have you! Use our Contact Us form and let us know you&apos;d like access to our Slack workspace. Whether you&apos;re a long-time amateur radio operator or just getting started, we&apos;ll send you an invitation after a quick review.
