@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { JsonLd } from "@/components/JsonLd";
-import { ButtonLink, InfoCard, MeetingDetails } from "@/components/ui";
+import { AtAGlance, ButtonLink, InfoCard, MeetingDetails } from "@/components/ui";
 import { COFFEE_NET_SCHEDULE_URL, getCoffeeNetSchedule, type CoffeeNetSlot } from "@/lib/coffee-net-schedule";
 import { LINKS, nets, SITE } from "@/lib/site-data";
 import { monthlyMeetingSchema } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Meetings & Nets",
   description: "CCARC club meetings, local nets, repeater information, and meeting location in Helena, Montana.",
-  alternates: { canonical: "/meetings-nets" },
-};
+  path: "/meetings-nets",
+});
 
 const externalResources = [
   { href: "https://www.wr7mt.club/", label: "MRLA" },
@@ -73,6 +73,15 @@ export default async function MeetingsNetsPage() {
           Meetings and nets are the easiest way to hear local activity, ask questions, and meet operators around Helena.
         </p>
       </div>
+      <AtAGlance
+        className="mx-auto mt-10 max-w-4xl"
+        items={[
+          { label: "Club meeting", value: "First non-holiday Monday of each month, 7:00 PM" },
+          { label: "Where", value: `${SITE.meetingAddress}, or online via Google Meet` },
+          { label: "Repeater", value: `Belmont ${SITE.repeater}, ${SITE.repeaterTone} tone` },
+          { label: "Weekly nets", value: nets.map((net) => `${net.name.replace(" Net", "")} ${net.time}`).join(" · ") },
+        ]}
+      />
       <div className="mx-auto mt-10 grid max-w-7xl gap-5 md:grid-cols-3">
         {nets.map((net) => (
           <div key={net.name} className="text-center">

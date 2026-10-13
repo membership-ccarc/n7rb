@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 import { LINKS, SITE } from "@/lib/site-data";
+import { faqSchema } from "@/lib/structured-data";
 
 type ButtonLinkProps = {
   href: string;
@@ -114,5 +116,47 @@ export function MeetingDetails() {
         </dd>
       </div>
     </dl>
+  );
+}
+
+export type FaqItem = {
+  question: string;
+  // Plain-text answer, used for FAQ structured data and shown when `content` is not given.
+  answer: string;
+  // Optional rich version (e.g. with links) shown on the page instead of `answer`.
+  content?: React.ReactNode;
+};
+
+export function FaqSection({ items, title = "Frequently Asked Questions" }: { items: readonly FaqItem[]; title?: string }) {
+  return (
+    <div className="mx-auto mt-12 max-w-4xl">
+      <JsonLd data={faqSchema(items)} />
+      <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">{title}</h2>
+      <div className="mt-7 space-y-4">
+        {items.map(({ question, answer, content }) => (
+          <article key={question} className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-black text-mountain-900">{question}</h3>
+            <div className="mt-3 leading-7 text-stonewarm-700">{content ?? answer}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Short, scannable key facts near the top of a page; answer engines tend to quote these.
+export function AtAGlance({ items, className = "" }: { items: readonly { label: string; value: React.ReactNode }[]; className?: string }) {
+  return (
+    <section aria-labelledby="at-a-glance" className={`rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm ${className}`}>
+      <h2 id="at-a-glance" className="text-sm font-bold uppercase tracking-wide text-pine-700">At a glance</h2>
+      <dl className="mt-4 grid gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map(({ label, value }) => (
+          <div key={label}>
+            <dt className="text-sm font-bold text-stonewarm-700">{label}</dt>
+            <dd className="mt-1 font-bold leading-6 text-mountain-900">{value}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
   );
 }

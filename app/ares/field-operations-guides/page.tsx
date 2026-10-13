@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Field Operations Guides",
   description: "Emergency communications field operations guides and public safety reference resources.",
-  alternates: { canonical: "/ares/field-operations-guides" },
-};
+  path: "/ares/field-operations-guides",
+});
 
 const guides = [
   {

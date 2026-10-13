@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import { NewsletterDownloadLink } from "./NewsletterDownloadLink";
 import { newsletters } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "CCARC Newsletter Archive",
   description: "Browse and read Capital City Amateur Radio Club newsletters from Helena, Montana.",
-  alternates: { canonical: "/newsletter" },
-};
+  path: "/newsletter",
+});
 
 export default function NewsletterPage() {
   return (

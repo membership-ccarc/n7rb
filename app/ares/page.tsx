@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import { ButtonLink, InfoCard } from "@/components/ui";
 import { SITE } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "ARES/LCARES",
   description: "Lewis and Clark County Amateur Radio Emergency Service information, contacts, and frequency plan.",
-  alternates: { canonical: "/ares" },
-};
+  path: "/ares",
+});
 
 const frequencySections = [
   {

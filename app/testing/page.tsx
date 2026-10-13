@@ -1,16 +1,43 @@
-import type { Metadata } from "next";
-import { ButtonLink, InfoCard } from "@/components/ui";
+import { AtAGlance, ButtonLink, FaqSection, InfoCard, type FaqItem } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
-import { getUpcomingExamSessions, LINKS } from "@/lib/site-data";
+import { EXAM_FEE_USD, FCC_APPLICATION_FEE_USD, getUpcomingExamSessions, LINKS, PLACES } from "@/lib/site-data";
 import { examSessionSchema } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Testing",
   description: "In-person Volunteer Examiner amateur radio testing information for Helena, Montana.",
-  alternates: { canonical: "/testing" },
-};
+  path: "/testing",
+});
 
 export const revalidate = 3600;
+
+const faqs: FaqItem[] = [
+  {
+    question: "Where and when are amateur radio exams held in Helena?",
+    answer: `CCARC holds in-person exam sessions about every 6 weeks, typically at the ${PLACES.testing.name}, ${PLACES.testing.streetAddress}, Helena, MT. Upcoming dates are listed on this page and on HamStudy.org.`,
+  },
+  {
+    question: "How much does the exam cost?",
+    answer: `The CCARC exam session fee is $${EXAM_FEE_USD}, payable by cash or check at the session. New license applicants also pay a separate $${FCC_APPLICATION_FEE_USD} application fee directly to the FCC after passing.`,
+  },
+  {
+    question: "What do I need to bring to the exam?",
+    answer: `Bring a photo ID, your FCC Registration Number (FRN), and $${EXAM_FEE_USD} cash for the exam fee. If you are upgrading, also bring a copy of your current license or any valid CSCE.`,
+  },
+  {
+    question: "How do I get an FCC Registration Number (FRN)?",
+    answer: "Register for free in the FCC's CORES system before your exam. HamStudy.org walks new applicants through the process when you register for a session.",
+  },
+  {
+    question: "Which license exams can I take?",
+    answer: "All three amateur radio license classes are available: Technician, General, and Amateur Extra.",
+  },
+  {
+    question: "Does CCARC offer remote or online exams?",
+    answer: "Not currently. All CCARC exam sessions are in person in Helena, using tablet-based testing.",
+  },
+];
 
 export default function TestingPage() {
   const upcomingExamDates = getUpcomingExamSessions();
@@ -27,6 +54,17 @@ export default function TestingPage() {
           <ButtonLink href={LINKS.TESTING_REGISTRATION_URL}>Register for an Exam</ButtonLink>
         </div>
       </div>
+      <AtAGlance
+        className="mx-auto mt-10 max-w-4xl"
+        items={[
+          { label: "Next exam", value: upcomingExamDates[0]?.label.replace(/\.$/, "") ?? "Dates coming soon" },
+          { label: "Where", value: `${PLACES.testing.name}, ${PLACES.testing.streetAddress}, Helena` },
+          { label: "Fee", value: `$${EXAM_FEE_USD}, cash or check` },
+          { label: "License classes", value: "Technician, General, and Amateur Extra" },
+          { label: "How often", value: "About every 6 weeks" },
+          { label: "Register", value: <a className="text-pine-700 underline-offset-4 hover:underline" href={LINKS.TESTING_REGISTRATION_URL} target="_blank" rel="noopener noreferrer">HamStudy.org</a> },
+        ]}
+      />
       <div className="mx-auto mt-10 grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <InfoCard title="Current Testing Format">
           <p>In-person exams in Helena, tablet-based testing, all license classes available, and no remote exams currently. Sessions are typically held at the Lewis and Clark Library, 120 South Last Chance Gulch, Helena, MT.</p>
@@ -119,6 +157,7 @@ export default function TestingPage() {
           </div>
         </div>
       </div>
+      <FaqSection items={faqs} />
     </section>
   );
 }

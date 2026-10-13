@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui";
 import { SITE } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Dick Beaton, N7RB",
   description: "The full CCARC profile of Dick Beaton, N7RB, whose callsign became the club callsign.",
-  alternates: { canonical: "/about/n7rb-bio" },
-};
+  path: "/about/n7rb-bio",
+});
 
 function TextLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (

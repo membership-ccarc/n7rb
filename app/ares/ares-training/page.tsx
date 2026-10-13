@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import { ButtonLink, InfoCard } from "@/components/ui";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "ARES Training",
   description: "ARES initial and advanced Incident Command System training resources for LCARES volunteers.",
-  alternates: { canonical: "/ares/ares-training" },
-};
+  path: "/ares/ares-training",
+});
 
 const basicCourses = [
   { code: "ICS-100", title: "An Introduction to the Incident Command System", href: "https://training.fema.gov/is/courseoverview.aspx?code=IS-100.c&lang=en" },

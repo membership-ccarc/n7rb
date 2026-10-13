@@ -1,17 +1,14 @@
-import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui";
 import { LINKS } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: { absolute: "CCARC News & Updates | Amateur Radio in Helena, Montana" },
   description: "Latest news and updates from Capital City Amateur Radio Club — classes, events, field day, emergency communications, and community service in Helena and Lewis and Clark County.",
-  alternates: { canonical: "/news" },
-  openGraph: {
-    title: "CCARC News & Updates | Amateur Radio in Helena, Montana",
-    description: "Classes, events, Field Day, emergency communications, and community service updates from CCARC in Helena, Montana.",
-    url: "/news",
-  },
-};
+  path: "/news",
+  ogTitle: "CCARC News & Updates | Amateur Radio in Helena, Montana",
+  ogDescription: "Classes, events, Field Day, emergency communications, and community service updates from CCARC in Helena, Montana.",
+});
 
 const linkClasses = "font-bold text-pine-700 underline decoration-pine-700/40 underline-offset-4 hover:decoration-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700";
 

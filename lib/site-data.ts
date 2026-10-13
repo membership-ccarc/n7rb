@@ -34,6 +34,7 @@ export const EXAM_SESSIONS = [
 ] as const;
 
 export const EXAM_FEE_USD = 14;
+export const FCC_APPLICATION_FEE_USD = 35;
 
 export function getUpcomingExamSessions() {
   return EXAM_SESSIONS.filter((session) => new Date(`${session.date}T23:59:59`) >= new Date());

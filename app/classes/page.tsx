@@ -1,21 +1,20 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ClassSignupForm } from "@/components/ClassSignupForm";
 import { JsonLd } from "@/components/JsonLd";
-import { ButtonLink, InfoCard } from "@/components/ui";
+import { AtAGlance, ButtonLink, FaqSection, InfoCard, type FaqItem } from "@/components/ui";
 import { LINKS } from "@/lib/site-data";
-import { courseSchemas, faqSchema } from "@/lib/structured-data";
+import { courseSchemas } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Classes",
   description: "Free Technician License Class in Helena, Montana. Pre-enrollment is open for the Q1 2027 Technician class, and CCARC is gauging interest in a General License Class. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
-  alternates: { canonical: "/classes" },
-};
+  path: "/classes",
+});
 
 const linkClasses = "font-bold text-pine-700 underline hover:no-underline";
 
-// `answer` is the plain-text version used for FAQ structured data; `content` is what the page shows.
-const faqs = [
+const faqs: FaqItem[] = [
   {
     question: "Is this for complete beginners?",
     answer: "Yes. No experience is required. We start from the basics and assume no prior knowledge of radio, electronics, or FCC rules.",
@@ -56,7 +55,7 @@ const faqs = [
 export default function ClassesPage() {
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
-      <JsonLd data={[...courseSchemas, faqSchema(faqs)]} />
+      <JsonLd data={courseSchemas} />
       <div className="mx-auto max-w-4xl text-center">
         <h1 className="text-4xl font-black text-mountain-900 sm:text-5xl">License Classes</h1>
         <p className="mt-5 text-lg leading-8 text-stonewarm-700">
@@ -66,6 +65,17 @@ export default function ClassesPage() {
           This free public education program advances CCARC&apos;s nonprofit mission by helping people in Helena and Lewis and Clark County earn an amateur radio license and build useful communication skills.
         </p>
       </div>
+      <AtAGlance
+        className="mx-auto mt-10 max-w-4xl"
+        items={[
+          { label: "Cost", value: "Free, including study materials" },
+          { label: "Next Technician class", value: "Q1 2027 — pre-enrollment open" },
+          { label: "Experience needed", value: "None" },
+          { label: "Format", value: "Six weeks, in person in Helena" },
+          { label: "Class size", value: "Up to 15 students" },
+          { label: "License exam", value: <a className="text-pine-700 underline-offset-4 hover:underline" href="/testing">$14 at a CCARC exam session</a> },
+        ]}
+      />
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
         <div className="px-6 py-8 sm:px-10 sm:py-10">
@@ -173,16 +183,7 @@ export default function ClassesPage() {
           <ClassSignupForm />
         </Suspense>
       </div>
-      <div className="mx-auto mt-12 max-w-4xl">
-        <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">Frequently Asked Questions</h2>
-        <div className="mt-7 space-y-4">
-          {faqs.map(({ question, content }) => (
-            <article key={question} className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-black text-mountain-900">{question}</h3><div className="mt-3 leading-7 text-stonewarm-700">{content}</div>
-            </article>
-          ))}
-        </div>
-      </div>
+      <FaqSection items={faqs} />
     </section>
   );
 }

@@ -1,13 +1,44 @@
-import type { Metadata } from "next";
 import Image from "next/image";
-import { ButtonLink, InfoCard } from "@/components/ui";
-import { licenseLevels, LINKS } from "@/lib/site-data";
+import { AtAGlance, ButtonLink, FaqSection, InfoCard, type FaqItem } from "@/components/ui";
+import { EXAM_FEE_USD, FCC_APPLICATION_FEE_USD, licenseLevels, LINKS } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Get Licensed",
   description: "Beginner-friendly guide to getting an amateur radio license with CCARC in Helena, Montana.",
-  alternates: { canonical: "/get-licensed" },
-};
+  path: "/get-licensed",
+});
+
+const faqs: FaqItem[] = [
+  {
+    question: "How do I get a ham radio license in Helena, Montana?",
+    answer: "Study for the Technician exam, either in CCARC's free Technician class or on your own with HamStudy.org. Get a free FCC Registration Number (FRN), register for a CCARC exam session in Helena, and pass the exam. Your license is issued once it appears in the FCC database.",
+  },
+  {
+    question: "Which license should I start with?",
+    answer: "Most people start with the Technician license. It covers local repeaters, handheld radios, emergency communications practice, and many VHF/UHF activities. You can upgrade to General and Amateur Extra later.",
+  },
+  {
+    question: "Do I need to know Morse code?",
+    answer: "No. The FCC dropped the Morse code requirement for all amateur radio licenses in 2007.",
+  },
+  {
+    question: "What is the Technician exam like?",
+    answer: "It is 35 multiple-choice questions drawn from a public question pool, and you need 26 correct answers to pass. Practice exams on HamStudy.org use the same question pool.",
+  },
+  {
+    question: "How much does it cost to get licensed?",
+    answer: `CCARC's Technician class is free. The CCARC exam session fee is $${EXAM_FEE_USD}, and new licenses also carry a separate $${FCC_APPLICATION_FEE_USD} FCC application fee. The optional ARRL Technician License Manual costs about $36.`,
+  },
+  {
+    question: "Is there a minimum age?",
+    answer: "No. There is no minimum or maximum age to hold an amateur radio license.",
+  },
+  {
+    question: "How long does a license last?",
+    answer: "Amateur radio licenses are valid for 10 years and can be renewed.",
+  },
+];
 
 export default function GetLicensedPage() {
   return (
@@ -35,6 +66,17 @@ export default function GetLicensedPage() {
           />
         </div>
       </div>
+      <AtAGlance
+        className="mx-auto mt-10 max-w-7xl"
+        items={[
+          { label: "First license", value: "Technician" },
+          { label: "Free local class", value: "CCARC Technician class, Q1 2027" },
+          { label: "The exam", value: "35 questions, 26 correct to pass" },
+          { label: "Exam fee", value: `$${EXAM_FEE_USD} at CCARC sessions, plus $${FCC_APPLICATION_FEE_USD} FCC fee` },
+          { label: "Morse code", value: "Not required" },
+          { label: "License term", value: "10 years, renewable" },
+        ]}
+      />
       <div className="mx-auto mt-12 grid max-w-7xl gap-5 md:grid-cols-3">
         {licenseLevels.map((level) => (
           <InfoCard key={level.name} title={level.name}>{level.summary}</InfoCard>
@@ -57,6 +99,7 @@ export default function GetLicensedPage() {
         <p className="mt-5 leading-7 text-stonewarm-700">Study materials and resources will be sent to you after you sign up for class.</p>
         <div className="mt-6"><ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Sign Up for Class</ButtonLink></div>
       </div>
+      <FaqSection items={faqs} />
     </section>
   );
 }

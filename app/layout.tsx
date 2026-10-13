@@ -6,6 +6,7 @@ import "./globals.css";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteHeader } from "@/components/SiteHeader";
+import { defaultOpenGraph } from "@/lib/metadata";
 import { LINKS, SITE } from "@/lib/site-data";
 import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 
@@ -29,18 +30,13 @@ export const metadata: Metadata = {
     "Volunteer Examiner testing",
   ],
   openGraph: {
+    ...defaultOpenGraph,
     title: "Capital City Amateur Radio Club | N7RB",
     description: "Helena's amateur radio club — licensing classes, nets, exams, and community. Join N7RB.",
-    type: "website",
-    locale: "en_US",
-    images: [
-      {
-        url: "/CCARC_firetower_favi.png",
-        width: 842,
-        height: 703,
-        alt: "Capital City Amateur Radio Club logo",
-      },
-    ],
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
   },
   icons: {
     icon: "/CCARC_firetower_favi.png",

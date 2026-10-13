@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink, InfoCard } from "@/components/ui";
 import { LINKS, SITE } from "@/lib/site-data";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About CCARC",
   description: "About Capital City Amateur Radio Club, a 501(c)(3) nonprofit organization (EIN 81-0506653) serving Helena and Lewis and Clark County, Montana.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
