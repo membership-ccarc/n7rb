@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ButtonLink, InfoCard } from "@/components/ui";
-import { LINKS } from "@/lib/site-data";
+import { JsonLd } from "@/components/JsonLd";
+import { getUpcomingExamSessions, LINKS } from "@/lib/site-data";
+import { examSessionSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Testing",
@@ -10,20 +12,12 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-const EXAM_DATES = [
-  { date: "2026-09-23", label: "Wednesday, September 23, 2026, from 6:30-7:45 PM MDT." },
-  { date: "2026-11-04", label: "Wednesday, November 04, 2026, from 6:30-7:45 PM MDT." },
-];
-
-function isUpcoming(dateStr: string) {
-  return new Date(`${dateStr}T23:59:59`) >= new Date();
-}
-
 export default function TestingPage() {
-  const upcomingExamDates = EXAM_DATES.filter((d) => isUpcoming(d.date));
+  const upcomingExamDates = getUpcomingExamSessions();
 
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
+      <JsonLd data={upcomingExamDates.map(examSessionSchema)} />
       <div className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-black text-mountain-900 sm:text-5xl">Amateur Radio Exam Testing</h1>
         <p className="mt-5 text-lg leading-8 text-stonewarm-700">

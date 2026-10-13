@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { JsonLd } from "@/components/JsonLd";
 import { ButtonLink, InfoCard, MeetingDetails } from "@/components/ui";
 import { COFFEE_NET_SCHEDULE_URL, getCoffeeNetSchedule, type CoffeeNetSlot } from "@/lib/coffee-net-schedule";
 import { LINKS, nets, SITE } from "@/lib/site-data";
+import { monthlyMeetingSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Meetings & Nets",
@@ -64,6 +66,7 @@ export default async function MeetingsNetsPage() {
 
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
+      <JsonLd data={monthlyMeetingSchema} />
       <div className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-black text-mountain-900 sm:text-5xl">Meetings & Nets</h1>
         <p className="mt-5 text-lg leading-8 text-stonewarm-700">

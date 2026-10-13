@@ -12,11 +12,38 @@ export const SITE = {
   backupSimplex: "147.50 MHz",
 } as const;
 
+export const CONTACT_EMAIL_ADDRESS = "membership@ccarc-info.org";
+
+export const PLACES = {
+  meeting: {
+    name: "Salvation Army church",
+    streetAddress: "1905 Henderson St.",
+    postalCode: "59601",
+  },
+  testing: {
+    name: "Lewis and Clark Library",
+    streetAddress: "120 South Last Chance Gulch",
+    postalCode: "59601",
+  },
+} as const;
+
+// Times are local to Helena (America/Denver). Past sessions drop off the site automatically.
+export const EXAM_SESSIONS = [
+  { date: "2026-09-23", startTime: "18:30", endTime: "19:45", label: "Wednesday, September 23, 2026, from 6:30-7:45 PM MDT." },
+  { date: "2026-11-04", startTime: "18:30", endTime: "19:45", label: "Wednesday, November 04, 2026, from 6:30-7:45 PM MST." },
+] as const;
+
+export const EXAM_FEE_USD = 14;
+
+export function getUpcomingExamSessions() {
+  return EXAM_SESSIONS.filter((session) => new Date(`${session.date}T23:59:59`) >= new Date());
+}
+
 export const CLASS_SIGNUP_URL = "/classes#class-signup-form";
 export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
 export const ONLINE_MEETING_URL = "https://meet.google.com/zfs-ctwp-bax";
-export const CONTACT_EMAIL = "mailto:membership@ccarc-info.org?subject=CCARC%20Website%20Inquiry";
+export const CONTACT_EMAIL = `mailto:${CONTACT_EMAIL_ADDRESS}?subject=CCARC%20Website%20Inquiry`;
 export const N7RB_HISTORY_URL = "/about/n7rb-bio";
 export const TREASURER_EMAIL = "al@simonshome.org";
 export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";

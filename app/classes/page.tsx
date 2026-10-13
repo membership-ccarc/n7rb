@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { ClassSignupForm } from "@/components/ClassSignupForm";
+import { JsonLd } from "@/components/JsonLd";
 import { ButtonLink, InfoCard } from "@/components/ui";
 import { LINKS } from "@/lib/site-data";
+import { courseSchemas, faqSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Classes",
@@ -10,9 +12,51 @@ export const metadata: Metadata = {
   alternates: { canonical: "/classes" },
 };
 
+const linkClasses = "font-bold text-pine-700 underline hover:no-underline";
+
+// `answer` is the plain-text version used for FAQ structured data; `content` is what the page shows.
+const faqs = [
+  {
+    question: "Is this for complete beginners?",
+    answer: "Yes. No experience is required. We start from the basics and assume no prior knowledge of radio, electronics, or FCC rules.",
+    content: <>Yes. No experience is required. We start from the basics and assume no prior knowledge of radio, electronics, or FCC rules.</>,
+  },
+  {
+    question: "What if I can’t make every session?",
+    answer: "Missing one session is understandable — just communicate with your instructor. Missing multiple sessions may make it harder to keep up because the material builds on itself, so consistent attendance is important for exam readiness.",
+    content: <>Missing one session is understandable — just communicate with your instructor. Missing multiple sessions may make it harder to keep up because the material builds on itself, so consistent attendance is important for exam readiness.</>,
+  },
+  {
+    question: "Do I need to buy anything?",
+    answer: "The class and study materials are free. We highly recommend the ARRL Technician License Manual (about $36) as a study reference, available through Amazon or ARRL.org. Many students also use free resources such as HamStudy.org.",
+    content: <>The class and study materials are free. We highly recommend the ARRL Technician License Manual (about $36) as a study reference. It is available through <a className={linkClasses} href={LINKS.AMAZON_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">Amazon</a> or <a className={linkClasses} href={LINKS.ARRL_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">ARRL.org</a>. Many students also use free resources such as <a className={linkClasses} href={LINKS.HAMSTUDY_URL} target="_blank" rel="noopener noreferrer">HamStudy.org</a>.</>,
+  },
+  {
+    question: "What should I bring to class?",
+    answer: "Bring a notebook and something to write with. Questions and curiosity are also welcome.",
+    content: <>Bring a notebook and something to write with. Questions and curiosity are also welcome.</>,
+  },
+  {
+    question: "Is there a cost to take the FCC exam?",
+    answer: "The exam fee with CCARC is $14, which covers testing administration costs. CCARC volunteers administer the exam at no additional charge.",
+    content: <>The exam fee with CCARC is $14, which covers testing administration costs. CCARC volunteers administer the exam at no additional charge.</>,
+  },
+  {
+    question: "What happens after I pass the exam?",
+    answer: "Welcome to the hobby! CCARC’s Ham-101 mentorship program matches you with a club mentor based on your interests. Your mentor helps you set up your first station, make your first on-air contacts, and become a confident operator.",
+    content: <>Welcome to the hobby! CCARC&apos;s Ham-101 mentorship program matches you with a club mentor based on your interests. Your mentor helps you set up your first station, make your first on-air contacts, and become a confident operator.</>,
+  },
+  {
+    question: "Can I still join if I’m a licensed ham looking to upgrade to General?",
+    answer: "Yes. We offer General class twice per year, in Q2 and Q4. Reach out through the Join / Contact page and indicate your experience level and interest in General class.",
+    content: <>Yes. We offer General class twice per year, in Q2 and Q4. Reach out through the <a className={linkClasses} href="/join-contact">Join / Contact page</a> and indicate your experience level and interest in General class.</>,
+  },
+];
+
 export default function ClassesPage() {
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
+      <JsonLd data={[...courseSchemas, faqSchema(faqs)]} />
       <div className="mx-auto max-w-4xl text-center">
         <h1 className="text-4xl font-black text-mountain-900 sm:text-5xl">License Classes</h1>
         <p className="mt-5 text-lg leading-8 text-stonewarm-700">
@@ -132,17 +176,9 @@ export default function ClassesPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">Frequently Asked Questions</h2>
         <div className="mt-7 space-y-4">
-          {[
-            ["Is this for complete beginners?", <>Yes. No experience is required. We start from the basics and assume no prior knowledge of radio, electronics, or FCC rules.</>],
-            ["What if I can’t make every session?", <>Missing one session is understandable — just communicate with your instructor. Missing multiple sessions may make it harder to keep up because the material builds on itself, so consistent attendance is important for exam readiness.</>],
-            ["Do I need to buy anything?", <>The class and study materials are free. We highly recommend the ARRL Technician License Manual (about $36) as a study reference. It is available through <a className="font-bold text-pine-700 underline hover:no-underline" href={LINKS.AMAZON_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">Amazon</a> or <a className="font-bold text-pine-700 underline hover:no-underline" href={LINKS.ARRL_TECHNICIAN_MANUAL_URL} target="_blank" rel="noopener noreferrer">ARRL.org</a>. Many students also use free resources such as <a className="font-bold text-pine-700 underline hover:no-underline" href={LINKS.HAMSTUDY_URL} target="_blank" rel="noopener noreferrer">HamStudy.org</a>.</>],
-            ["What should I bring to class?", <>Bring a notebook and something to write with. Questions and curiosity are also welcome.</>],
-            ["Is there a cost to take the FCC exam?", <>The exam fee with CCARC is $14, which covers testing administration costs. CCARC volunteers administer the exam at no additional charge.</>],
-            ["What happens after I pass the exam?", <>Welcome to the hobby! CCARC&apos;s Ham-101 mentorship program matches you with a club mentor based on your interests. Your mentor helps you set up your first station, make your first on-air contacts, and become a confident operator.</>],
-            ["Can I still join if I’m a licensed ham looking to upgrade to General?", <>Yes. We offer General class twice per year, in Q2 and Q4. Reach out through the <a className="font-bold text-pine-700 underline hover:no-underline" href="/join-contact">Join / Contact page</a> and indicate your experience level and interest in General class.</>],
-          ].map(([question, answer]) => (
-            <article key={question as string} className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
-              <h3 className="text-lg font-black text-mountain-900">{question}</h3><div className="mt-3 leading-7 text-stonewarm-700">{answer}</div>
+          {faqs.map(({ question, content }) => (
+            <article key={question} className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-black text-mountain-900">{question}</h3><div className="mt-3 leading-7 text-stonewarm-700">{content}</div>
             </article>
           ))}
         </div>

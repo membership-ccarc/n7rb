@@ -4,8 +4,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Link from "next/link";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { JsonLd } from "@/components/JsonLd";
 import { SiteHeader } from "@/components/SiteHeader";
 import { LINKS, SITE } from "@/lib/site-data";
+import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -101,6 +103,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <head>
         <GoogleAnalytics />
+        <JsonLd data={[organizationSchema, websiteSchema]} />
       </head>
       <body className="min-h-screen antialiased">
         <a
