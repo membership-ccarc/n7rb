@@ -68,7 +68,7 @@ export default function JoinContactPage() {
           <div className="rounded-lg bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-black text-mountain-900">Join the CCARC Community</h2>
             <p className="mt-2 text-sm leading-6 text-stonewarm-700">
-              Sign up to receive club updates direct to your inbox.
+              Sign up to receive the monthly newsleter & news updates direct to your inbox.
             </p>
             <div className="kit-signup mt-4">
               <KitSignupForm />
