@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Dispatch, FormEvent, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, FormEvent, SetStateAction, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -68,13 +68,16 @@ export function ClassSignupForm() {
   const [renderedAt] = useState(() => Date.now().toString());
   const messageRef = useRef<HTMLParagraphElement>(null);
   const interestParam = useSearchParams().get("interest");
+  const [appliedInterestParam, setAppliedInterestParam] = useState<string | null>(null);
 
   // Class CTAs link here with ?interest=Technician|General to preselect the class.
-  useEffect(() => {
+  // Adjusted during render (not in an effect) so a new param applies without an extra render pass.
+  if (interestParam !== appliedInterestParam) {
+    setAppliedInterestParam(interestParam);
     if (interestParam === "Technician" || interestParam === "General") {
       setForm((current) => ({ ...current, licenseInterest: interestParam }));
     }
-  }, [interestParam]);
+  }
 
   function toggleMainInterest(interest: string) {
     setForm((current) => {

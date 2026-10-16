@@ -3,16 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { navItems, SITE } from "@/lib/site-data";
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [menuPathname, setMenuPathname] = useState(pathname);
 
-  useEffect(() => {
+  // Close the menu on navigation; adjusted during render rather than in an effect.
+  if (pathname !== menuPathname) {
+    setMenuPathname(pathname);
     setIsMenuOpen(false);
-  }, [pathname]);
+  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-stonewarm-100 bg-stonewarm-50/95 backdrop-blur">

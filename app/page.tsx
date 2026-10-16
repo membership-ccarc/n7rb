@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink, InfoCard, MeetingDetails, SectionIntro } from "@/components/ui";
 import { NewsletterArchive } from "@/components/NewsletterArchive";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
               alt="Helena fire tower overlooking the city and surrounding hills"
               width={2000}
               height={1244}
+              sizes="(min-width: 1280px) 550px, (min-width: 1024px) 45vw, 100vw"
               className="absolute inset-0 h-full w-full object-cover"
               priority
             />
@@ -70,6 +72,7 @@ export default function Home() {
                 alt={imageAlt}
                 width={640}
                 height={640}
+                sizes="(min-width: 640px) 136px, 100vw"
                 className="aspect-square w-full object-cover sm:h-full"
               />
               <div className="p-6">
@@ -159,6 +162,7 @@ export default function Home() {
               alt="Friendly amateur radio club members gathered around radio equipment at a community meeting"
               width={1672}
               height={941}
+              sizes="(min-width: 1280px) 550px, (min-width: 1024px) 45vw, 100vw"
               className="h-full min-h-[280px] w-full object-cover"
             />
           </div>
@@ -297,13 +301,7 @@ export default function Home() {
                   </div>
                   {video ? (
                     <div className="mt-5 aspect-video w-full overflow-hidden rounded-lg shadow-sm lg:mt-0">
-                      <iframe
-                        className="h-full w-full"
-                        src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}`}
-                        title={video.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
+                      <YouTubeEmbed youtubeId={video.youtubeId} title={video.title} />
                     </div>
                   ) : null}
                 </div>

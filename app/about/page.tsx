@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ButtonLink, InfoCard } from "@/components/ui";
-import { LINKS, SITE } from "@/lib/site-data";
+import { SITE } from "@/lib/site-data";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({

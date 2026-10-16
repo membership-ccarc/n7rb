@@ -198,10 +198,10 @@ export default async function MeetingsNetsPage() {
           <div>
             <h3 className="text-xl font-black text-mountain-900">Montana Repeater Link Association</h3>
             <p className="mt-3 leading-7 text-stonewarm-700">
-              MRLA, pronounced "marla," is a statewide ham radio repeater linking system. This system can be connected to other linked repeaters outside of Montana.
+              MRLA, pronounced &ldquo;marla,&rdquo; is a statewide ham radio repeater linking system. This system can be connected to other linked repeaters outside of Montana.
             </p>
             <ul className="mt-4 space-y-3 leading-7 text-stonewarm-700">
-              <li><strong className="text-mountain-900">145.45-</strong> ("Hogback", tone: 100.0). It is a MRLA link located on Hogback Mountain, 25 miles northeast of Helena.</li>
+              <li><strong className="text-mountain-900">145.45-</strong> (&ldquo;Hogback&rdquo;, tone: 100.0). It is a MRLA link located on Hogback Mountain, 25 miles northeast of Helena.</li>
               <li><strong className="text-mountain-900">147.32+</strong> (tone: 100.0). This is also a MRLA link, located in Townsend, 30 miles southeast of Helena.</li>
             </ul>
           </div>
@@ -214,7 +214,7 @@ export default async function MeetingsNetsPage() {
             <ul className="mt-4 space-y-3 leading-7 text-stonewarm-700">
               <li><strong className="text-mountain-900">147.10+</strong> on MacDonald Pass, 15 miles west of Helena.</li>
               <li><strong className="text-mountain-900">444.10+</strong> also on MacDonald Pass.</li>
-              <li><strong className="text-mountain-900">448.90-</strong> on Helena's north hill.</li>
+              <li><strong className="text-mountain-900">448.90-</strong> on Helena&apos;s north hill.</li>
               <li><strong className="text-mountain-900">449.20-</strong> near Boulder, 20 miles south of Helena.</li>
             </ul>
           </div>
