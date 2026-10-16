@@ -61,6 +61,7 @@ export default function GetLicensedPage() {
             alt="Beginner amateur radio students in a Technician license class"
             width={1672}
             height={941}
+            sizes="(min-width: 1280px) 560px, (min-width: 1024px) 45vw, 100vw"
             className="h-full min-h-[320px] w-full object-cover"
             priority
           />
