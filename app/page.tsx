@@ -240,7 +240,6 @@ export default function Home() {
               <div className="md:col-span-2">
                 <InfoCard title="October Volunteer Opportunities">
                   <ul className="list-disc space-y-3 pl-6">
-                    <li><span className="font-bold text-mountain-900">October 15:</span> Participate in the Great Montana ShakeOut earthquake-preparedness net.</li>
                     <li><span className="font-bold text-mountain-900">October 18:</span> Support the Just for the Helena of It race from checkpoints along the course.</li>
                   </ul>
                   <div className="mt-5">
@@ -314,6 +313,9 @@ export default function Home() {
       <section id="newsletters" className="scroll-mt-24 bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro title="CCARC Newsletters">
           <p>Catch up on recent club news, operating notes, event reports, and member contributions.</p>
+          <div className="mt-6 flex justify-center">
+            <ButtonLink href="/join-contact#newsletter-signup">Newsletter Signup</ButtonLink>
+          </div>
         </SectionIntro>
         <NewsletterArchive />
       </section>

@@ -65,10 +65,10 @@ export default function JoinContactPage() {
       </div>
       <div className="mx-auto mt-10 grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.85fr]">
         <div className="grid content-start gap-6">
-          <div className="rounded-lg bg-white p-6 shadow-sm">
+          <div id="newsletter-signup" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-black text-mountain-900">Join the CCARC Community</h2>
             <p className="mt-2 text-sm leading-6 text-stonewarm-700">
-              Sign up to receive the monthly newsleter & news updates direct to your inbox.
+              Sign up to receive the monthly newsletter & news updates direct to your inbox.
             </p>
             <div className="kit-signup mt-4">
               <KitSignupForm />
