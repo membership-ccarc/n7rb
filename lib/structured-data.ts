@@ -78,27 +78,55 @@ export const websiteSchema = {
   inLanguage: "en-US",
 };
 
-export const monthlyMeetingSchema = {
-  "@context": "https://schema.org",
-  "@type": "Event",
-  name: `${SITE.shortName} Monthly Club Meeting`,
-  description:
-    "Monthly meeting of the Capital City Amateur Radio Club, held the first non-holiday Monday of each month. Visitors and newcomers are welcome, in person or online.",
-  eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
-  eventStatus: "https://schema.org/EventScheduled",
-  eventSchedule: {
-    "@type": "Schedule",
-    repeatFrequency: "P1M",
-    byDay: "https://schema.org/Monday",
-    byMonthWeek: 1,
-    startTime: "19:00:00",
-    scheduleTimezone: TIME_ZONE,
-  },
-  location: [placeSchema(PLACES.meeting), { "@type": "VirtualLocation", url: LINKS.ONLINE_MEETING_URL }],
-  isAccessibleForFree: true,
-  organizer: organizationRef,
-  url: `${SITE.url}/meetings-nets`,
-};
+const pad = (n: number) => String(n).padStart(2, "0");
+
+// First Monday of the month, pushed a week when it falls on New Year's Day, July 4, or Labor Day.
+function firstNonHolidayMonday(year: number, month: number) {
+  const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
+  let day = 1 + ((8 - firstWeekday) % 7);
+  if (month === 9 || (month === 1 && day === 1) || (month === 7 && day === 4)) day += 7;
+  return `${year}-${pad(month)}-${pad(day)}`;
+}
+
+// Next monthly meeting date (YYYY-MM-DD) on or after today in Helena.
+function nextMeetingDate(now: Date) {
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: TIME_ZONE }).format(now);
+  let [year, month] = today.split("-").map(Number);
+  for (;;) {
+    const date = firstNonHolidayMonday(year, month);
+    if (date >= today) return date;
+    if (++month > 12) {
+      month = 1;
+      year++;
+    }
+  }
+}
+
+export function monthlyMeetingSchema(now = new Date()) {
+  const date = nextMeetingDate(now);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: `${SITE.shortName} Monthly Club Meeting`,
+    description:
+      "Monthly meeting of the Capital City Amateur Radio Club, held the first non-holiday Monday of each month. Visitors and newcomers are welcome, in person or online.",
+    startDate: `${date}T19:00:00${denverOffset(date)}`,
+    eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventSchedule: {
+      "@type": "Schedule",
+      repeatFrequency: "P1M",
+      byDay: "https://schema.org/Monday",
+      byMonthWeek: 1,
+      startTime: "19:00:00",
+      scheduleTimezone: TIME_ZONE,
+    },
+    location: [placeSchema(PLACES.meeting), { "@type": "VirtualLocation", url: LINKS.ONLINE_MEETING_URL }],
+    isAccessibleForFree: true,
+    organizer: organizationRef,
+    url: `${SITE.url}/meetings-nets`,
+  };
+}
 
 export function examSessionSchema(session: (typeof EXAM_SESSIONS)[number]) {
   const offset = denverOffset(session.date);

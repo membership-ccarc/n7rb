@@ -6,6 +6,8 @@ import { LINKS, nets, SITE } from "@/lib/site-data";
 import { monthlyMeetingSchema } from "@/lib/structured-data";
 import { pageMetadata } from "@/lib/metadata";
 
+export const revalidate = 3600;
+
 export const metadata = pageMetadata({
   title: "Meetings & Nets",
   description: "CCARC club meetings, local nets, repeater information, and meeting location in Helena, Montana.",
@@ -66,7 +68,7 @@ export default async function MeetingsNetsPage() {
 
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
-      <JsonLd data={monthlyMeetingSchema} />
+      <JsonLd data={monthlyMeetingSchema()} />
       <div className="mx-auto max-w-4xl">
         <h1 className="text-4xl font-black text-mountain-900 sm:text-5xl">Meetings & Nets</h1>
         <p className="mt-5 text-lg leading-8 text-stonewarm-700">
