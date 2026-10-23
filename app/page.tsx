@@ -73,6 +73,7 @@ export default function Home() {
                 width={640}
                 height={640}
                 sizes="(min-width: 640px) 136px, 100vw"
+                quality={60}
                 className="aspect-square w-full object-cover sm:h-full"
               />
               <div className="p-6">

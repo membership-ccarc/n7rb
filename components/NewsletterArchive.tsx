@@ -1,24 +1,10 @@
-"use client";
-
-import { useMemo, useState } from "react";
+import { NewsletterSearch } from "@/components/NewsletterSearch";
 import { TrackedNewsletterLink } from "@/components/TrackedNewsletterLink";
 import { newsletterArchiveFolders, newsletters } from "@/lib/site-data";
 
 export function NewsletterArchive() {
-  const [query, setQuery] = useState("");
   const latest = newsletters[0];
   const previousNewsletters = newsletters.slice(1);
-  const normalizedQuery = query.trim().toLowerCase();
-
-  const filteredNewsletters = useMemo(() => {
-    if (!normalizedQuery) {
-      return previousNewsletters;
-    }
-
-    return previousNewsletters.filter((newsletter) =>
-      `${newsletter.title} ${newsletter.month} ${newsletter.year}`.toLowerCase().includes(normalizedQuery),
-    );
-  }, [normalizedQuery, previousNewsletters]);
 
   return (
     <div className="mx-auto mt-10 grid max-w-7xl gap-6 lg:grid-cols-[0.85fr_1.15fr]">
@@ -56,21 +42,11 @@ export function NewsletterArchive() {
         </div>
       </article>
 
-      <div className="rounded-lg bg-white p-6 shadow-sm">
-        <label className="grid gap-2 font-bold text-mountain-900" htmlFor="newsletter-search">
-          Search Previous Editions
-          <input
-            id="newsletter-search"
-            className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search by month or year"
-          />
-        </label>
-        <ul className="mt-5 grid max-h-80 gap-3 overflow-y-auto pr-1 sm:grid-cols-2">
-          {filteredNewsletters.map((newsletter) => (
-            <li key={newsletter.href}>
+      <div className="flex flex-col rounded-lg bg-white p-6 shadow-sm">
+        <NewsletterSearch listId="newsletter-list" />
+        <ul id="newsletter-list" className="mt-5 grid max-h-80 gap-3 overflow-y-auto pr-1 sm:grid-cols-2">
+          {previousNewsletters.map((newsletter) => (
+            <li key={newsletter.href} data-search={`${newsletter.title} ${newsletter.month} ${newsletter.year}`.toLowerCase()}>
               <TrackedNewsletterLink
                 className="block rounded-md border border-stonewarm-100 px-4 py-3 font-bold text-pine-700 hover:bg-stonewarm-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700"
                 href={newsletter.href}
@@ -82,11 +58,6 @@ export function NewsletterArchive() {
             </li>
           ))}
         </ul>
-        {filteredNewsletters.length === 0 ? (
-          <p className="mt-5 rounded-md bg-stonewarm-50 px-4 py-3 text-sm font-bold text-stonewarm-700">
-            No newsletter editions match that search.
-          </p>
-        ) : null}
       </div>
     </div>
   );

@@ -24,6 +24,13 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    qualities: [60, 75],
+  },
+  experimental: {
+    // Inline the small global stylesheet to avoid a render-blocking CSS request.
+    inlineCss: true,
+  },
   async redirects() {
     return [
       {
