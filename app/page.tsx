@@ -1,4 +1,4 @@
-import { amateurRadioCards, LINKS, nets, SITE, whatWeDo } from "@/lib/site-data";
+import { amateurRadioCards, CONTACT_EMAIL_ADDRESS, LINKS, nets, SITE, whatWeDo } from "@/lib/site-data";
 import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink, InfoCard, MeetingDetails, SectionIntro } from "@/components/ui";
@@ -314,8 +314,18 @@ export default function Home() {
       <section id="newsletters" className="scroll-mt-24 bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro title="CCARC Newsletters">
           <p>Catch up on recent club news, operating notes, event reports, and member contributions.</p>
-          <div className="mt-6 flex justify-center">
+          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
             <ButtonLink href="/join-contact#newsletter-signup">Newsletter Signup</ButtonLink>
+            <p className="max-w-sm text-center text-base leading-7 sm:text-left">
+              Have news to share for the next newsletter? Send your contributions to{" "}
+              <a
+                className="font-bold text-pine-700 underline underline-offset-4 hover:text-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                href={`mailto:${CONTACT_EMAIL_ADDRESS}?subject=Newsletter%20Contribution`}
+              >
+                {CONTACT_EMAIL_ADDRESS}
+              </a>
+              .
+            </p>
           </div>
         </SectionIntro>
         <NewsletterArchive />
