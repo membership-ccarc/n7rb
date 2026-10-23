@@ -27,18 +27,16 @@ export const PLACES = {
   },
 } as const;
 
-// Times are local to Helena (America/Denver). Past sessions drop off the site automatically.
+// Fallback exam sessions, used only when HamStudy can't be read (see lib/exam-sessions.ts).
+// Times are local to Helena (America/Denver).
 export const EXAM_SESSIONS = [
   { date: "2026-09-23", startTime: "18:30", endTime: "19:45", label: "Wednesday, September 23, 2026, from 6:30-7:45 PM MDT." },
   { date: "2026-11-04", startTime: "18:30", endTime: "19:45", label: "Wednesday, November 04, 2026, from 6:30-7:45 PM MST." },
+  { date: "2026-12-02", startTime: "18:30", endTime: "19:45", label: "Wednesday, December 02, 2026, from 6:30-7:45 PM MST." },
 ] as const;
 
 export const EXAM_FEE_USD = 14;
 export const FCC_APPLICATION_FEE_USD = 35;
-
-export function getUpcomingExamSessions() {
-  return EXAM_SESSIONS.filter((session) => new Date(`${session.date}T23:59:59`) >= new Date());
-}
 
 export const CLASS_SIGNUP_URL = "/classes#class-signup-form";
 export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";

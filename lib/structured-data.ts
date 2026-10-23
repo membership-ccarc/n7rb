@@ -1,6 +1,7 @@
 // schema.org JSON-LD builders. These describe the club in machine-readable form
 // for search engines and AI answer engines; keep them in sync with visible page content.
-import { CONTACT_EMAIL_ADDRESS, EXAM_FEE_USD, EXAM_SESSIONS, LINKS, PLACES, SITE } from "@/lib/site-data";
+import type { ExamSession } from "@/lib/exam-sessions";
+import { CONTACT_EMAIL_ADDRESS, EXAM_FEE_USD, LINKS, PLACES, SITE } from "@/lib/site-data";
 
 const ORGANIZATION_ID = `${SITE.url}/#organization`;
 const WEBSITE_ID = `${SITE.url}/#website`;
@@ -128,7 +129,7 @@ export function monthlyMeetingSchema(now = new Date()) {
   };
 }
 
-export function examSessionSchema(session: (typeof EXAM_SESSIONS)[number]) {
+export function examSessionSchema(session: ExamSession) {
   const offset = denverOffset(session.date);
   return {
     "@context": "https://schema.org",

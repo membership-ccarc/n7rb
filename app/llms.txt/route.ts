@@ -1,5 +1,6 @@
 // Plain-text site summary for AI assistants and answer engines (https://llmstxt.org).
-import { EXAM_FEE_USD, getUpcomingExamSessions, LINKS, nets, PLACES, SITE } from "@/lib/site-data";
+import { getUpcomingExamSessions } from "@/lib/exam-sessions";
+import { EXAM_FEE_USD, LINKS, nets, PLACES, SITE } from "@/lib/site-data";
 
 export const revalidate = 3600;
 
@@ -7,8 +8,8 @@ function page(path: string, title: string, summary: string) {
   return `- [${title}](${SITE.url}${path}): ${summary}`;
 }
 
-export function GET() {
-  const upcomingExams = getUpcomingExamSessions();
+export async function GET() {
+  const upcomingExams = await getUpcomingExamSessions();
   const examLines =
     upcomingExams.length > 0
       ? upcomingExams.map((session) => `- ${session.label}`)

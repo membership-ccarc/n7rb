@@ -1,6 +1,7 @@
 import { AtAGlance, ButtonLink, FaqSection, InfoCard, type FaqItem } from "@/components/ui";
 import { JsonLd } from "@/components/JsonLd";
-import { EXAM_FEE_USD, FCC_APPLICATION_FEE_USD, getUpcomingExamSessions, LINKS, PLACES } from "@/lib/site-data";
+import { getUpcomingExamSessions } from "@/lib/exam-sessions";
+import { EXAM_FEE_USD, FCC_APPLICATION_FEE_USD, LINKS, PLACES } from "@/lib/site-data";
 import { examSessionSchema } from "@/lib/structured-data";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -39,8 +40,8 @@ const faqs: FaqItem[] = [
   },
 ];
 
-export default function TestingPage() {
-  const upcomingExamDates = getUpcomingExamSessions();
+export default async function TestingPage() {
+  const upcomingExamDates = await getUpcomingExamSessions();
 
   return (
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
