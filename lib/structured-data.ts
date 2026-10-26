@@ -33,6 +33,12 @@ function denverOffset(date: string) {
 }
 
 const organizationRef = { "@id": ORGANIZATION_ID };
+const clubParticipant = {
+  "@type": "Organization",
+  "@id": ORGANIZATION_ID,
+  name: SITE.name,
+  url: SITE.url,
+};
 
 export const organizationSchema = {
   "@context": "https://schema.org",
@@ -112,6 +118,7 @@ export function monthlyMeetingSchema(now = new Date()) {
     description:
       "Monthly meeting of the Capital City Amateur Radio Club, held the first non-holiday Monday of each month. Visitors and newcomers are welcome, in person or online.",
     startDate: `${date}T19:00:00${denverOffset(date)}`,
+    image: `${SITE.url}/club-meeting.png`,
     eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     eventSchedule: {
@@ -124,6 +131,14 @@ export function monthlyMeetingSchema(now = new Date()) {
     },
     location: [placeSchema(PLACES.meeting), { "@type": "VirtualLocation", url: LINKS.ONLINE_MEETING_URL }],
     isAccessibleForFree: true,
+    offers: {
+      "@type": "Offer",
+      price: 0,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `${SITE.url}/meetings-nets`,
+    },
+    performer: clubParticipant,
     organizer: organizationRef,
     url: `${SITE.url}/meetings-nets`,
   };
@@ -139,9 +154,11 @@ export function examSessionSchema(session: ExamSession) {
       "In-person FCC amateur radio license exam session in Helena, Montana, run by Volunteer Examiners. Technician, General, and Amateur Extra exams available. Bring a photo ID and your FCC FRN.",
     startDate: `${session.date}T${session.startTime}:00${offset}`,
     endDate: `${session.date}T${session.endTime}:00${offset}`,
+    image: `${SITE.url}/CCARC_firetower_logo_v2.png`,
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     location: placeSchema(PLACES.testing),
+    performer: clubParticipant,
     organizer: organizationRef,
     offers: {
       "@type": "Offer",
