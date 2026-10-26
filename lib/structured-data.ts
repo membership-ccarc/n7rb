@@ -118,6 +118,7 @@ export function monthlyMeetingSchema(now = new Date()) {
     description:
       "Monthly meeting of the Capital City Amateur Radio Club, held the first non-holiday Monday of each month. Visitors and newcomers are welcome, in person or online.",
     startDate: `${date}T19:00:00${denverOffset(date)}`,
+    endDate: `${date}T20:00:00${denverOffset(date)}`,
     image: `${SITE.url}/club-meeting.png`,
     eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
@@ -127,6 +128,7 @@ export function monthlyMeetingSchema(now = new Date()) {
       byDay: "https://schema.org/Monday",
       byMonthWeek: 1,
       startTime: "19:00:00",
+      endTime: "20:00:00",
       scheduleTimezone: TIME_ZONE,
     },
     location: [placeSchema(PLACES.meeting), { "@type": "VirtualLocation", url: LINKS.ONLINE_MEETING_URL }],

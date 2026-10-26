@@ -78,7 +78,7 @@ export default async function MeetingsNetsPage() {
       <AtAGlance
         className="mx-auto mt-10 max-w-4xl"
         items={[
-          { label: "Club meeting", value: "First non-holiday Monday of each month, 7:00 PM" },
+          { label: "Club meeting", value: "First non-holiday Monday of each month, 7:00–8:00 PM (Helena local time)" },
           { label: "Where", value: `${SITE.meetingAddress}, or online via Google Meet` },
           { label: "Repeater", value: `Belmont ${SITE.repeater}, ${SITE.repeaterTone} tone` },
           { label: "Weekly nets", value: nets.map((net) => `${net.name.replace(" Net", "")} ${net.time}`).join(" · ") },

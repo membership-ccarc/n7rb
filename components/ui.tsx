@@ -101,7 +101,7 @@ export function MeetingDetails() {
     <dl className="grid gap-4 sm:grid-cols-2">
       <div>
         <dt className="font-bold text-mountain-900">When</dt>
-        <dd className="mt-1 text-stonewarm-700">First non-holiday Monday of each month at 7:00 PM</dd>
+        <dd className="mt-1 text-stonewarm-700">First non-holiday Monday of each month at 7:00 PM, typically ending by 8:00 PM (Helena local time)</dd>
       </div>
       <div>
         <dt className="font-bold text-mountain-900">Where</dt>
