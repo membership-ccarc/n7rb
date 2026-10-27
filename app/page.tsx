@@ -251,7 +251,6 @@ export default function Home() {
                 <InfoCard title="November 7: Nerds on a Hike">
                   <p className="font-bold text-mountain-900">Saturday, November 7, 2026 · Scratchgravel Hills</p>
                   <p className="mt-3">Join Trail Master Brett (N7SKI) for a short, easy hike and a portable Parks On The Air radio activation. No license or experience needed!</p>
-                  <p className="mt-3">Bring warm layers, water, and sturdy shoes. Check the news page by 7 AM on hike day for the weather go/no-go. Backup date: November 14.</p>
                   <div className="mt-5 flex flex-wrap gap-3">
                     <ButtonLink href="/news" variant="light">Hike Details</ButtonLink>
                     <ButtonLink href="https://www.facebook.com/share/19jrVAs9Nw/" variant="light" openInNewTab>Facebook Event</ButtonLink>
