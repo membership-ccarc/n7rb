@@ -229,22 +229,32 @@ export default function Home() {
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Next Big Event</p>
+          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Join Us This November</p>
           <div className="mt-3 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
             <div>
               <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">Upcoming Club Events</h2>
               <p className="mt-4 text-lg leading-8 text-stonewarm-700">
-                Join CCARC members for regional amateur radio gatherings and local race support opportunities.
+                Meet fellow operators at our next club meeting, then head outdoors for a portable radio adventure.
               </p>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
-              <div className="md:col-span-2">
-                <InfoCard title="October Volunteer Opportunities">
-                  <ul className="list-disc space-y-3 pl-6">
-                    <li><span className="font-bold text-mountain-900">October 18:</span> Support the Just for the Helena of It race from checkpoints along the course.</li>
-                  </ul>
+              <div>
+                <InfoCard title="November 2: Club Meeting">
+                  <p className="font-bold text-mountain-900">Monday, November 2, 2026 · 7:00–8:00 PM</p>
+                  <p className="mt-3">Join us at the {SITE.meetingAddress}, or online via Google Meet. All times are local to Helena.</p>
                   <div className="mt-5">
-                    <ButtonLink href="/news" variant="light">Volunteer Details</ButtonLink>
+                    <ButtonLink href="/meetings-nets" variant="light">Meeting Details</ButtonLink>
+                  </div>
+                </InfoCard>
+              </div>
+              <div>
+                <InfoCard title="November 7: Nerds on a Hike">
+                  <p className="font-bold text-mountain-900">Saturday, November 7, 2026 · Scratchgravel Hills</p>
+                  <p className="mt-3">Join Trail Master Brett (N7SKI) for a short, easy hike and a portable Parks On The Air radio activation. No license or experience needed!</p>
+                  <p className="mt-3">Bring warm layers, water, and sturdy shoes. Check the news page by 7 AM on hike day for the weather go/no-go. Backup date: November 14.</p>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <ButtonLink href="/news" variant="light">Hike Details</ButtonLink>
+                    <ButtonLink href="https://www.facebook.com/share/19jrVAs9Nw/" variant="light" openInNewTab>Facebook Event</ButtonLink>
                   </div>
                 </InfoCard>
               </div>
