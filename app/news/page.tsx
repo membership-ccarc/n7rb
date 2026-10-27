@@ -24,6 +24,40 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="October 27, 2026" title="Introducing Nerds on a Hike: Join Us November 7">
+            <p>Ever wondered how people can talk across the country with a radio that fits in a backpack? Come find out at CCARC&apos;s first Nerds on a Hike on Saturday, November 7, 2026!</p>
+            <p className="mt-4">Trail Master Brett (N7SKI) will lead a short, easy walk and set up a portable radio station in the Scratchgravel Hills. We&apos;ll make contacts from a public park as part of Parks On The Air (POTA), a worldwide program, and you&apos;re welcome to step up to the mic and make one yourself. No license or experience needed.</p>
+            <p className="mt-4">New hams: this is your chance to get on the air with experienced operators beside you.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Bring:</strong> Warm layers, water, sturdy shoes, and your sense of adventure.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Weather:</strong> We&apos;ll post a go/no-go update here by 7 AM on the day of the hike. If we cancel, we&apos;ll move to Saturday, November 14.</p>
+            <h4 className="mt-5 text-lg font-bold text-mountain-900">What to Expect</h4>
+            <ul className="mt-3 list-disc space-y-2 pl-6">
+              <li>A friendly group hike to our operating location.</li>
+              <li>A portable ham radio station you can see in action.</li>
+              <li>Opportunities for newcomers to get on the air with help from licensed operators.</li>
+              <li>Experienced hams sharing tips about portable operating.</li>
+              <li>A chance to help complete a POTA activation.</li>
+              <li>Good conversation, fresh air, and plenty of nerdiness.</li>
+            </ul>
+            <p className="mt-4">Nerds on a Hike is a new club member activity happening the first Saturday of every month. Come join the adventure!</p>
+          </NewsItem>
+          <NewsItem date="October 25, 2026" title="Congratulations to Our Technician License Class Graduates">
+            <p>Please join CCARC in congratulating the 10 successful candidates from our recent Technician License Class and welcoming them into this great hobby!</p>
+            <ul className="mt-4 list-disc space-y-2 pl-6">
+              <li>KM7IFH — Technician — Clayton</li>
+              <li>KM7IFI — Technician — John</li>
+              <li>KM7IFJ — Technician — Josh</li>
+              <li>KM7IFK — Technician — Kurt</li>
+              <li>KM7IFL — Technician — Dennis</li>
+              <li>KM7IFR — Technician — Jacob</li>
+              <li>KM7IFS — General — Neil</li>
+              <li>KM7IFT — General — Charlie</li>
+              <li>KM7IFU — General — Kendall</li>
+              <li>Callsign pending — Technician — Shawn</li>
+            </ul>
+            <p className="mt-4">A special thank-you goes to our guest mentors who helped with class presentations and the Volunteer Examiners who supported our special test session: N7HNT, AI7BM, N7MSI, WA1TYB, N7SHM, AE7AP, AA7VG (VE), and KS7R (VEC).</p>
+            <p className="mt-4">We hope to host another class in the first quarter of 2027. Thank you to everyone who helped make this class a success!</p>
+          </NewsItem>
           <NewsItem date="October 5, 2026" title="Join the Great Montana ShakeOut Net on October 15">
             <p>International ShakeOut Day is Thursday, October 15 (10/15 at 10:15 a.m. local time), when millions of people worldwide will practice earthquake safety with drills at work, school, or home. At 10:15 a.m., you can join people across Montana in practicing earthquake safety.</p>
             <p className="mt-4">Local hams can take part in a directed net exercise shortly after 10:15 a.m. on the Belmont repeater: <strong className="font-bold text-mountain-900">147.22 MHz (+), 100 Hz tone</strong>. CCARC has registered as a group, so you do not need to register individually to participate.</p>

@@ -15,7 +15,7 @@ const routes = [
   { path: "/join-contact", updated: "2026-10-12" },
   { path: "/join-contact/membership-application", updated: "2026-10-08" },
   { path: "/meetings-nets", updated: "2026-10-13" },
-  { path: "/news", updated: "2026-10-05" },
+  { path: "/news", updated: "2026-10-27" },
   { path: "/newsletter", updated: "2026-08-06" },
   { path: "/privacy", updated: "2026-08-12" },
   { path: "/testing", updated: "2026-10-13" },
