@@ -10,7 +10,7 @@ const routes = [
   { path: "/ares", updated: "2026-09-28" },
   { path: "/ares/ares-training", updated: "2026-07-21" },
   { path: "/ares/field-operations-guides", updated: "2026-07-21" },
-  { path: "/classes", updated: "2026-10-13" },
+  { path: "/classes", updated: "2026-10-27" },
   { path: "/get-licensed", updated: "2026-10-13" },
   { path: "/join-contact", updated: "2026-10-12" },
   { path: "/join-contact/membership-application", updated: "2026-10-08" },

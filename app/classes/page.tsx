@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Classes",
-  description: "Free Technician License Class in Helena, Montana. Pre-enrollment is open for the Q1 2027 Technician class, and CCARC is gauging interest in a General License Class. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
+  description: "Free Technician License Class in Helena, Montana. Pre-enrollment is open for the Q1 2027 Technician class. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
   path: "/classes",
 });
 
@@ -78,19 +78,6 @@ export default function ClassesPage() {
       />
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
-        <div className="px-6 py-8 sm:px-10 sm:py-10">
-          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Gauging Interest</p>
-          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC General License Class</h2>
-          <p className="mt-5 text-lg leading-8 text-stonewarm-50">
-            Already hold a Technician license? We&apos;re considering offering a General License Class and want to hear from you. If now is the right time for you to upgrade and open up HF and long-distance operating, let us know you&apos;re interested.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/classes?interest=General#class-signup-form" variant="secondary">I&apos;m Interested in General Class</ButtonLink>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-8 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
         <div className="px-6 py-8 sm:px-10 sm:py-10">
           <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Pre-Enrollment Open</p>
           <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Q1 2027</h2>
