@@ -24,6 +24,9 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="October 31, 2026" title="October Club Meeting Minutes Available">
+            The minutes from the October 5, 2026 CCARC club meeting are now available. <a className={linkClasses} href="/docs/CCARC_October_2026_Minutes.pdf" download>Download the October meeting minutes (PDF) →</a>
+          </NewsItem>
           <NewsItem date="October 27, 2026" title="Introducing Nerds on a Hike: Join Us November 7">
             <p>Ever wondered how people can talk across the country with a radio that fits in a backpack? Come find out at CCARC&apos;s first Nerds on a Hike on Saturday, November 7, 2026!</p>
             <p className="mt-4">Trail Master Brett (N7SKI) will lead a short, easy walk and set up a portable radio station in the Scratchgravel Hills. We&apos;ll make contacts from a public park as part of Parks On The Air (POTA), a worldwide program, and you&apos;re welcome to step up to the mic and make one yourself. No license or experience needed.</p>
