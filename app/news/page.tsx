@@ -24,6 +24,20 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="October 31, 2026" title="November CCARC Newsletter — 10 new hams, a moonbounce antenna, and a hike">
+            <p>The November newsletter is out, and it&apos;s a good one.</p>
+            <p className="mt-4">Our Technician class wrapped up with 10 of 11 students passing on October 21, and three of them walked out with their General as well. Come see who they are so you can welcome them on the air.</p>
+            <p className="mt-4">Also in this issue:</p>
+            <ul className="mt-4 list-disc space-y-2 pl-6">
+              <li><strong>Nerds On a Hike</strong> kicks off November 7 at Scratchgravel Hills with a POTA activation. New hams, bring your mic courage.</li>
+              <li><strong>Get Yourself Grounded:</strong> Bill N7MSI walks through his single-point shack ground, copper strap and all.</li>
+              <li><strong>Thunder on the Snake River:</strong> Rob KI4NCT on running safety boat comms where the cell signal gives up.</li>
+              <li><strong>EME Antenna Build, Part Deux:</strong> Tom KE7VUX machines a 24-foot, 12-element Yagi to the half-millimeter.</li>
+              <li><strong>Fire Prevention Week:</strong> Stacy KK7CJV led 7 land to the top spot with 4,747 QSOs.</li>
+            </ul>
+            <p className="mt-4">Plus a Hallicrafters SX-110 looking for a new home, and a Badger Pass trip that&apos;s bringing solar backup to the Belmont repeater.</p>
+            <p className="mt-4"><a className={linkClasses} href="/newsletters/newsletter-2026-11.pdf" target="_blank" rel="noopener noreferrer">Read the November newsletter →</a></p>
+          </NewsItem>
           <NewsItem date="October 31, 2026" title="October Club Meeting Minutes Available">
             The minutes from the October 5, 2026 CCARC club meeting are now available. <a className={linkClasses} href="/docs/CCARC_October_2026_Minutes.pdf" download>Download the October meeting minutes (PDF) →</a>
           </NewsItem>

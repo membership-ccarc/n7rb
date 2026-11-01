@@ -203,6 +203,7 @@ export const whatWeDo: WhatWeDoItem[] = [
 ];
 
 export const newsletters = [
+  { title: "November 2026", date: "2026-11-01", description: "Meet 10 new hams, preview Nerds On a Hike, and read about shack grounding, safety boat communications, a moonbounce antenna build, and Fire Prevention Week.", href: "/newsletters/newsletter-2026-11.pdf", year: "2026", month: "November" },
   { title: "October 2026", date: "2026-10-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-10.pdf", year: "2026", month: "October" },
   { title: "September 2026", date: "2026-09-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-09.pdf", year: "2026", month: "September" },
   { title: "August 2026", date: "2026-08-01", description: "Club news, upcoming events, operating updates, and contributions from CCARC members.", href: "/newsletters/newsletter-2026-08.pdf", year: "2026", month: "August" },

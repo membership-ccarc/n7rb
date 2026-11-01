@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site-data";
 // `updated` tells search and AI crawlers when a page last changed meaningfully.
 // Bump it (YYYY-MM-DD) when you change a page's content.
 const routes = [
-  { path: "", updated: "2026-10-27" },
+  { path: "", updated: "2026-10-31" },
   { path: "/about", updated: "2026-08-13" },
   { path: "/about/n7rb-bio", updated: "2026-08-19" },
   { path: "/ares", updated: "2026-09-28" },
@@ -16,7 +16,7 @@ const routes = [
   { path: "/join-contact/membership-application", updated: "2026-10-08" },
   { path: "/meetings-nets", updated: "2026-10-13" },
   { path: "/news", updated: "2026-10-31" },
-  { path: "/newsletter", updated: "2026-08-06" },
+  { path: "/newsletter", updated: "2026-10-31" },
   { path: "/privacy", updated: "2026-08-12" },
   { path: "/testing", updated: "2026-10-13" },
 ] as const;
