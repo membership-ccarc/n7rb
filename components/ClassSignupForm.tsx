@@ -187,6 +187,7 @@ export function ClassSignupForm() {
           <input
             id="firstName"
             name="firstName"
+            maxLength={60}
             type="text"
             value={form.firstName}
             onChange={(event) => updateTextField("firstName", event.target.value, setForm, setError)}
@@ -200,6 +201,7 @@ export function ClassSignupForm() {
           <input
             id="lastName"
             name="lastName"
+            maxLength={60}
             type="text"
             value={form.lastName}
             onChange={(event) => updateTextField("lastName", event.target.value, setForm, setError)}
@@ -213,6 +215,7 @@ export function ClassSignupForm() {
           <input
             id="email"
             name="email"
+            maxLength={254}
             type="email"
             value={form.email}
             onChange={(event) => updateTextField("email", event.target.value, setForm, setError)}
@@ -226,6 +229,7 @@ export function ClassSignupForm() {
           <input
             id="phone"
             name="phone"
+            maxLength={30}
             type="tel"
             value={form.phone}
             onChange={(event) => updateTextField("phone", event.target.value, setForm, setError)}
@@ -319,6 +323,7 @@ export function ClassSignupForm() {
           <textarea
             id="notes"
             name="notes"
+            maxLength={2000}
             value={form.notes}
             onChange={(event) => updateTextField("notes", event.target.value, setForm, setError)}
             className={`${inputClass} min-h-28`}

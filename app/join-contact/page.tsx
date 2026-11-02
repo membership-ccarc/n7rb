@@ -112,6 +112,7 @@ export default function JoinContactPage() {
                 <input
                   className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
                   name="name"
+                  maxLength={60}
                   type="text"
                   autoComplete="name"
                   required
@@ -123,6 +124,7 @@ export default function JoinContactPage() {
                 <input
                   className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
                   name="email"
+                  maxLength={254}
                   type="email"
                   autoComplete="email"
                   required
@@ -158,6 +160,7 @@ export default function JoinContactPage() {
                 <textarea
                   className="min-h-32 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
                   name="message"
+                  maxLength={2000}
                   required
                   disabled={formState === "submitting"}
                 />

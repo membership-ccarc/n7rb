@@ -2,6 +2,28 @@
 
 Date: November 2, 2026. Repository commit reviewed: `29b1527`.
 
+## Remediation progress
+
+Subsequent code changes harden both public form APIs with a 16 KB streamed body
+limit, JSON-only requests, a five-second body deadline, stricter field types and
+length limits, bounded/deduplicated class interests, validated Vercel client IPs,
+and rate limiting before parsing. Make delivery now requires an HTTPS Make host
+and API key, rejects redirects, times out after eight seconds, and avoids logging
+secret URLs, payloads, IPs, or exception objects. Browser input limits match the
+server limits. `npm run test:security` covers these controls using mocked services.
+
+Shared rate limiting has been implemented via Upstash Redis but still requires
+`UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in Vercel, followed by a
+deployment and preview verification. With both absent, a bounded per-instance
+fallback preserves existing availability; it does not resolve cross-instance
+limits. A configured Redis failure returns 503 rather than bypassing the limit.
+See README for setup and failure behavior.
+
+The CSP is now in report-only mode. Make/Sheets/Slack configuration, account and
+deployment settings, dependency remediation, and CSP enforcement still need the
+follow-up work described below. Findings below describe the original audited
+state; these code changes have not yet been verified in production.
+
 ## Assessment and scope
 
 The highest-priority changes are stronger protection for the two public form APIs and stricter request validation. No critical application vulnerability was confirmed in this review. This is a source/configuration review with dependency advisory queries and passive HTTP header checks, not a penetration test or a finding that the site is free of compromise.

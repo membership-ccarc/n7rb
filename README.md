@@ -62,14 +62,64 @@ The contact form Make.com scenario appends a row to the "Contact Us" tab in the 
 
 ## Form Spam Safeguards
 
-Both `app/api/class-signup/route.ts` and `app/api/contact/route.ts` share the same layered anti-spam approach. Submissions that trip any layer get a silent `{ ok: true }` response (not an error) so bots can't tell what was rejected, and the reason is logged server-side via `console.warn`.
+Both public form routes use `lib/form-security.ts` for request limits, client IP
+handling, rate limiting, and webhook delivery. Existing honeypot, timing, and spam
+heuristics remain; rejected spam still gets a silent `{ ok: true }` response.
+Rate-limited requests instead return 429 with `Retry-After` and a visible retry
+message. Failed security infrastructure returns 503 rather than silently dropping
+legitimate submissions.
 
-1. **Honeypot field** — a `website` input rendered `sr-only`/`aria-hidden` and excluded from tab order. Real users never see or fill it; bots that auto-fill every field do. Any non-empty value is treated as spam.
-2. **Timing gate** — the form captures a `renderedAt` timestamp on mount and submits it alongside the payload. If the server receives the submission less than `MIN_SUBMIT_SECONDS` (4s) after render, it's rejected as too fast for a human to have filled out the form.
-3. **Rate limiting** — an in-memory, per-IP counter (`RATE_LIMIT_MAX` = 3 submissions per `RATE_LIMIT_WINDOW_MS` = 1 hour). This is a best-effort fallback only: on serverless platforms each instance has its own map, so it resets on cold starts and isn't reliable across instances.
-4. **Pattern/gibberish detection** — regex heuristics applied to names, email local-parts, and free-text message/notes fields: long no-space mixed-case tokens, low vowel ratios, long consonant runs, and dotted-noise email addresses (the kind of random strings bot-generated form fills tend to produce). Free-text fields are also checked for excess links (`MAX_LINKS` = 2) and script/SQL injection patterns.
+- Only JSON bodies are accepted; compressed requests are rejected. The stream is
+  capped at 16 KB regardless of Content-Length, with a five-second read deadline.
+- Server validation caps names at 60 characters, email at 254, phone at 30,
+  callsign at 20, and message/notes at 2,000. Class interests are allowlisted,
+  bounded, and deduplicated. Browser field limits match the server limits.
+- On Vercel, client identity comes only from `x-vercel-forwarded-for`, validated as
+  an IP address. Cloudflare and arbitrary forwarded headers are ignored. Outside
+  Vercel, all callers share a local identity; another hosting platform requires an
+  explicit trusted-proxy implementation.
+- Each form allows three requests per IP per hour, before reading request bodies.
+  Without Redis configuration this remains a per-instance fallback, with expired
+  entries pruned and memory capped at 5,000 active buckets. This fallback alone
+  does **not** solve distributed/serverless abuse.
+- Make calls require an HTTPS `hook.make.com` or `hook.<region>.make.com` URL and a
+  nonempty API key. Requests have an eight-second timeout, reject redirects, and
+  do not retry automatically. Error logs omit payloads, IPs, user agents, secret
+  URLs, API keys, and full exception objects.
 
-When adding a new public-facing form, port these same checks from `app/api/contact/route.ts` rather than inventing a new approach.
+### Enable shared rate limiting in Vercel
+
+1. Create or connect an Upstash Redis database, and obtain its REST URL and write
+   token. Add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in Vercel for
+   the environments you want protected. Keep both server-only; never use a
+   `NEXT_PUBLIC_` prefix. Use separate preview and production credentials where
+   practical. Existing Make variables are still required.
+2. Redeploy. The limiter uses an atomic Redis Lua increment/expiry operation,
+   shared across instances, with per-form and per-environment keys and a one-hour
+   TTL. Keys contain a SHA-256 digest of the IP, not the raw IP; these digests
+   should still be treated as personal data. Redis contains no submitted fields.
+3. Verify using a separate preview destination: the first three requests are
+   allowed through validation, the fourth returns 429. Changing a supplied
+   `cf-connecting-ip` must not reset the counter. Verify that legitimate requests
+   reach your test Make scenario. Tests consume quota even when payloads are bad.
+4. If either Redis setting is present but invalid, or Redis is unreachable, the
+   forms return 503. The code does not fall back to a weaker limiter during an
+   outage. If both settings are absent, Vercel logs a warning and uses the local
+   fallback to preserve existing form availability.
+
+This integration uses the [Upstash REST API](https://upstash.com/docs/redis/features/restapi)
+without adding an SDK. It only becomes shared after credentials are configured;
+no database or account settings are provisioned by this code change. Platform
+firewall/bot limits and spending alerts are useful additional protection against
+request floods that reach the function before the application limiter runs.
+
+Run `npm run test:security` for isolated tests with mocked network calls. They do
+not send mail, Slack messages, form submissions, or Redis commands to real services.
+Run `npm run lint` and `npm run build` before deploying.
+
+Downstream Make verification is still required: write submitted strings to Google
+Sheets as RAW/literal text, escape Slack formatting/mentions, and verify webhook
+API-key enforcement. API validation does not replace output-specific handling.
 
 ## CSP Testing
 

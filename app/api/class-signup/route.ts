@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { enforceRateLimit, readFormJson, formErrorResponse, submitWebhook, isRecord, isValidEmail, hasStringFields } from "../../../lib/form-security";
 
 const licenseInterests = ["Technician", "General", "Not sure yet"] as const;
 const experienceLevels = ["Completely new", "Studying now", "Licensed but inactive", "Currently licensed"] as const;
@@ -16,13 +17,6 @@ const mainInterests = [
 const GENERIC_SUCCESS = { ok: true };
 const MIN_SUBMIT_SECONDS = 4;
 const MAX_LINKS = 2;
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
-const RATE_LIMIT_MAX = 3;
-
-// In-memory rate limiting is a lightweight fallback. On serverless platforms,
-// each instance has its own map and entries disappear when the instance resets.
-const rateLimitBuckets = new Map<string, { count: number; resetAt: number }>();
-
 type ClassSignupPayload = {
   firstName: string;
   lastName: string;
@@ -35,47 +29,12 @@ type ClassSignupPayload = {
   notes?: string;
 };
 
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
-}
-
 function asTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
 function isAllowedValue<T extends readonly string[]>(value: string, allowedValues: T) {
   return allowedValues.includes(value as T[number]);
-}
-
-function getWebhookUrl(value: string | undefined) {
-  if (!value) {
-    return null;
-  }
-
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" || url.protocol === "http:" ? url.toString() : null;
-  } catch {
-    return null;
-  }
-}
-
-function getClientIp(request: NextRequest) {
-  const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return request.headers.get("cf-connecting-ip") ?? request.headers.get("x-real-ip") ?? forwardedFor ?? "unknown";
-}
-
-function isRateLimited(ip: string) {
-  const now = Date.now();
-  const bucket = rateLimitBuckets.get(ip);
-
-  if (!bucket || bucket.resetAt <= now) {
-    rateLimitBuckets.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-
-  bucket.count += 1;
-  return bucket.count > RATE_LIMIT_MAX;
 }
 
 function countLinks(value: string) {
@@ -128,11 +87,9 @@ function hasSuspiciousShortMessage(message: string) {
   return mixedCaseNonsense && wordLikeVowelRatio < 0.45;
 }
 
-function logSpam(reason: string, request: NextRequest) {
+function logSpam(reason: string) {
   console.warn("Class signup spam rejected.", {
     reason,
-    ip: getClientIp(request),
-    userAgent: request.headers.get("user-agent") ?? "unknown",
   });
 }
 
@@ -141,11 +98,19 @@ function validatePayload(body: unknown): { payload?: ClassSignupPayload; spamRea
     return { error: "Invalid signup request." };
   }
 
+  if (!hasStringFields(body, ["firstName", "lastName", "email", "licenseInterest", "experienceLevel", "preferredContactMethod", "renderedAt"], ["phone", "notes", "website"])) {
+    return { error: "Please check your signup and try again." };
+  }
+  if (!Array.isArray(body.mainInterests) || body.mainInterests.length > mainInterests.length ||
+      body.mainInterests.some((value) => typeof value !== "string")) {
+    return { error: "Choose valid main interests." };
+  }
+
   const website = asTrimmedString(body.website);
   const renderedAt = Number(asTrimmedString(body.renderedAt));
 
   if (website) return { spamReason: "honeypot" };
-  if (!Number.isFinite(renderedAt)) return { spamReason: "missing timestamp" };
+  if (!body.renderedAt || !Number.isFinite(renderedAt) || renderedAt <= 0) return { spamReason: "missing timestamp" };
   if (Date.now() - renderedAt < MIN_SUBMIT_SECONDS * 1000) return { spamReason: "submitted too quickly" };
 
   const payload: ClassSignupPayload = {
@@ -155,7 +120,7 @@ function validatePayload(body: unknown): { payload?: ClassSignupPayload; spamRea
     phone: asTrimmedString(body.phone),
     licenseInterest: asTrimmedString(body.licenseInterest),
     experienceLevel: asTrimmedString(body.experienceLevel),
-    mainInterests: Array.isArray(body.mainInterests) ? body.mainInterests.map(asTrimmedString).filter(Boolean) : [],
+    mainInterests: [...new Set(body.mainInterests.map(asTrimmedString))],
     preferredContactMethod: asTrimmedString(body.preferredContactMethod),
     notes: asTrimmedString(body.notes),
   };
@@ -164,7 +129,12 @@ function validatePayload(body: unknown): { payload?: ClassSignupPayload; spamRea
     return { error: "First name, last name, and email are required." };
   }
 
-  if (!payload.email.includes("@")) {
+  if (payload.firstName.length > 60 || payload.lastName.length > 60 ||
+      (payload.phone?.length ?? 0) > 30 || (payload.notes?.length ?? 0) > 2000) {
+    return { error: "Please shorten your name, phone number, or notes and try again." };
+  }
+
+  if (!isValidEmail(payload.email)) {
     return { error: "A valid email address is required." };
   }
 
@@ -206,35 +176,22 @@ function validatePayload(body: unknown): { payload?: ClassSignupPayload; spamRea
 
 export async function POST(request: NextRequest) {
   let body: unknown;
-
   try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
-  }
-
-  const clientIp = getClientIp(request);
-  if (isRateLimited(clientIp)) {
-    logSpam("rate limit", request);
-    return NextResponse.json(GENERIC_SUCCESS);
+    await enforceRateLimit(request, "class-signup");
+    body = await readFormJson(request);
+  } catch (error) {
+    return formErrorResponse(error);
   }
 
   const { payload, spamReason, error } = validatePayload(body);
 
   if (spamReason) {
-    logSpam(spamReason, request);
+    logSpam(spamReason);
     return NextResponse.json(GENERIC_SUCCESS);
   }
 
   if (!payload) {
     return NextResponse.json({ error }, { status: 400 });
-  }
-
-  const webhookUrl = getWebhookUrl(process.env.MAKE_CLASS_SIGNUP_WEBHOOK_URL);
-
-  if (!webhookUrl) {
-    console.error("MAKE_CLASS_SIGNUP_WEBHOOK_URL is missing or is not a valid URL.");
-    return NextResponse.json({ error: "Class signup automation is not configured correctly." }, { status: 500 });
   }
 
   const webhookPayload = {
@@ -243,26 +200,10 @@ export async function POST(request: NextRequest) {
     submittedAt: new Date().toISOString(),
   };
 
-  const apiKey = process.env.MAKE_CLASS_SIGNUP_API_KEY;
-  const webhookHeaders: Record<string, string> = { "Content-Type": "application/json" };
-  if (apiKey) {
-    webhookHeaders["x-make-apikey"] = apiKey;
-  }
-
   try {
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: webhookHeaders,
-      body: JSON.stringify(webhookPayload),
-    });
-
-    if (!response.ok) {
-      console.error("Make.com webhook returned an error.", response.status, response.statusText);
-      return NextResponse.json({ error: "Unable to submit class signup." }, { status: 502 });
-    }
-  } catch (submissionError) {
-    console.error("Class signup webhook request failed.", submissionError);
-    return NextResponse.json({ error: "Unable to submit class signup." }, { status: 502 });
+    await submitWebhook("class-signup", webhookPayload);
+  } catch (error) {
+    return formErrorResponse(error);
   }
 
   return NextResponse.json({ ok: true });
