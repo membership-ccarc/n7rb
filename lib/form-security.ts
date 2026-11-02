@@ -57,18 +57,22 @@ function localRateLimited(key: string) {
 
 export async function enforceRateLimit(request: Request, form: "contact" | "class-signup") {
   const ip = getClientIp(request);
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
   // Store a digest rather than a raw client IP. Separate preview and production.
   const key = `forms:${process.env.VERCEL_ENV ?? "local"}:${form}:${createHash("sha256").update(ip).digest("hex")}`;
   let limited: boolean;
   if (url || token) {
+    let reason = !url ? "missing_url" : !token ? "missing_token" : "invalid_url";
+    let status: number | undefined;
     try {
+      if (!url || !token) throw new Error("Incomplete limiter configuration");
       const endpoint = new URL(url ?? "");
       if (!token || endpoint.protocol !== "https:" || !endpoint.hostname.endsWith(".upstash.io") ||
           endpoint.username || endpoint.password || endpoint.port || endpoint.pathname !== "/" || endpoint.search || endpoint.hash) {
         throw new Error("Invalid limiter configuration");
       }
+      reason = "network_error";
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
@@ -77,15 +81,27 @@ export async function enforceRateLimit(request: Request, form: "contact" | "clas
         redirect: "error",
         cache: "no-store",
       });
+      status = response.status;
+      reason = status === 401 ? "authentication_failed" : status === 403 ? "permission_denied" :
+        status === 429 ? "provider_rate_limited" : "provider_http_error";
       if (!response.ok) throw new Error("Limiter unavailable");
+      reason = "invalid_response";
       const data: unknown = await response.json();
+      if (isRecord(data) && typeof data.error === "string") {
+        reason = /NOPERM|read.?only|permission/i.test(data.error) ? "permission_denied" :
+          /NOAUTH|WRONGPASS|unauthori|token/i.test(data.error) ? "authentication_failed" :
+          /quota|limit exceeded|max requests/i.test(data.error) ? "provider_quota_exceeded" : "redis_command_error";
+        throw new Error("Redis rejected limiter command");
+      }
       if (!isRecord(data) || data.error || !Number.isSafeInteger(data.result) || (data.result as number) < 1) {
         throw new Error("Invalid limiter response");
       }
       limited = (data.result as number) > MAX_SUBMISSIONS;
-    } catch {
+    } catch (error) {
+      if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) reason = "timeout";
+      // Only log fixed categories and HTTP status, never provider messages or credentials.
       // Never silently weaken a configured shared limit during an outage.
-      console.error("Form rate limiter unavailable.", { form });
+      console.error("Form rate limiter unavailable.", { form, reason, ...(status === undefined ? {} : { status }) });
       throw new FormRequestError(503, "Unable to accept submissions right now. Please try again later.");
     }
   } else {

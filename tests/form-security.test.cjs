@@ -248,3 +248,36 @@ test('accept exactly the byte limit and time out a stalled request stream', asyn
   await assert.rejects(security.readFormJson(req), (e) => e.status === 408);
   assert.equal(cancelled, true);
 });
+
+test('limiter diagnostics identify configuration and provider failures without leaking secrets', async () => {
+  const cases = [
+    ['missing_url', () => { delete process.env.UPSTASH_REDIS_REST_URL; }],
+    ['missing_token', () => { delete process.env.UPSTASH_REDIS_REST_TOKEN; }],
+    ['invalid_url', () => { process.env.UPSTASH_REDIS_REST_URL = 'redis://secret:password@private.example'; }],
+    ['authentication_failed', () => { global.fetch = async () => new Response('redis-secret', { status: 401 }); }],
+    ['permission_denied', () => { global.fetch = async () => Response.json({ error: 'NOPERM redis-secret' }); }],
+    ['redis_command_error', () => { global.fetch = async () => Response.json({ error: 'ERR redis-secret' }); }],
+    ['provider_quota_exceeded', () => { global.fetch = async () => Response.json({ error: 'max requests limit exceeded redis-secret' }); }],
+    ['invalid_response', () => { global.fetch = async () => Response.json({ result: 'oops' }); }],
+    ['network_error', () => { global.fetch = async () => { throw new Error('redis-secret'); }; }],
+    ['timeout', () => { global.fetch = async () => { throw new DOMException('redis-secret', 'TimeoutError'); }; }],
+  ];
+  for (const [expected, configure] of cases) {
+    configureRedis();
+    configure();
+    await assert.rejects(security.enforceRateLimit(request({}), 'contact'), (e) => e.status === 503);
+    assert.equal(logs.at(-1)[1].reason, expected);
+  }
+  assert.doesNotMatch(JSON.stringify(logs), /redis-secret|password|private\.example/);
+});
+
+test('trim incidental surrounding whitespace in Redis credentials', async () => {
+  process.env.UPSTASH_REDIS_REST_URL = ' https://test.upstash.io \n';
+  process.env.UPSTASH_REDIS_REST_TOKEN = ' redis-secret \n';
+  global.fetch = async (url, options) => {
+    assert.equal(String(url), 'https://test.upstash.io/');
+    assert.equal(options.headers.Authorization, 'Bearer redis-secret');
+    return Response.json({ result: 1 });
+  };
+  await security.enforceRateLimit(request({}), 'contact');
+});
