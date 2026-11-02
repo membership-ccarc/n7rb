@@ -239,3 +239,19 @@ test('retry time decreases, blocked requests do not extend the window, and forms
     await security.enforceRateLimit(req, 'contact');
   } finally { Date.now = oldNow; }
 });
+
+
+test('contact validation explains which field to correct and accepts a normal test message', async () => {
+  for (const [overrides, expected] of [
+    [{ message: 'test' }, 'Please enter a message between 10 and 2,000 characters.'],
+    [{ name: 'A' }, 'Please enter a name between 2 and 60 characters.'],
+    [{ email: 'invalid' }, 'Please enter a valid email address (up to 254 characters).'],
+  ]) {
+    const response = await contact.POST(request({ ...contactBody(), ...overrides }));
+    assert.equal(response.status, 400);
+    assert.equal((await response.json()).error, expected);
+  }
+  assert.equal(calls.length, 0);
+  assert.equal((await contact.POST(request({ ...contactBody(), message: 'This is a test message.' }))).status, 200);
+  assert.equal(calls.length, 1);
+});

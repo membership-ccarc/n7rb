@@ -15,7 +15,7 @@ type SpamCheckBody = ContactPayload & {
 };
 
 const GENERIC_SUCCESS = { ok: true };
-const GENERIC_VALIDATION_ERROR = "Please check your message and try again.";
+const GENERIC_VALIDATION_ERROR = "Please enter your name, email address, and message as text.";
 const MIN_SUBMIT_SECONDS = 4;
 const MAX_LINKS = 2;
 
@@ -102,10 +102,11 @@ function validatePayload(body: unknown): { payload?: ContactPayload; spamReason?
   if (!candidate.renderedAt || !Number.isFinite(renderedAt) || renderedAt <= 0) return { spamReason: "missing timestamp" };
   if (Date.now() - renderedAt < MIN_SUBMIT_SECONDS * 1000) return { spamReason: "submitted too quickly" };
 
-  if (candidate.name.length < 2 || candidate.name.length > 60) return { error: GENERIC_VALIDATION_ERROR };
-  if (!isValidEmail(candidate.email)) return { error: GENERIC_VALIDATION_ERROR };
-  if (candidate.callsign.length > 20 || candidate.phone.length > 30) return { error: GENERIC_VALIDATION_ERROR };
-  if (candidate.message.length < 10 || candidate.message.length > 2000) return { error: GENERIC_VALIDATION_ERROR };
+  if (candidate.name.length < 2 || candidate.name.length > 60) return { error: "Please enter a name between 2 and 60 characters." };
+  if (!isValidEmail(candidate.email)) return { error: "Please enter a valid email address (up to 254 characters)." };
+  if (candidate.callsign.length > 20) return { error: "Please keep your callsign to 20 characters or fewer." };
+  if (candidate.phone.length > 30) return { error: "Please keep your phone number to 30 characters or fewer." };
+  if (candidate.message.length < 10 || candidate.message.length > 2000) return { error: "Please enter a message between 10 and 2,000 characters." };
 
   const combinedText = `${candidate.name}\n${candidate.email}\n${candidate.callsign}\n${candidate.phone}\n${candidate.message}`;
   if (hasSuspiciousSingleToken(candidate.name)) return { spamReason: "suspicious name" };

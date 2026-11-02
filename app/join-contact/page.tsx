@@ -14,10 +14,17 @@ export default function JoinContactPage() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (!form.reportValidity()) return;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+    if (name.length < 2 || message.length < 10) {
+      setErrorMessage(name.length < 2 ? "Please enter a name between 2 and 60 characters." : "Please enter a message between 10 and 2,000 characters.");
+      setFormState("error");
+      return;
+    }
     setFormState("submitting");
     setErrorMessage(null);
-
-    const form = e.currentTarget;
     const data = {
       name: (form.elements.namedItem("name") as HTMLInputElement).value,
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
@@ -112,6 +119,7 @@ export default function JoinContactPage() {
                 <input
                   className="min-h-11 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
                   name="name"
+                  minLength={2}
                   maxLength={60}
                   type="text"
                   autoComplete="name"
@@ -160,10 +168,13 @@ export default function JoinContactPage() {
                 <textarea
                   className="min-h-32 rounded-md border border-stonewarm-100 px-3 py-2 font-normal text-mountain-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-pine-700"
                   name="message"
+                  minLength={10}
+                  aria-describedby="contact-message-help"
                   maxLength={2000}
                   required
                   disabled={formState === "submitting"}
                 />
+                <span id="contact-message-help" className="text-sm font-normal text-stonewarm-700">10–2,000 characters.</span>
               </label>
               <button
                 className="min-h-11 rounded-md bg-pine-700 px-5 py-3 text-sm font-bold text-white hover:bg-pine-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700 disabled:opacity-60 disabled:cursor-not-allowed"
