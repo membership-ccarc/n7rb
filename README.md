@@ -71,6 +71,28 @@ Both `app/api/class-signup/route.ts` and `app/api/contact/route.ts` share the sa
 
 When adding a new public-facing form, port these same checks from `app/api/contact/route.ts` rather than inventing a new approach.
 
+## CSP Testing
+
+`next.config.ts` sends `Content-Security-Policy-Report-Only`. This trial policy
+does not block content or change the UI. It allows the current Next.js inline
+scripts/styles and known analytics, Kit, map, and video sources. Additional
+origins requested by third-party embeds should be reviewed before being allowed.
+
+After deploying, open browser DevTools, enable **Preserve log** in the Console,
+and visit the homepage, `/join-contact`, `/classes`, `/testing`,
+`/meetings-nets`, and `/join-contact/membership-application`. Exercise navigation,
+open a YouTube player, and check the map and Kit embeds. Look for CSP messages
+marked report-only and record the page, violated directive, and resource origin.
+Avoid sending real form submissions just to test the policy.
+
+Reports are visible only in the testing browser's console; there is no server
+report collector or automatic monitoring. Browsers may warn that no reporting
+endpoint is configured. Development tooling and browser extensions may also
+produce warnings, so confirm findings against a production build in a clean
+browser profile. Do not switch to the enforcing `Content-Security-Policy`
+header until required resources have been reviewed and tested. The trial permits
+inline scripts for static rendering compatibility and is not a strict XSS policy.
+
 ## Important Files
 
 - `app/page.tsx`: homepage
