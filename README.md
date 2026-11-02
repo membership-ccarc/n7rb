@@ -66,8 +66,7 @@ Both public form routes use `lib/form-security.ts` for request limits, client IP
 handling, rate limiting, and webhook delivery. Existing honeypot, timing, and spam
 heuristics remain; rejected spam still gets a silent `{ ok: true }` response.
 Rate-limited requests instead return 429 with `Retry-After` and a visible retry
-message. Failed security infrastructure returns 503 rather than silently dropping
-legitimate submissions.
+message showing the remaining wait time.
 
 - Only JSON bodies are accepted; compressed requests are rejected. The stream is
   capped at 16 KB regardless of Content-Length, with a five-second read deadline.
@@ -78,43 +77,37 @@ legitimate submissions.
   an IP address. Cloudflare and arbitrary forwarded headers are ignored. Outside
   Vercel, all callers share a local identity; another hosting platform requires an
   explicit trusted-proxy implementation.
-- Each form allows three requests per IP per hour, before reading request bodies.
-  Without Redis configuration this remains a per-instance fallback, with expired
-  entries pruned and memory capped at 5,000 active buckets. This fallback alone
-  does **not** solve distributed/serverless abuse.
+- Each form allows ten attempts per IP per ten minutes, before reading request
+  bodies. Blocked attempts do not extend the window. Limits use bounded local
+  memory, prune expired entries, and cap storage at 5,000 active buckets. There
+  are no Redis credentials or external rate-limiter calls. Counters reset on cold
+  starts and are not shared between Vercel instances, so this is best-effort spam
+  protection rather than a distributed traffic limit.
 - Make calls require an HTTPS `hook.make.com` or `hook.<region>.make.com` URL and a
   nonempty API key. Requests have an eight-second timeout, reject redirects, and
   do not retry automatically. Error logs omit payloads, IPs, user agents, secret
   URLs, API keys, and full exception objects.
 
-### Enable shared rate limiting in Vercel
+### Deployment and rate limiting
 
-1. Create or connect an Upstash Redis database, and obtain its REST URL and write
-   token. Add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in Vercel for
-   the environments you want protected. Keep both server-only; never use a
-   `NEXT_PUBLIC_` prefix. Use separate preview and production credentials where
-   practical. Existing Make variables are still required.
-2. Redeploy. The limiter uses an atomic Redis Lua increment/expiry operation,
-   shared across instances, with per-form and per-environment keys and a one-hour
-   TTL. Keys contain a SHA-256 digest of the IP, not the raw IP; these digests
-   should still be treated as personal data. Redis contains no submitted fields.
-3. Verify using a separate preview destination: the first three requests are
-   allowed through validation, the fourth returns 429. Changing a supplied
-   `cf-connecting-ip` must not reset the counter. Verify that legitimate requests
-   reach your test Make scenario. Tests consume quota even when payloads are bad.
-4. If either Redis setting is present but invalid, or Redis is unreachable, the
-   forms return 503. The code does not fall back to a weaker limiter during an
-   outage. If both settings are absent, Vercel logs a warning and uses the local
-   fallback to preserve existing form availability.
+Deploy the updated code normally; no additional service or environment variables
+are needed. The former `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`
+variables are ignored and can be removed from Vercel after this version is
+deployed. Keep all four Make webhook variables.
 
-This integration uses the [Upstash REST API](https://upstash.com/docs/redis/features/restapi)
-without adding an SDK. It only becomes shared after credentials are configured;
-no database or account settings are provisioned by this code change. Platform
-firewall/bot limits and spending alerts are useful additional protection against
-request floods that reach the function before the application limiter runs.
+Test in preview with a separate Make destination. Ten requests per IP per form
+are allowed through validation; the eleventh returns 429 with `Retry-After`.
+Malformed requests and webhook failures count as attempts, but the wait is at
+most ten minutes. A full local bucket store returns 503 with a one-minute retry.
+No request payloads or raw IPs are stored in the limiter; keys use an IP digest
+(which should still be treated as personal data).
+
+If actual traffic warrants stronger protection, review Vercel firewall/bot
+settings and spending alerts. Local counters cannot stop a distributed flood or
+apply a consistent limit across all function instances.
 
 Run `npm run test:security` for isolated tests with mocked network calls. They do
-not send mail, Slack messages, form submissions, or Redis commands to real services.
+not send mail, Slack messages, or form submissions to real services.
 Run `npm run lint` and `npm run build` before deploying.
 
 Downstream Make verification is still required: write submitted strings to Google

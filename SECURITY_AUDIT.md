@@ -12,12 +12,13 @@ and API key, rejects redirects, times out after eight seconds, and avoids loggin
 secret URLs, payloads, IPs, or exception objects. Browser input limits match the
 server limits. `npm run test:security` covers these controls using mocked services.
 
-Shared rate limiting has been implemented via Upstash Redis but still requires
-`UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in Vercel, followed by a
-deployment and preview verification. With both absent, a bounded per-instance
-fallback preserves existing availability; it does not resolve cross-instance
-limits. A configured Redis failure returns 503 rather than bypassing the limit.
-See README for setup and failure behavior.
+Rate limiting now uses a simpler bounded local counter: ten attempts per IP per
+form per ten minutes, with an accurate remaining retry time. Upstash integration
+has been removed; old Redis environment variables are ignored. No new service or
+credentials are required. This reduces operational complexity but does not solve
+cross-instance/distributed abuse: counters reset on cold starts and differ among
+Vercel instances. Platform firewall/bot settings remain a possible follow-up if
+traffic warrants stronger controls. See README for current behavior.
 
 The CSP is now in report-only mode. Make/Sheets/Slack configuration, account and
 deployment settings, dependency remediation, and CSP enforcement still need the

@@ -133,73 +133,33 @@ test('body byte limit works with missing or dishonest Content-Length and multiby
 test('Vercel identity ignores spoofable Cloudflare headers and rejects missing trusted IP', async () => {
   const headers = { 'x-vercel-forwarded-for': '198.51.100.1', 'cf-connecting-ip': '203.0.113.1' };
   assert.equal(security.getClientIp(request({}, headers)), '198.51.100.1');
-  for (let i = 0; i < 3; i++) assert.equal((await contact.POST(request(contactBody(), { ...headers, 'cf-connecting-ip': `203.0.113.${i}` }))).status, 200);
+  for (let i = 0; i < 10; i++) assert.equal((await contact.POST(request(contactBody(), { ...headers, 'cf-connecting-ip': `203.0.113.${i}` }))).status, 200);
   const denied = await contact.POST(request(contactBody(), headers));
   assert.equal(denied.status, 429);
-  assert.equal(denied.headers.get('retry-after'), '3600');
+  assert.equal(denied.headers.get('retry-after'), '600');
   assert.equal((await contact.POST(request(contactBody(), { 'x-vercel-forwarded-for': '' }))).status, 503);
 });
 
 test('rate limit runs before reading the request body', async () => {
   const headers = { 'x-vercel-forwarded-for': '198.51.100.2' };
-  for (let i = 0; i < 3; i++) await contact.POST(request(contactBody(), headers));
+  for (let i = 0; i < 10; i++) await contact.POST(request(contactBody(), headers));
   const req = request(contactBody(), headers);
   Object.defineProperty(req, 'body', { get() { throw new Error('Body must not be read'); } });
   assert.equal((await contact.POST(req)).status, 429);
 });
 
-test('local fallback expires and bounds memory without evicting active rate limits', async () => {
+test('local limiter expires and bounds memory without evicting active rate limits', async () => {
   const oldNow = Date.now;
   try {
     Date.now = () => 10000000000000;
     for (let i = 0; i < 5100; i++) {
       const req = request({}, { 'x-vercel-forwarded-for': `10.0.${Math.floor(i / 256)}.${i % 256}` });
-      try { await security.enforceRateLimit(req, 'contact'); } catch (e) { assert.equal(e.status, 429); }
+      try { await security.enforceRateLimit(req, 'contact'); } catch (e) { assert.equal(e.status, 503); }
     }
-    await assert.rejects(security.enforceRateLimit(request({}), 'contact'), (e) => e.status === 429);
-    Date.now = () => 10000003600001;
+    await assert.rejects(security.enforceRateLimit(request({}), 'contact'), (e) => e.status === 503);
+    Date.now = () => 10000000600001;
     await security.enforceRateLimit(request({}), 'contact');
   } finally { Date.now = oldNow; }
-});
-
-function configureRedis() {
-  process.env.UPSTASH_REDIS_REST_URL = 'https://test.upstash.io';
-  process.env.UPSTASH_REDIS_REST_TOKEN = 'redis-secret';
-}
-test('shared atomic rate limit spans independent module instances and isolates routes/environments', async () => {
-  configureRedis();
-  const counts = new Map();
-  global.fetch = async (url, options) => {
-    const command = JSON.parse(options.body);
-    assert.equal(command[0], 'EVAL');
-    assert.match(command[1], /EXPIRE/);
-    assert.equal(command[4], '3600');
-    assert.ok(!command[3].includes('198.51.100.3'));
-    const count = (counts.get(command[3]) ?? 0) + 1;
-    counts.set(command[3], count);
-    return Response.json({ result: count });
-  };
-  delete require.cache[helperFile];
-  const secondInstance = require(helperFile);
-  const req = request({}, { 'x-vercel-forwarded-for': '198.51.100.3' });
-  await security.enforceRateLimit(req, 'contact');
-  await secondInstance.enforceRateLimit(req, 'contact');
-  await security.enforceRateLimit(req, 'contact');
-  await assert.rejects(secondInstance.enforceRateLimit(req, 'contact'), (e) => e.status === 429);
-  await secondInstance.enforceRateLimit(req, 'class-signup');
-  process.env.VERCEL_ENV = 'production';
-  await secondInstance.enforceRateLimit(req, 'contact');
-});
-
-test('configured shared limiter fails closed on network errors, malformed replies and partial configuration', async () => {
-  configureRedis();
-  for (const stub of [async () => { throw new Error('redis-secret'); }, async () => Response.json({ result: 'bad' }), async () => new Response('', { status: 500 })]) {
-    global.fetch = stub;
-    assert.equal((await contact.POST(request(contactBody()))).status, 503);
-  }
-  delete process.env.UPSTASH_REDIS_REST_TOKEN;
-  assert.equal((await signup.POST(request(signupBody()))).status, 503);
-  assert.ok(!JSON.stringify(logs).includes('redis-secret'));
 });
 
 test('reject missing API keys, HTTP and non-Make destinations before network calls', async () => {
@@ -224,16 +184,14 @@ test('webhook failures and redirects never log secret URLs, keys or personal dat
   assert.doesNotMatch(JSON.stringify(logs), /test-secret|member@example/);
 });
 
-test('webhook and limiter abort signals impose explicit timeouts', async () => {
+test('webhook abort signal imposes an explicit timeout', async () => {
   const originalTimeout = AbortSignal.timeout;
   const durations = [];
   AbortSignal.timeout = (ms) => { durations.push(ms); return AbortSignal.abort(); };
   global.fetch = async (_, options) => { options.signal.throwIfAborted(); };
   try {
     await assert.rejects(security.submitWebhook('contact', {}), (e) => e.status === 502);
-    configureRedis();
-    await assert.rejects(security.enforceRateLimit(request({}), 'contact'), (e) => e.status === 503);
-    assert.deepEqual(durations, [8000, 3000]);
+    assert.deepEqual(durations, [8000]);
   } finally { AbortSignal.timeout = originalTimeout; }
 });
 
@@ -249,35 +207,35 @@ test('accept exactly the byte limit and time out a stalled request stream', asyn
   assert.equal(cancelled, true);
 });
 
-test('limiter diagnostics identify configuration and provider failures without leaking secrets', async () => {
-  const cases = [
-    ['missing_url', () => { delete process.env.UPSTASH_REDIS_REST_URL; }],
-    ['missing_token', () => { delete process.env.UPSTASH_REDIS_REST_TOKEN; }],
-    ['invalid_url', () => { process.env.UPSTASH_REDIS_REST_URL = 'redis://secret:password@private.example'; }],
-    ['authentication_failed', () => { global.fetch = async () => new Response('redis-secret', { status: 401 }); }],
-    ['permission_denied', () => { global.fetch = async () => Response.json({ error: 'NOPERM redis-secret' }); }],
-    ['redis_command_error', () => { global.fetch = async () => Response.json({ error: 'ERR redis-secret' }); }],
-    ['provider_quota_exceeded', () => { global.fetch = async () => Response.json({ error: 'max requests limit exceeded redis-secret' }); }],
-    ['invalid_response', () => { global.fetch = async () => Response.json({ result: 'oops' }); }],
-    ['network_error', () => { global.fetch = async () => { throw new Error('redis-secret'); }; }],
-    ['timeout', () => { global.fetch = async () => { throw new DOMException('redis-secret', 'TimeoutError'); }; }],
-  ];
-  for (const [expected, configure] of cases) {
-    configureRedis();
-    configure();
-    await assert.rejects(security.enforceRateLimit(request({}), 'contact'), (e) => e.status === 503);
-    assert.equal(logs.at(-1)[1].reason, expected);
-  }
-  assert.doesNotMatch(JSON.stringify(logs), /redis-secret|password|private\.example/);
+test('obsolete Upstash settings cannot break forms or trigger Redis calls', async () => {
+  process.env.UPSTASH_REDIS_REST_URL = 'invalid-old-setting';
+  process.env.UPSTASH_REDIS_REST_TOKEN = 'invalid-old-token';
+  assert.equal((await contact.POST(request(contactBody()))).status, 200);
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].url, 'https://hook.us1.make.com/test-secret-path');
+  assert.equal(logs.length, 0);
 });
 
-test('trim incidental surrounding whitespace in Redis credentials', async () => {
-  process.env.UPSTASH_REDIS_REST_URL = ' https://test.upstash.io \n';
-  process.env.UPSTASH_REDIS_REST_TOKEN = ' redis-secret \n';
-  global.fetch = async (url, options) => {
-    assert.equal(String(url), 'https://test.upstash.io/');
-    assert.equal(options.headers.Authorization, 'Bearer redis-secret');
-    return Response.json({ result: 1 });
-  };
-  await security.enforceRateLimit(request({}), 'contact');
+test('retry time decreases, blocked requests do not extend the window, and forms are independent', async () => {
+  const oldNow = Date.now;
+  const req = request({}, { 'x-vercel-forwarded-for': '198.51.100.99' });
+  try {
+    const start = oldNow();
+    Date.now = () => start;
+    for (let i = 0; i < 10; i++) await security.enforceRateLimit(req, 'contact');
+    await assert.rejects(security.enforceRateLimit(req, 'contact'), (e) => {
+      assert.equal(e.status, 429);
+      assert.equal(e.retryAfterSeconds, 600);
+      return true;
+    });
+    await security.enforceRateLimit(req, 'class-signup');
+    Date.now = () => start + 9 * 60 * 1000;
+    await assert.rejects(security.enforceRateLimit(req, 'contact'), (e) => {
+      assert.equal(security.formErrorResponse(e).headers.get('retry-after'), '60');
+      assert.match(e.message, /1 minute\./);
+      return true;
+    });
+    Date.now = () => start + 10 * 60 * 1000;
+    await security.enforceRateLimit(req, 'contact');
+  } finally { Date.now = oldNow; }
 });

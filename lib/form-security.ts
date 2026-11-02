@@ -2,14 +2,13 @@ import { createHash } from "node:crypto";
 import { isIP } from "node:net";
 
 export const MAX_BODY_BYTES = 16 * 1024;
-const WINDOW_SECONDS = 3600;
-const MAX_SUBMISSIONS = 3;
+const WINDOW_SECONDS = 10 * 60;
+const MAX_SUBMISSIONS = 10;
 const MAX_LOCAL_BUCKETS = 5000;
 const buckets = new Map<string, { count: number; resetAt: number }>();
-let warnedAboutLocalLimit = false;
 
 export class FormRequestError extends Error {
-  constructor(public status: number, message: string) {
+  constructor(public status: number, message: string, public retryAfterSeconds?: number) {
     super(message);
   }
 }
@@ -36,82 +35,31 @@ export function getClientIp(request: Request) {
   return value;
 }
 
-const rateLimitScript = `
-local count = redis.call('INCR', KEYS[1])
-if count == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]) end
-return count
-`;
-
-function localRateLimited(key: string) {
+// Best-effort per-instance protection: no external service or credentials.
+// Counters reset on cold starts and are not shared across Vercel instances.
+export async function enforceRateLimit(request: Request, form: "contact" | "class-signup") {
+  const ip = getClientIp(request);
+  const key = `${form}:${createHash("sha256").update(ip).digest("hex")}`;
   const now = Date.now();
   for (const [entryKey, bucket] of buckets) {
     if (bucket.resetAt <= now) buckets.delete(entryKey);
   }
   const bucket = buckets.get(key);
-  if (bucket) return ++bucket.count > MAX_SUBMISSIONS;
-  // Do not evict active entries: that would allow cycling identities to reset limits.
-  if (buckets.size >= MAX_LOCAL_BUCKETS) return true;
-  buckets.set(key, { count: 1, resetAt: now + WINDOW_SECONDS * 1000 });
-  return false;
-}
-
-export async function enforceRateLimit(request: Request, form: "contact" | "class-signup") {
-  const ip = getClientIp(request);
-  const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
-  // Store a digest rather than a raw client IP. Separate preview and production.
-  const key = `forms:${process.env.VERCEL_ENV ?? "local"}:${form}:${createHash("sha256").update(ip).digest("hex")}`;
-  let limited: boolean;
-  if (url || token) {
-    let reason = !url ? "missing_url" : !token ? "missing_token" : "invalid_url";
-    let status: number | undefined;
-    try {
-      if (!url || !token) throw new Error("Incomplete limiter configuration");
-      const endpoint = new URL(url ?? "");
-      if (!token || endpoint.protocol !== "https:" || !endpoint.hostname.endsWith(".upstash.io") ||
-          endpoint.username || endpoint.password || endpoint.port || endpoint.pathname !== "/" || endpoint.search || endpoint.hash) {
-        throw new Error("Invalid limiter configuration");
-      }
-      reason = "network_error";
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify(["EVAL", rateLimitScript, "1", key, String(WINDOW_SECONDS)]),
-        signal: AbortSignal.timeout(3000),
-        redirect: "error",
-        cache: "no-store",
-      });
-      status = response.status;
-      reason = status === 401 ? "authentication_failed" : status === 403 ? "permission_denied" :
-        status === 429 ? "provider_rate_limited" : "provider_http_error";
-      if (!response.ok) throw new Error("Limiter unavailable");
-      reason = "invalid_response";
-      const data: unknown = await response.json();
-      if (isRecord(data) && typeof data.error === "string") {
-        reason = /NOPERM|read.?only|permission/i.test(data.error) ? "permission_denied" :
-          /NOAUTH|WRONGPASS|unauthori|token/i.test(data.error) ? "authentication_failed" :
-          /quota|limit exceeded|max requests/i.test(data.error) ? "provider_quota_exceeded" : "redis_command_error";
-        throw new Error("Redis rejected limiter command");
-      }
-      if (!isRecord(data) || data.error || !Number.isSafeInteger(data.result) || (data.result as number) < 1) {
-        throw new Error("Invalid limiter response");
-      }
-      limited = (data.result as number) > MAX_SUBMISSIONS;
-    } catch (error) {
-      if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) reason = "timeout";
-      // Only log fixed categories and HTTP status, never provider messages or credentials.
-      // Never silently weaken a configured shared limit during an outage.
-      console.error("Form rate limiter unavailable.", { form, reason, ...(status === undefined ? {} : { status }) });
-      throw new FormRequestError(503, "Unable to accept submissions right now. Please try again later.");
+  if (bucket) {
+    if (bucket.count >= MAX_SUBMISSIONS) {
+      const seconds = Math.max(1, Math.ceil((bucket.resetAt - now) / 1000));
+      const minutes = Math.ceil(seconds / 60);
+      throw new FormRequestError(429, `Too many attempts. Please try again in ${minutes} ${minutes === 1 ? "minute" : "minutes"}.`, seconds);
     }
-  } else {
-    if (!warnedAboutLocalLimit && process.env.VERCEL === "1") {
-      console.warn("Shared form rate limiting is not configured; using a per-instance fallback.");
-      warnedAboutLocalLimit = true;
-    }
-    limited = localRateLimited(key);
+    bucket.count += 1;
+    return;
   }
-  if (limited) throw new FormRequestError(429, "Too many submissions. Please try again in an hour.");
+  // Keep active limits intact when at capacity; do not allow rotating identities
+  // to evict them. Return a short retry instead of an unrelated ten-minute lockout.
+  if (buckets.size >= MAX_LOCAL_BUCKETS) {
+    throw new FormRequestError(503, "The form is busy. Please try again in a minute.", 60);
+  }
+  buckets.set(key, { count: 1, resetAt: now + WINDOW_SECONDS * 1000 });
 }
 
 export async function readFormJson(request: Request): Promise<unknown> {
@@ -158,7 +106,7 @@ export function formErrorResponse(error: unknown) {
     status: known ? error.status : 503,
     headers: {
       "Cache-Control": "no-store",
-      ...(known && error.status === 429 ? { "Retry-After": String(WINDOW_SECONDS) } : {}),
+      ...(known && error.retryAfterSeconds ? { "Retry-After": String(error.retryAfterSeconds) } : {}),
     },
   });
 }
