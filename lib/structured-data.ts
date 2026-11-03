@@ -87,6 +87,15 @@ export const websiteSchema = {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+// Offer.validFrom for an event: midnight Helena time, `days` before the event date. Google wants
+// this on Event offers; we don't track when registration opens, so pick a date safely before it.
+function offerValidFrom(date: string, days: number) {
+  const from = new Date(`${date}T12:00:00Z`);
+  from.setUTCDate(from.getUTCDate() - days);
+  const day = from.toISOString().slice(0, 10);
+  return `${day}T00:00:00${denverOffset(day)}`;
+}
+
 // First Monday of the month, pushed a week when it falls on New Year's Day, July 4, or Labor Day.
 function firstNonHolidayMonday(year: number, month: number) {
   const firstWeekday = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
@@ -138,6 +147,7 @@ export function monthlyMeetingSchema(now = new Date()) {
       price: 0,
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
+      validFrom: offerValidFrom(date, 90),
       url: `${SITE.url}/meetings-nets`,
     },
     performer: clubParticipant,
@@ -167,6 +177,7 @@ export function examSessionSchema(session: ExamSession) {
       price: EXAM_FEE_USD,
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
+      validFrom: offerValidFrom(session.date, 90),
       url: LINKS.TESTING_REGISTRATION_URL,
     },
     url: `${SITE.url}/testing`,
