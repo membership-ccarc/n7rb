@@ -68,7 +68,7 @@ export default function ClassesPage() {
       <AtAGlance
         className="mx-auto mt-10 max-w-4xl"
         items={[
-          { label: "Cost", value: "Free, including study materials" },
+          { label: "Cost", value: "Free" },
           { label: "Next Technician class", value: `${TECHNICIAN_CLASS.shortLabel} — registration open` },
           { label: "Experience needed", value: "None" },
           { label: "Format", value: "Six Wednesdays, 6:00–8:00 PM, in person in Helena" },
@@ -98,7 +98,7 @@ export default function ClassesPage() {
             </div>
             <div>
               <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Cost</dt>
-              <dd className="mt-1 leading-7">Free, including study materials</dd>
+              <dd className="mt-1 leading-7">Free</dd>
             </div>
           </dl>
           <p className="mt-6 text-lg leading-8 text-stonewarm-50">
