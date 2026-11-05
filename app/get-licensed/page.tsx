@@ -71,7 +71,7 @@ export default function GetLicensedPage() {
         className="mx-auto mt-10 max-w-7xl"
         items={[
           { label: "First license", value: "Technician" },
-          { label: "Free local class", value: "CCARC Technician class, Q1 2027" },
+          { label: "Free local class", value: "CCARC Technician class, starts Feb. 3, 2027" },
           { label: "The exam", value: "35 questions, 26 correct to pass" },
           { label: "Exam fee", value: `$${EXAM_FEE_USD} at CCARC sessions, plus $${FCC_APPLICATION_FEE_USD} FCC fee` },
           { label: "Morse code", value: "Not required" },

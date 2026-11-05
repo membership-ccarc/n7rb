@@ -20,6 +20,11 @@ export const PLACES = {
     streetAddress: "1905 Henderson St.",
     postalCode: "59601",
   },
+  technicianClass: {
+    name: "DoubleTree hotel",
+    streetAddress: "22 N Last Chance Gulch",
+    postalCode: "59601",
+  },
   testing: {
     name: "Lewis and Clark Library",
     streetAddress: "120 South Last Chance Gulch",
@@ -35,6 +40,18 @@ export const EXAM_SESSIONS = [
   { date: "2026-12-02", startTime: "18:30", endTime: "19:45", label: "Wednesday, December 02, 2026, from 6:30-7:45 PM MST." },
 ] as const;
 
+// Next Technician License Class. Six consecutive Wednesday evenings, local to Helena.
+export const TECHNICIAN_CLASS = {
+  startDate: "2027-02-03",
+  endDate: "2027-03-10",
+  startTime: "18:00",
+  endTime: "20:00",
+  dateLabel: "Wednesday, February 3, 2027",
+  scheduleLabel: "Six Wednesdays, February 3 – March 10, 2027, 6:00–8:00 PM",
+  shortLabel: "Starts Wed., Feb. 3, 2027",
+  capacity: 20,
+} as const;
+
 export const EXAM_FEE_USD = 14;
 export const FCC_APPLICATION_FEE_USD = 35;
 
@@ -49,7 +66,7 @@ export const MEMBERSHIP_APPLICATION_PDF_URL = "/membership_application.pdf";
 export const NEWSLETTER_ARCHIVE_URL = "https://drive.google.com/drive/folders/1kHy8ILAoDxdaguP4rmM0f1W6D3c4IK0l?usp=drive_link";
 export const PICNIC_MAP_URL = "https://maps.app.goo.gl/Vi3ERZ3qc8rMMzF76";
 export const JFK_PARK_MAP_URL = "https://www.google.com/maps/search/?api=1&query=JFK+Park%2C+309+Harrison+Ave+N%2C+East+Helena%2C+MT+59635";
-export const CLASS_LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=Salvation+Army%2C+1905+Henderson+St%2C+Helena%2C+MT+59601";
+export const CLASS_LOCATION_MAP_URL = "https://www.google.com/maps/search/?api=1&query=DoubleTree+by+Hilton%2C+22+N+Last+Chance+Gulch%2C+Helena%2C+MT+59601";
 // Slack invite links expire and should be refreshed as needed.
 export const SLACK_INVITE_URL = "https://join.slack.com/t/ccarcslack/shared_invite/zt-3k0ieygwx-rBeNphjqJ1EqnyYieSfmUg";
 export const FACEBOOK_URL = "https://www.facebook.com/CCARCHelena/";

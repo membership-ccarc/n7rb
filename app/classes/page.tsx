@@ -2,13 +2,13 @@ import { Suspense } from "react";
 import { ClassSignupForm } from "@/components/ClassSignupForm";
 import { JsonLd } from "@/components/JsonLd";
 import { AtAGlance, ButtonLink, FaqSection, InfoCard, type FaqItem } from "@/components/ui";
-import { LINKS } from "@/lib/site-data";
+import { LINKS, PLACES, TECHNICIAN_CLASS } from "@/lib/site-data";
 import { courseSchemas } from "@/lib/structured-data";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Classes",
-  description: "Free Technician License Class in Helena, Montana. Pre-enrollment is open for the Q1 2027 Technician class. Learn FCC rules, radio fundamentals, antennas, and operating practices from local instructors.",
+  description: "Free Technician License Class in Helena, Montana, starting Wednesday, February 3, 2027 at the DoubleTree hotel. Six Wednesday evenings, limited to 20 students. Register early to reserve your seat.",
   path: "/classes",
 });
 
@@ -69,23 +69,43 @@ export default function ClassesPage() {
         className="mx-auto mt-10 max-w-4xl"
         items={[
           { label: "Cost", value: "Free, including study materials" },
-          { label: "Next Technician class", value: "Q1 2027 — pre-enrollment open" },
+          { label: "Next Technician class", value: `${TECHNICIAN_CLASS.shortLabel} — registration open` },
           { label: "Experience needed", value: "None" },
-          { label: "Format", value: "Six weeks, in person in Helena" },
-          { label: "Class size", value: "Up to 15 students" },
+          { label: "Format", value: "Six Wednesdays, 6:00–8:00 PM, in person in Helena" },
+          { label: "Class size", value: `Limited to ${TECHNICIAN_CLASS.capacity} students` },
           { label: "License exam", value: <a className="text-pine-700 underline-offset-4 hover:underline" href="/testing">$14 at a CCARC exam session</a> },
         ]}
       />
 
       <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-xl border-4 border-gold-300 bg-mountain-900 shadow-soft">
         <div className="px-6 py-8 sm:px-10 sm:py-10">
-          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Pre-Enrollment Open</p>
-          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Q1 2027</h2>
-          <p className="mt-5 text-lg leading-8 text-stonewarm-50">
-            Our next Technician class is planned for the first quarter of 2027. Dates are not set yet, but we are taking names now for pre-enrollment. Add your name and you&apos;ll be among the first to hear when the schedule is announced.
+          <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Registration Open · Limited to {TECHNICIAN_CLASS.capacity} Seats</p>
+          <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">CCARC Technician License Class — Starts February 3, 2027</h2>
+          <dl className="mt-6 grid gap-4 text-stonewarm-50 sm:grid-cols-3">
+            <div>
+              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">When</dt>
+              <dd className="mt-1 leading-7">Six Wednesdays, Feb. 3 – Mar. 10, 2027<br />6:00–8:00 PM</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Where</dt>
+              <dd className="mt-1 leading-7">
+                <a className="underline underline-offset-4 hover:no-underline" href={LINKS.CLASS_LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer">
+                  {PLACES.technicianClass.name}
+                </a>
+                <br />
+                {PLACES.technicianClass.streetAddress}, Helena
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-bold uppercase tracking-wide text-gold-300">Cost</dt>
+              <dd className="mt-1 leading-7">Free, including study materials</dd>
+            </div>
+          </dl>
+          <p className="mt-6 text-lg leading-8 text-stonewarm-50">
+            Class size is limited to {TECHNICIAN_CLASS.capacity} students, and seats are filled in the order we receive registrations. Register early to reserve your spot. A club volunteer will follow up to confirm your seat.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <ButtonLink href="/classes?interest=Technician#class-signup-form" variant="secondary">Pre-Enroll for Q1 2027</ButtonLink>
+            <ButtonLink href="/classes?interest=Technician#class-signup-form" variant="secondary">Reserve Your Seat</ButtonLink>
           </div>
         </div>
       </div>
@@ -115,9 +135,9 @@ export default function ClassesPage() {
 
       <div className="mx-auto mt-10 grid max-w-6xl gap-5 md:grid-cols-2">
         <InfoCard title="Technician Prep Course">
-          <p>This is the recommended entry point for new amateur radio operators. Pre-enrollment is open for the Q1 2027 Technician class.</p>
+          <p>This is the recommended entry point for new amateur radio operators. Registration is open for the class starting {TECHNICIAN_CLASS.dateLabel}, limited to {TECHNICIAN_CLASS.capacity} students.</p>
           <div className="mt-5 flex flex-col gap-3">
-            <ButtonLink href="/join-contact">Get Notified About the Next Class</ButtonLink>
+            <ButtonLink href="/classes?interest=Technician#class-signup-form">Register for the Technician Class</ButtonLink>
           </div>
         </InfoCard>
         <InfoCard title="General Prep Course">
@@ -133,7 +153,7 @@ export default function ClassesPage() {
           <p className="mt-4"><a className="font-bold text-pine-700 underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4" href="#instructors">Meet your instructors</a></p>
         </InfoCard>
         <InfoCard title="Enrollment">
-          <p>Class size is capped at 15 students to keep hands-on time with the instructor.</p>
+          <p>Class size is capped at {TECHNICIAN_CLASS.capacity} students to keep hands-on time with the instructor. Register early: seats go in the order registrations arrive.</p>
         </InfoCard>
         <InfoCard title="Downloadable Syllabus">
           <ul className="space-y-3">

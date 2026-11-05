@@ -1,7 +1,7 @@
 // schema.org JSON-LD builders. These describe the club in machine-readable form
 // for search engines and AI answer engines; keep them in sync with visible page content.
 import type { ExamSession } from "@/lib/exam-sessions";
-import { CONTACT_EMAIL_ADDRESS, EXAM_FEE_USD, LINKS, PLACES, SITE } from "@/lib/site-data";
+import { CONTACT_EMAIL_ADDRESS, EXAM_FEE_USD, LINKS, PLACES, SITE, TECHNICIAN_CLASS } from "@/lib/site-data";
 
 const ORGANIZATION_ID = `${SITE.url}/#organization`;
 const WEBSITE_ID = `${SITE.url}/#website`;
@@ -198,7 +198,22 @@ export const courseSchemas = [
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: "Onsite",
-      location: placeSchema(PLACES.meeting),
+      startDate: TECHNICIAN_CLASS.startDate,
+      endDate: TECHNICIAN_CLASS.endDate,
+      maximumAttendeeCapacity: TECHNICIAN_CLASS.capacity,
+      courseSchedule: {
+        "@type": "Schedule",
+        duration: "PT2H",
+        repeatFrequency: "Weekly",
+        repeatCount: 6,
+        byDay: "https://schema.org/Wednesday",
+        startDate: TECHNICIAN_CLASS.startDate,
+        endDate: TECHNICIAN_CLASS.endDate,
+        startTime: `${TECHNICIAN_CLASS.startTime}:00`,
+        endTime: `${TECHNICIAN_CLASS.endTime}:00`,
+        scheduleTimezone: TIME_ZONE,
+      },
+      location: placeSchema(PLACES.technicianClass),
     },
     url: `${SITE.url}/classes`,
   },

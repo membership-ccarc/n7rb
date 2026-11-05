@@ -1,6 +1,6 @@
 // Plain-text site summary for AI assistants and answer engines (https://llmstxt.org).
 import { getUpcomingExamSessions } from "@/lib/exam-sessions";
-import { EXAM_FEE_USD, LINKS, nets, PLACES, SITE } from "@/lib/site-data";
+import { EXAM_FEE_USD, LINKS, nets, PLACES, SITE, TECHNICIAN_CLASS } from "@/lib/site-data";
 
 export const revalidate = 3600;
 
@@ -24,7 +24,7 @@ export async function GET() {
     "",
     `- Club callsign: ${SITE.callsign}`,
     `- Monthly meeting: first non-holiday Monday of each month at 7:00 PM, ${PLACES.meeting.name}, ${PLACES.meeting.streetAddress}, Helena, MT ${PLACES.meeting.postalCode}. Visitors welcome; an online Google Meet option is available.`,
-    `- License classes: free Technician License Class (six weeks, no experience required; next class planned for Q1 2027, pre-enrollment open). General License Class for licensed Technicians.`,
+    `- License classes: free Technician License Class (six weeks, no experience required; next class: ${TECHNICIAN_CLASS.scheduleLabel}, at the ${PLACES.technicianClass.name}, ${PLACES.technicianClass.streetAddress}, Helena, MT; limited to ${TECHNICIAN_CLASS.capacity} students, registration open at ${SITE.url}/classes). General License Class for licensed Technicians.`,
     `- License exams: in-person Volunteer Examiner sessions about every 6 weeks at the ${PLACES.testing.name}, ${PLACES.testing.streetAddress}, Helena, MT. All license classes. Fee $${EXAM_FEE_USD}. Register at ${LINKS.TESTING_REGISTRATION_URL}`,
     `- Local repeater: Belmont repeater ${SITE.repeater}, ${SITE.repeaterTone} tone. Backup simplex ${SITE.backupSimplex}.`,
     `- Nets: ${nets.map((net) => `${net.name} at ${net.time} on the ${net.frequency}`).join("; ")}.`,

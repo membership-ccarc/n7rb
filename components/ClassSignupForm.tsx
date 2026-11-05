@@ -146,9 +146,9 @@ export function ClassSignupForm() {
       aria-describedby="class-signup-help class-signup-message"
     >
       <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Get Started in Ham Radio</p>
-      <h2 className="mt-2 text-2xl font-black text-mountain-900">Pre-Enroll or Share Your Interest</h2>
+      <h2 className="mt-2 text-2xl font-black text-mountain-900">Register or Share Your Interest</h2>
       <p id="class-signup-help" className="mt-3 leading-7 text-stonewarm-700">
-        Tell us which class you are interested in. A club volunteer will follow up when dates are set, along with beginner-friendly study resources.
+        Tell us which class you are interested in. A club volunteer will follow up to confirm your seat or share upcoming dates, along with beginner-friendly study resources.
       </p>
 
       {status === "success" ? (

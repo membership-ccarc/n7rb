@@ -1,4 +1,4 @@
-import { amateurRadioCards, CONTACT_EMAIL_ADDRESS, LINKS, nets, SITE, whatWeDo } from "@/lib/site-data";
+import { amateurRadioCards, CONTACT_EMAIL_ADDRESS, LINKS, nets, PLACES, SITE, TECHNICIAN_CLASS, whatWeDo } from "@/lib/site-data";
 import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink, InfoCard, MeetingDetails, SectionIntro } from "@/components/ui";
@@ -135,9 +135,11 @@ export default function Home() {
         <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-2">
           <div className="text-center">
             <InfoCard title="Technician Prep Course">
-              <p>Hosted twice per year: Q1 and Q3.</p>
+              <p className="font-bold text-mountain-900">Next class starts {TECHNICIAN_CLASS.dateLabel}</p>
+              <p className="mt-2">Six Wednesdays, 6:00–8:00 PM, at the {PLACES.technicianClass.name}, {PLACES.technicianClass.streetAddress}. Free.</p>
+              <p className="mt-2 font-bold text-pine-700">Limited to {TECHNICIAN_CLASS.capacity} students. Register early!</p>
               <div className="mt-5">
-                <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next Technician Class</ButtonLink>
+                <ButtonLink href="/classes?interest=Technician#class-signup-form">Reserve Your Seat</ButtonLink>
               </div>
             </InfoCard>
           </div>
