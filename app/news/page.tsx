@@ -1,5 +1,5 @@
 import { ButtonLink } from "@/components/ui";
-import { LINKS } from "@/lib/site-data";
+import { LINKS, PLACES, TECHNICIAN_CLASS } from "@/lib/site-data";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -24,6 +24,12 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="November 5, 2026" title="Next Technician License Class Starts February 3 — Thank You, DoubleTree by Hilton">
+            <p>Our next free Technician License Class is set! The class meets for six Wednesday evenings, February 3 through March 10, 2027, from 6:00 to 8:00 PM at the <a className={linkClasses} href={LINKS.CLASS_LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer">{PLACES.technicianClass.name}</a>, {PLACES.technicianClass.streetAddress}. No experience is required, and the class and study materials are free.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Seats are limited to {TECHNICIAN_CLASS.capacity} students</strong> and are filled in the order registrations arrive, so please register early. If you added your name to our pre-enrollment list, you&apos;ll hear from a club volunteer soon.</p>
+            <p className="mt-4">A big thank-you to the DoubleTree by Hilton Helena Downtown, and especially General Manager John Lytle, for hosting the class and supporting our club&apos;s nonprofit effort to help more people around Helena earn their ham radio licenses. Community partners like this make free public education possible.</p>
+            <p className="mt-4"><a className={linkClasses} href="/classes?interest=Technician#class-signup-form">Reserve your seat in the Technician class →</a></p>
+          </NewsItem>
           <NewsItem date="October 31, 2026" title="November CCARC Newsletter — 10 new hams, a moonbounce antenna, and a hike">
             <p>The November newsletter is out, and it&apos;s a good one.</p>
             <p className="mt-4">Our Technician class wrapped up with 10 of 11 students passing on October 21, and three of them walked out with their General as well. Come see who they are so you can welcome them on the air.</p>

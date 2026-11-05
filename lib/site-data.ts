@@ -21,7 +21,7 @@ export const PLACES = {
     postalCode: "59601",
   },
   technicianClass: {
-    name: "DoubleTree hotel",
+    name: "DoubleTree by Hilton Helena Downtown",
     streetAddress: "22 N Last Chance Gulch",
     postalCode: "59601",
   },

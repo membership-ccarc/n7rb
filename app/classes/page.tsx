@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Classes",
-  description: "Free Technician License Class in Helena, Montana, starting Wednesday, February 3, 2027 at the DoubleTree hotel. Six Wednesday evenings, limited to 20 students. Register early to reserve your seat.",
+  description: "Free Technician License Class in Helena, Montana, starting Wednesday, February 3, 2027 at the DoubleTree by Hilton Helena Downtown. Six Wednesday evenings, limited to 20 students. Register early to reserve your seat.",
   path: "/classes",
 });
 
