@@ -231,31 +231,30 @@ export default function Home() {
 
       <section className="bg-white px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Join Us This November</p>
+          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">Join Us This December</p>
           <div className="mt-3 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
             <div>
               <h2 className="text-3xl font-black text-mountain-900 sm:text-4xl">Upcoming Club Events</h2>
               <p className="mt-4 text-lg leading-8 text-stonewarm-700">
-                Meet fellow operators at our next club meeting, then head outdoors for a portable radio adventure.
+                Head outdoors for a portable radio adventure, then meet fellow operators at our next club meeting.
               </p>
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               <div>
-                <InfoCard title="November 2: Club Meeting">
-                  <p className="font-bold text-mountain-900">Monday, November 2, 2026 · 7:00–8:00 PM</p>
-                  <p className="mt-3">Join us at the {SITE.meetingAddress}, or online via Google Meet. All times are local to Helena.</p>
-                  <div className="mt-5">
-                    <ButtonLink href="/meetings-nets" variant="light">Meeting Details</ButtonLink>
+                <InfoCard title="December 5: Nerds on a Hike">
+                  <p className="font-bold text-mountain-900">Saturday, December 5, 2026 · Scratchgravel Hills</p>
+                  <p className="mt-3">We&apos;re heading back to the Scratchgravel Hills with Trail Master Brett (N7SKI) for a short, easy hike and a Summits On The Air (SOTA) and Parks On The Air (POTA) activation. No license or experience needed!</p>
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <ButtonLink href="/news" variant="light">Hike Details</ButtonLink>
                   </div>
                 </InfoCard>
               </div>
               <div>
-                <InfoCard title="November 7: Nerds on a Hike">
-                  <p className="font-bold text-mountain-900">Saturday, November 7, 2026 · Scratchgravel Hills</p>
-                  <p className="mt-3">Join Trail Master Brett (N7SKI) for a short, easy hike and a portable Parks On The Air radio activation. No license or experience needed!</p>
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    <ButtonLink href="/news" variant="light">Hike Details</ButtonLink>
-                    <ButtonLink href="https://www.facebook.com/share/19jrVAs9Nw/" variant="light" openInNewTab>Facebook Event</ButtonLink>
+                <InfoCard title="December 7: Club Meeting">
+                  <p className="font-bold text-mountain-900">Monday, December 7, 2026 · 7:00–8:00 PM</p>
+                  <p className="mt-3">Join us at the {SITE.meetingAddress}, or online via Google Meet. All times are local to Helena.</p>
+                  <div className="mt-5">
+                    <ButtonLink href="/meetings-nets" variant="light">Meeting Details</ButtonLink>
                   </div>
                 </InfoCard>
               </div>
