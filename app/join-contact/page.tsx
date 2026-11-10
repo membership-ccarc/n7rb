@@ -69,6 +69,20 @@ export default function JoinContactPage() {
           <ButtonLink href={LINKS.MEMBERSHIP_FORM_URL}>Apply for Membership</ButtonLink>
           <ButtonLink href={LINKS.CONTACT_EMAIL} variant="light">Email CCARC</ButtonLink>
         </div>
+        <div id="dues" className="mt-8 scroll-mt-24 rounded-lg bg-white p-6 shadow-sm">
+          <h2 className="text-2xl font-black text-mountain-900">Pay Dues or Donate Online</h2>
+          <p className="mt-2 leading-7 text-stonewarm-700">
+            Renew your membership or support the club with a secure online payment. Annual dues are $25 for a single member or $31.25 for a family.
+          </p>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <ButtonLink href={LINKS.DUES_SINGLE_URL}>Pay 2027 Single Member Dues</ButtonLink>
+            <ButtonLink href={LINKS.DUES_FAMILY_URL}>Pay 2027 Family Dues</ButtonLink>
+            <ButtonLink href={LINKS.DONATION_URL} variant="light">Make a Donation</ButtonLink>
+          </div>
+          <p className="mt-4 text-sm leading-6 text-stonewarm-700">
+            {SITE.name} is a {SITE.nonprofitStatus}. Donations are tax-deductible to the extent allowed by law.
+          </p>
+        </div>
       </div>
       <div className="mx-auto mt-10 grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.85fr]">
         <div className="grid content-start gap-6">

@@ -58,6 +58,11 @@ export const FCC_APPLICATION_FEE_USD = 35;
 export const CLASS_SIGNUP_URL = "/classes#class-signup-form";
 export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
+// Stripe payment links for 2027 dues and donations. These are TEST-mode links (buy.stripe.com/test_…);
+// swap in the live links from the Stripe dashboard before deploying.
+export const DUES_SINGLE_URL = "https://buy.stripe.com/test_00w14ncZKaNJ7Cn0sN1ZS09";
+export const DUES_FAMILY_URL = "https://buy.stripe.com/test_eVq8wP4te1d909V6Rb1ZS0a";
+export const DONATION_URL = "https://donate.stripe.com/test_28E7sLf7S9JF6yj4J31ZS0d";
 export const ONLINE_MEETING_URL = "https://meet.google.com/zfs-ctwp-bax";
 export const CONTACT_EMAIL = `mailto:${CONTACT_EMAIL_ADDRESS}?subject=CCARC%20Website%20Inquiry`;
 export const N7RB_HISTORY_URL = "/about/n7rb-bio";
@@ -79,6 +84,9 @@ export const LINKS = {
   CLASS_SIGNUP_URL,
   TESTING_REGISTRATION_URL,
   MEMBERSHIP_FORM_URL,
+  DUES_SINGLE_URL,
+  DUES_FAMILY_URL,
+  DONATION_URL,
   ONLINE_MEETING_URL,
   CONTACT_EMAIL,
   N7RB_HISTORY_URL,
