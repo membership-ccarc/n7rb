@@ -58,8 +58,20 @@ export const FCC_APPLICATION_FEE_USD = 35;
 export const CLASS_SIGNUP_URL = "/classes#class-signup-form";
 export const TESTING_REGISTRATION_URL = "https://hamstudy.org/sessions/59601/inperson";
 export const MEMBERSHIP_FORM_URL = "/join-contact/membership-application";
-// Stripe payment links for 2027 dues and donations. These are TEST-mode links (buy.stripe.com/test_…);
-// swap in the live links from the Stripe dashboard before deploying.
+// Online dues/donation buttons on /join-contact. To launch: swap the three links below for the live
+// Stripe links, then set `enabled: true`. The buttons hide themselves on `hideOn` (Helena time),
+// when pro-rated dues need new payment links; set a new date when those links go in.
+export const DUES_PAYMENTS = {
+  enabled: false,
+  hideOn: "2027-04-01",
+} as const;
+
+export function duesPaymentsVisible(now = new Date()) {
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Denver" }).format(now);
+  return DUES_PAYMENTS.enabled && today < DUES_PAYMENTS.hideOn;
+}
+
+// Stripe payment links for 2027 dues and donations. These are TEST-mode links (buy.stripe.com/test_…).
 export const DUES_SINGLE_URL = "https://buy.stripe.com/test_00w14ncZKaNJ7Cn0sN1ZS09";
 export const DUES_FAMILY_URL = "https://buy.stripe.com/test_eVq8wP4te1d909V6Rb1ZS0a";
 export const DONATION_URL = "https://donate.stripe.com/test_28E7sLf7S9JF6yj4J31ZS0d";
