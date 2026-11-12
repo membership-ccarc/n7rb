@@ -210,7 +210,7 @@ export default function Home() {
       <section className="bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro title="Get On the Air">
           <p>
-            <strong className="text-mountain-900">What&apos;s a net?</strong> A net is a scheduled on-air gathering where local hams meet on the same frequency at the same time each week. A volunteer &ldquo;net control&rdquo; operator runs it, calling for check-ins and giving each station a turn to talk, so it stays organized and welcoming.
+            <strong className="text-mountain-900">What&apos;s a net?</strong> A net is a scheduled on-air gathering where hams meet on the same frequency on a recurring schedule. They are also used during emeregencies to direct radio traffic. A volunteer &ldquo;net control&rdquo; operator runs it, calling for check-ins and giving each station a turn to talk, so it stays organized and welcoming.
           </p>
           <p className="mt-3">Anyone can listen on a scanner or handheld radio, no license needed. Once you&apos;re licensed, checking in is the easiest way to make your first contact.</p>
         </SectionIntro>
