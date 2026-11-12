@@ -245,10 +245,10 @@ export default function Home() {
             <div className="grid gap-5 md:grid-cols-2">
               <div>
                 <InfoCard title="December 5: Nerds on a Hike">
-                  <p className="font-bold text-mountain-900">Saturday, December 5, 2026 · Scratchgravel Hills</p>
-                  <p className="mt-3">We&apos;re heading back to the Scratchgravel Hills with Trail Master Brett (N7SKI) for a short, easy hike and a Summits On The Air (SOTA) and Parks On The Air (POTA) activation. No license or experience needed!</p>
+                  <p className="font-bold text-mountain-900">Saturday, December 5, 2026 · 10:00 AM · Head Lane Trailhead</p>
+                  <p className="mt-3">Local hams will lead a 2.4-mile round-trip hike (about 880 feet of elevation gain) and set up portable radio stations at the summit of Scratchgravel Hills for a Summits On The Air (SOTA) and Parks On The Air (POTA) activation. Step up to the mic and make a contact yourself. No license or experience needed!</p>
                   <div className="mt-5 flex flex-wrap gap-3">
-                    <ButtonLink href="/news" variant="light">Hike Details</ButtonLink>
+                    <ButtonLink href="/news#nerds-on-a-hike-december" variant="light">Hike Details</ButtonLink>
                   </div>
                 </InfoCard>
               </div>

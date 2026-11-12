@@ -1,5 +1,5 @@
 import { ButtonLink } from "@/components/ui";
-import { LINKS, PLACES, TECHNICIAN_CLASS } from "@/lib/site-data";
+import { CONTACT_EMAIL_ADDRESS, LINKS, PLACES, TECHNICIAN_CLASS } from "@/lib/site-data";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -9,6 +9,8 @@ export const metadata = pageMetadata({
   ogTitle: "CCARC News & Updates | Amateur Radio in Helena, Montana",
   ogDescription: "Classes, events, Field Day, emergency communications, and community service updates from CCARC in Helena, Montana.",
 });
+
+const HEAD_LANE_TRAILHEAD_MAP_URL = "https://www.google.com/maps/place/Head+Lane+Trailhead/@46.6681115,-112.0975953,625m/data=!3m2!1e3!4b1!4m6!3m5!1s0x534353d556df1e07:0xf3173c18db101289!8m2!3d46.6681078!4d-112.0950204!16s%2Fg%2F11sxyfycc_";
 
 const linkClasses = "font-bold text-pine-700 underline decoration-pine-700/40 underline-offset-4 hover:decoration-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700";
 
@@ -24,6 +26,26 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem id="nerds-on-a-hike-december" date="November 12, 2026" title="Nerds on a Hike: Join Us December 5 at Scratchgravel Hills">
+            <p>Ever wondered how people can talk across the country with a radio that fits in a backpack? Come find out.</p>
+            <p className="mt-4">Join the Capital City Amateur Radio Club for our next Nerds on a Hike. Local hams will lead the hike and set up portable radio stations at the summit of Scratchgravel Hills. We&apos;ll make contacts from a public park as part of Summits On The Air (SOTA) and Parks On The Air (POTA), two worldwide programs, and you&apos;re welcome to step up to the mic and make one yourself. No license or experience is needed.</p>
+            <p className="mt-4">New hams: this is your chance to get on the air with experienced operators beside you.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">When:</strong> 10:00 AM, Saturday, December 5, 2026.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Where:</strong> Meet at the <a className={linkClasses} href={HEAD_LANE_TRAILHEAD_MAP_URL} target="_blank" rel="noopener noreferrer">Head Lane Trailhead</a>.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Bring:</strong> Warm layers, water, sturdy shoes, and your sense of adventure.</p>
+            <p className="mt-4"><strong className="font-bold text-mountain-900">Weather:</strong> We&apos;ll post a go/no-go on our <a className={linkClasses} href={LINKS.FACEBOOK_URL} target="_blank" rel="noopener noreferrer">Facebook page</a> by 7 AM. If we cancel, we&apos;ll move to Saturday, December 12.</p>
+            <h4 className="mt-5 text-lg font-bold text-mountain-900">What to Expect</h4>
+            <ul className="mt-3 list-disc space-y-2 pl-6">
+              <li>A 2.4-mile round-trip hike with about 880 feet of elevation gain.</li>
+              <li>A friendly group hike to our operating location.</li>
+              <li>A portable ham radio station you can see in action.</li>
+              <li>Opportunities for newcomers to get on the air with help from licensed operators.</li>
+              <li>Experienced hams sharing tips about portable operating.</li>
+              <li>A chance to help complete a SOTA/POTA activation.</li>
+              <li>Good conversation, fresh air, and plenty of nerdiness.</li>
+            </ul>
+            <p className="mt-4">Nerds on a Hike happens the first Saturday of every month. Questions? Email <a className={linkClasses} href={`mailto:${CONTACT_EMAIL_ADDRESS}?subject=Nerds%20on%20a%20Hike`}>{CONTACT_EMAIL_ADDRESS}</a>.</p>
+          </NewsItem>
           <NewsItem date="November 5, 2026" title="Next Technician License Class Starts February 3 — Thank You, DoubleTree by Hilton">
             <p>Our next free Technician License Class is set! The class meets for six Wednesday evenings, February 3 through March 10, 2027, from 6:00 to 8:00 PM at the <a className={linkClasses} href={LINKS.CLASS_LOCATION_MAP_URL} target="_blank" rel="noopener noreferrer">{PLACES.technicianClass.name}</a>, {PLACES.technicianClass.streetAddress}. No experience is required, and the class is free.</p>
             <p className="mt-4"><strong className="font-bold text-mountain-900">Seats are limited to {TECHNICIAN_CLASS.capacity} students</strong> and are filled in the order registrations arrive, so please register early. If you added your name to our pre-enrollment list, you&apos;ll hear from a club volunteer soon.</p>
@@ -146,9 +168,9 @@ export default function NewsPage() {
   );
 }
 
-function NewsItem({ date, title, children }: { date: string; title: string; children: React.ReactNode }) {
+function NewsItem({ id, date, title, children }: { id?: string; date: string; title: string; children: React.ReactNode }) {
   return (
-    <article className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm sm:p-8">
+    <article id={id} className="scroll-mt-28 rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm sm:p-8">
       <time className="text-sm font-bold uppercase tracking-wide text-pine-700">{date}</time>
       <h3 className="mt-2 text-2xl font-black text-mountain-900">{title}</h3>
       <div className="mt-4 leading-7 text-stonewarm-700">{children}</div>
