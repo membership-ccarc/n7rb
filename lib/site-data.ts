@@ -276,9 +276,24 @@ export const newsletterArchiveFolders = [
 ] as const;
 
 export const nets = [
-  { name: "Tuesday ARES Net", time: "7:30 PM", frequency: "147.22+ repeater" },
-  { name: "Saturday Coffee Net", time: "9:00 AM", frequency: "147.22+ repeater" },
-  { name: "Sunday Trivia Net", time: "7:30 PM", frequency: "147.22+ repeater" },
+  {
+    name: "Tuesday ARES Net",
+    time: "7:30 PM",
+    frequency: "147.22+ repeater",
+    description: "A structured practice net for emergency communications. A great way to hear how hams pass messages when it counts.",
+  },
+  {
+    name: "Saturday Coffee Net",
+    time: "9:00 AM",
+    frequency: "147.22+ repeater",
+    description: "A relaxed weekend check-in. Grab a cup of coffee and chat with local hams about radio, projects, and the week.",
+  },
+  {
+    name: "Sunday Trivia Net",
+    time: "7:30 PM",
+    frequency: "147.22+ repeater",
+    description: "A friendly on-air trivia game to close out the weekend. Easy, fun, and low-pressure for first-time check-ins.",
+  },
 ] as const;
 
 export const licenseLevels = [

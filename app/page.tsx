@@ -209,12 +209,16 @@ export default function Home() {
 
       <section className="bg-stonewarm-50 px-4 py-16 sm:px-6 lg:px-8">
         <SectionIntro title="Get On the Air">
-          <p>Listen first, check in when ready, and get familiar with local radio activity.</p>
+          <p>
+            <strong className="text-mountain-900">What&apos;s a net?</strong> A net is a scheduled on-air gathering where local hams meet on the same frequency at the same time each week. A volunteer &ldquo;net control&rdquo; operator runs it, calling for check-ins and giving each station a turn to talk, so it stays organized and welcoming.
+          </p>
+          <p className="mt-3">Anyone can listen on a scanner or handheld radio, no license needed. Once you&apos;re licensed, checking in is the easiest way to make your first contact.</p>
         </SectionIntro>
         <div className="mx-auto mt-10 grid max-w-7xl gap-5 lg:grid-cols-3">
           {nets.map((net) => (
             <InfoCard key={net.name} title={net.name}>
-              <p>{net.time} on the {net.frequency}</p>
+              <p className="font-bold text-mountain-900">{net.time} on the {net.frequency}</p>
+              <p className="mt-3">{net.description}</p>
             </InfoCard>
           ))}
         </div>
