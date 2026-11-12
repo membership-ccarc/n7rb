@@ -12,21 +12,20 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.86fr] lg:px-8 lg:py-20">
           <div>
             <p className="text-sm font-bold uppercase tracking-wide text-pine-700">
-              Helena, Montana&apos;s 501(c)(3) nonprofit for amateur radio education and community service · CCARC |{" "}
+              {SITE.name} ·{" "}
               <Link className="underline decoration-pine-700/40 underline-offset-4 hover:decoration-pine-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine-700" href="/about/n7rb-bio">
                 {SITE.callsign}
               </Link>{" "}
-              {SITE.city}
+              · {SITE.city}
             </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-black leading-tight text-mountain-900 sm:text-5xl lg:text-6xl">
-              Ready to Get Started in Ham Radio in Helena, Montana?
+              Start your ham radio journey today.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-stonewarm-700">
-              The {SITE.name} ({SITE.shortName}) helps new and advancing operators in the Helena area learn the basics, prepare for license exams, and make their first contacts with support from local ham radio operators.
+              We&rsquo;ll send you free study resources and connect you with a local mentor who&rsquo;ll help you through the exam and your first contact.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Join the Next License Class</ButtonLink>
-              <ButtonLink href="/meetings-nets" variant="secondary">Visit a Meeting</ButtonLink>
+              <ButtonLink href={LINKS.CLASS_SIGNUP_URL}>Send Me Free Study Resources</ButtonLink>
               <ButtonLink href="/testing" variant="light">Take an Exam</ButtonLink>
             </div>
           </div>
