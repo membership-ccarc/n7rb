@@ -12,6 +12,15 @@ export const SITE = {
   backupSimplex: "147.50 MHz",
 } as const;
 
+export const NERDS_ON_A_HIKE_BADGE = {
+  src: "/events/nerds-on-a-hike-badge.png",
+  alt: "Nerds on a Hike badge: two hikers with a radio antenna on a mountain summit",
+  width: 480,
+  height: 600,
+} as const;
+
+export type CardImage = { src: string; alt: string; width: number; height: number };
+
 export const CONTACT_EMAIL_ADDRESS = "membership@ccarc-info.org";
 
 export const PLACES = {

@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { ButtonLink } from "@/components/ui";
-import { CONTACT_EMAIL_ADDRESS, LINKS, PLACES, TECHNICIAN_CLASS } from "@/lib/site-data";
+import { CONTACT_EMAIL_ADDRESS, LINKS, NERDS_ON_A_HIKE_BADGE, PLACES, TECHNICIAN_CLASS, type CardImage } from "@/lib/site-data";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -26,7 +27,7 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
-          <NewsItem id="nerds-on-a-hike-december" date="November 12, 2026" title="Nerds on a Hike: Join Us December 5 at Scratchgravel Hills">
+          <NewsItem id="nerds-on-a-hike-december" date="November 12, 2026" image={NERDS_ON_A_HIKE_BADGE} title="Nerds on a Hike: Join Us December 5 at Scratchgravel Hills">
             <p>Ever wondered how people can talk across the country with a radio that fits in a backpack? Come find out.</p>
             <p className="mt-4">Join the Capital City Amateur Radio Club for our next Nerds on a Hike. Local hams will lead the hike and set up portable radio stations at the summit of Scratchgravel Hills. We&apos;ll make contacts from a public park as part of Summits On The Air (SOTA) and Parks On The Air (POTA), two worldwide programs, and you&apos;re welcome to step up to the mic and make one yourself. No license or experience is needed.</p>
             <p className="mt-4">New hams: this is your chance to get on the air with experienced operators beside you.</p>
@@ -69,7 +70,7 @@ export default function NewsPage() {
           <NewsItem date="October 31, 2026" title="October Club Meeting Minutes Available">
             The minutes from the October 5, 2026 CCARC club meeting are now available. <a className={linkClasses} href="/docs/CCARC_October_2026_Minutes.pdf" download>Download the October meeting minutes (PDF) →</a>
           </NewsItem>
-          <NewsItem date="October 27, 2026" title="Introducing Nerds on a Hike: Join Us November 7">
+          <NewsItem date="October 27, 2026" title="Introducing Nerds on a Hike: Join Us November 7" image={NERDS_ON_A_HIKE_BADGE}>
             <p>Ever wondered how people can talk across the country with a radio that fits in a backpack? Come find out at CCARC&apos;s first Nerds on a Hike on Saturday, November 7, 2026!</p>
             <p className="mt-4">Trail Master Brett (N7SKI) will lead a short, easy walk and set up a portable radio station in the Scratchgravel Hills. We&apos;ll make contacts from a public park as part of Parks On The Air (POTA), a worldwide program, and you&apos;re welcome to step up to the mic and make one yourself. No license or experience needed.</p>
             <p className="mt-4">New hams: this is your chance to get on the air with experienced operators beside you.</p>
@@ -168,11 +169,16 @@ export default function NewsPage() {
   );
 }
 
-function NewsItem({ id, date, title, children }: { id?: string; date: string; title: string; children: React.ReactNode }) {
+function NewsItem({ id, date, title, image, children }: { id?: string; date: string; title: string; image?: CardImage; children: React.ReactNode }) {
   return (
     <article id={id} className="scroll-mt-28 rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm sm:p-8">
-      <time className="text-sm font-bold uppercase tracking-wide text-pine-700">{date}</time>
-      <h3 className="mt-2 text-2xl font-black text-mountain-900">{title}</h3>
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <time className="text-sm font-bold uppercase tracking-wide text-pine-700">{date}</time>
+          <h3 className="mt-2 text-2xl font-black text-mountain-900">{title}</h3>
+        </div>
+        {image ? <Image src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-auto w-20 shrink-0 sm:w-28" /> : null}
+      </div>
       <div className="mt-4 leading-7 text-stonewarm-700">{children}</div>
     </article>
   );

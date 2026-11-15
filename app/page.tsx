@@ -1,4 +1,4 @@
-import { amateurRadioCards, CONTACT_EMAIL_ADDRESS, LINKS, nets, PLACES, SITE, TECHNICIAN_CLASS, whatWeDo } from "@/lib/site-data";
+import { amateurRadioCards, CONTACT_EMAIL_ADDRESS, LINKS, NERDS_ON_A_HIKE_BADGE, nets, PLACES, SITE, TECHNICIAN_CLASS, whatWeDo } from "@/lib/site-data";
 import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink, InfoCard, MeetingDetails, SectionIntro } from "@/components/ui";
@@ -244,7 +244,7 @@ export default function Home() {
             </div>
             <div className="grid gap-5 md:grid-cols-2">
               <div>
-                <InfoCard title="December 5: Nerds on a Hike">
+                <InfoCard title="December 5: Nerds on a Hike" image={NERDS_ON_A_HIKE_BADGE}>
                   <p className="font-bold text-mountain-900">Saturday, December 5, 2026 · 10:00 AM · Head Lane Trailhead</p>
                   <p className="mt-3">Local hams will lead a 2.4-mile round-trip hike (about 880 feet of elevation gain) and set up portable radio stations at the summit of Scratchgravel Hills for a Summits On The Air (SOTA) and Parks On The Air (POTA) activation. Step up to the mic and make a contact yourself. No license or experience needed!</p>
                   <div className="mt-5 flex flex-wrap gap-3">

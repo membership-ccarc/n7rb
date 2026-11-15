@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
-import { LINKS, SITE } from "@/lib/site-data";
+import { LINKS, SITE, type CardImage } from "@/lib/site-data";
 import { faqSchema } from "@/lib/structured-data";
 
 type ButtonLinkProps = {
@@ -60,10 +61,13 @@ export function SectionIntro({
   );
 }
 
-export function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
+export function InfoCard({ title, image, children }: { title: string; image?: CardImage; children: React.ReactNode }) {
   return (
     <article className="rounded-lg border border-stonewarm-100 bg-white p-6 shadow-sm">
-      <h3 className="text-xl font-black text-mountain-900">{title}</h3>
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="text-xl font-black text-mountain-900">{title}</h3>
+        {image ? <Image src={image.src} alt={image.alt} width={image.width} height={image.height} className="h-auto w-16 shrink-0 sm:w-20" /> : null}
+      </div>
       <div className="mt-3 leading-7 text-stonewarm-700">{children}</div>
     </article>
   );
