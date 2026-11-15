@@ -26,6 +26,9 @@ export default function NewsPage() {
       <div className="mx-auto mt-12 max-w-4xl">
         <h2 className="text-3xl font-black text-mountain-900">Recent Updates</h2>
         <div className="mt-7 space-y-5">
+          <NewsItem date="November 14, 2026" title="November Club Meeting Minutes Available">
+            The minutes from the November 2, 2026 CCARC club meeting are now available. <a className={linkClasses} href="/docs/CCARC_November_2026_Minutes.pdf" download>Download the November meeting minutes (PDF) →</a>
+          </NewsItem>
           <NewsItem id="nerds-on-a-hike-december" date="November 12, 2026" title="Nerds on a Hike: Join Us December 5 at Scratchgravel Hills">
             <p>Ever wondered how people can talk across the country with a radio that fits in a backpack? Come find out.</p>
             <p className="mt-4">Join the Capital City Amateur Radio Club for our next Nerds on a Hike. Local hams will lead the hike and set up portable radio stations at the summit of Scratchgravel Hills. We&apos;ll make contacts from a public park as part of Summits On The Air (SOTA) and Parks On The Air (POTA), two worldwide programs, and you&apos;re welcome to step up to the mic and make one yourself. No license or experience is needed.</p>
