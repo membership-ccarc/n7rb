@@ -71,6 +71,11 @@ export const organizationSchema = {
     "Emergency communications",
     "ARES",
   ],
+  memberOf: {
+    "@type": "Organization",
+    name: "ARRL, The National Association for Amateur Radio",
+    url: "https://www.arrl.org",
+  },
   sameAs: [LINKS.FACEBOOK_URL],
 };
 

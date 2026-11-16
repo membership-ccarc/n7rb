@@ -46,7 +46,7 @@ export default function Home() {
       <section className="bg-pine-700 px-4 py-12 text-white sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Our nonprofit mission</p>
+            <p className="text-sm font-bold uppercase tracking-wide text-gold-300">Our nonprofit mission · ARRL Affiliated Since {SITE.arrlAffiliationYear}</p>
             <h2 className="mt-3 text-3xl font-black sm:text-4xl">Radio education and service for the Helena community</h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-pine-50">{SITE.mission}</p>
           </div>

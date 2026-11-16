@@ -10,6 +10,9 @@ export const SITE = {
   repeater: "147.22+",
   repeaterTone: "100.0 Hz",
   backupSimplex: "147.50 MHz",
+  arrlAffiliationDate: "1947-05-02",
+  arrlAffiliationLabel: "May 2, 1947",
+  arrlAffiliationYear: 1947,
 } as const;
 
 export const NERDS_ON_A_HIKE_BADGE = {

@@ -23,6 +23,7 @@ export async function GET() {
     "## Key facts",
     "",
     `- Club callsign: ${SITE.callsign}`,
+    `- ARRL-affiliated club since ${SITE.arrlAffiliationLabel}.`,
     `- Monthly meeting: first non-holiday Monday of each month at 7:00 PM, ${PLACES.meeting.name}, ${PLACES.meeting.streetAddress}, Helena, MT ${PLACES.meeting.postalCode}. Visitors welcome; an online Google Meet option is available.`,
     `- License classes: free Technician License Class (six weeks, no experience required; next class: ${TECHNICIAN_CLASS.scheduleLabel}, at the ${PLACES.technicianClass.name}, ${PLACES.technicianClass.streetAddress}, Helena, MT; limited to ${TECHNICIAN_CLASS.capacity} students, registration open at ${SITE.url}/classes). General License Class for licensed Technicians.`,
     `- License exams: in-person Volunteer Examiner sessions about every 6 weeks at the ${PLACES.testing.name}, ${PLACES.testing.streetAddress}, Helena, MT. All license classes. Fee $${EXAM_FEE_USD}. Register at ${LINKS.TESTING_REGISTRATION_URL}`,

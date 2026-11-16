@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "About CCARC",
-  description: "About Capital City Amateur Radio Club, a 501(c)(3) nonprofit organization (EIN 81-0506653) serving Helena and Lewis and Clark County, Montana.",
+  description: "About Capital City Amateur Radio Club, a 501(c)(3) nonprofit organization (EIN 81-0506653) serving Helena and Lewis and Clark County, Montana. ARRL-affiliated since 1947.",
   path: "/about",
 });
 
@@ -14,10 +14,13 @@ export default function AboutPage() {
     <section className="bg-stonewarm-50 px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.9fr]">
         <div>
-          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{SITE.nonprofitStatus} · {SITE.callsign}</p>
+          <p className="text-sm font-bold uppercase tracking-wide text-pine-700">{SITE.nonprofitStatus} · {SITE.callsign} · ARRL Affiliated Since {SITE.arrlAffiliationYear}</p>
           <h1 className="mt-3 text-4xl font-black text-mountain-900 sm:text-5xl">About CCARC</h1>
           <p className="mt-6 text-lg leading-8 text-stonewarm-700">
             We are a 501(c)(3) nonprofit organization (EIN 81-0506653) dedicated to amateur radio education, licensing, emergency communications, and community service in Helena, Montana and Lewis and Clark County. CCARC helps people learn radio, get licensed, practice useful communication skills, and enjoy radio as an active outdoor and technical hobby.
+          </p>
+          <p className="mt-4 text-lg leading-8 text-stonewarm-700">
+            CCARC has been an <strong className="text-mountain-900">ARRL-affiliated club since {SITE.arrlAffiliationLabel}</strong>. For nearly 80 years, Helena hams have gathered under the club&apos;s banner to learn, operate, and serve their community.
           </p>
           <div className="mt-6 rounded-lg border-l-4 border-gold-300 bg-white p-6 shadow-sm">
             <h2 className="text-xl font-black text-mountain-900">Our Mission</h2>
@@ -71,6 +74,7 @@ export default function AboutPage() {
               <tr><th className="px-4 py-3 font-bold text-mountain-900">Legal Name</th><td className="px-4 py-3">Capital City Amateur Radio Club Inc.</td></tr>
               <tr><th className="px-4 py-3 font-bold text-mountain-900">Tax Status</th><td className="px-4 py-3">501(c)(3) Tax-Exempt Organization</td></tr>
               <tr><th className="px-4 py-3 font-bold text-mountain-900">Federal EIN</th><td className="px-4 py-3">81-0506653</td></tr>
+              <tr><th className="px-4 py-3 font-bold text-mountain-900">ARRL Affiliation</th><td className="px-4 py-3">Affiliated club since {SITE.arrlAffiliationLabel}</td></tr>
               <tr><th className="px-4 py-3 font-bold text-mountain-900">Montana Filing Number</th><td className="px-4 py-3">D063362</td></tr>
               <tr><th className="px-4 py-3 font-bold text-mountain-900">Registered</th><td className="px-4 py-3">Montana Secretary of State; tax-exempt status confirmed by the IRS</td></tr>
             </tbody>
