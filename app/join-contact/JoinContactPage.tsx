@@ -89,7 +89,7 @@ export default function JoinContactPage({ showDuesPayments }: { showDuesPayments
       <div className="mx-auto mt-10 grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.85fr]">
         <div className="grid content-start gap-6">
           <div id="newsletter-signup" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-black text-mountain-900">Join the CCARC Community</h2>
+            <h2 className="text-2xl font-black text-mountain-900">Sign up for the monthly CCARC Newsletter and Club Updates</h2>
             <p className="mt-2 text-sm leading-6 text-stonewarm-700">
               Sign up to receive the monthly newsletter & news updates direct to your inbox.
             </p>
