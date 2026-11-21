@@ -73,6 +73,41 @@ function hasSuspiciousShortMessage(message: string) {
   return mixedCaseNonsense && wordLikeVowelRatio < 0.45;
 }
 
+// Common "I don't have one" answers are treated as a blank callsign.
+const NO_CALLSIGN = /^(none|no|n\/?a|na|nil|-+|not yet|pending|unlicensed|not licensed)$/i;
+
+// Prefix (1-3 chars) + digit + 1-4 letter suffix, with optional portable
+// designators such as VE7/KH7AL or KH7AL/P. Covers US and international calls.
+const CALLSIGN_PATTERN = /^(?:[A-Z0-9]{1,4}\/)?[A-Z0-9]{1,3}[0-9][A-Z]{1,4}(?:\/[A-Z0-9]{1,4})?$/;
+
+function normalizeCallsign(value: string) {
+  return NO_CALLSIGN.test(value) ? "" : value.toUpperCase().replace(/\s+/g, "");
+}
+
+function isValidCallsign(value: string) {
+  return CALLSIGN_PATTERN.test(value);
+}
+
+// Shared mailbox providers: a link to these is not self-promotion.
+const FREE_MAIL_DOMAINS = new Set([
+  "gmail.com", "googlemail.com", "yahoo.com", "outlook.com", "hotmail.com", "live.com", "msn.com",
+  "icloud.com", "me.com", "mac.com", "aol.com", "proton.me", "protonmail.com", "gmx.com", "mail.com",
+  "comcast.net", "att.net", "charter.net", "bresnan.net", "mt.net", "arrl.net", "qrz.com",
+]);
+
+function baseDomain(host: string) {
+  const labels = host.toLowerCase().replace(/\.$/, "").split(".").filter(Boolean);
+  return labels.slice(-2).join(".");
+}
+
+function linksToSenderDomain(email: string, message: string) {
+  const senderDomain = baseDomain(email.split("@")[1] ?? "");
+  if (!senderDomain || FREE_MAIL_DOMAINS.has(senderDomain)) return false;
+
+  const hosts = message.match(/(?:https?:\/\/)?(?:[a-z0-9-]+\.)+[a-z]{2,}(?=[\/\s?#)\]"'.,!]|$)/gi) ?? [];
+  return hosts.some((raw) => baseDomain(raw.replace(/^https?:\/\//i, "")) === senderDomain);
+}
+
 function logSpam(reason: string) {
   console.warn("Contact form spam rejected.", {
     reason,
@@ -89,7 +124,7 @@ function validatePayload(body: unknown): { payload?: ContactPayload; spamReason?
   const candidate: SpamCheckBody = {
     name: asTrimmedString(body.name),
     email: asTrimmedString(body.email),
-    callsign: asTrimmedString(body.callsign),
+    callsign: normalizeCallsign(asTrimmedString(body.callsign)),
     phone: asTrimmedString(body.phone),
     message: asTrimmedString(body.message),
     website: asTrimmedString(body.website),
@@ -105,6 +140,9 @@ function validatePayload(body: unknown): { payload?: ContactPayload; spamReason?
   if (candidate.name.length < 2 || candidate.name.length > 60) return { error: "Please enter a name between 2 and 60 characters." };
   if (!isValidEmail(candidate.email)) return { error: "Please enter a valid email address (up to 254 characters)." };
   if (candidate.callsign.length > 20) return { error: "Please keep your callsign to 20 characters or fewer." };
+  if (candidate.callsign && !isValidCallsign(candidate.callsign)) {
+    return { error: "That doesn't look like an amateur radio callsign. If you don't have one yet, just leave it blank." };
+  }
   if (candidate.phone.length > 30) return { error: "Please keep your phone number to 30 characters or fewer." };
   if (candidate.message.length < 10 || candidate.message.length > 2000) return { error: "Please enter a message between 10 and 2,000 characters." };
 
@@ -114,13 +152,17 @@ function validatePayload(body: unknown): { payload?: ContactPayload; spamReason?
   if (hasSuspiciousShortMessage(candidate.message)) return { spamReason: "suspicious short message" };
   if (isGibberish(candidate.message)) return { spamReason: "gibberish message" };
   if (countLinks(candidate.message) > MAX_LINKS) return { spamReason: "too many links" };
+  // A ham linking their own QSL/personal site is fine; only flag when no callsign was given.
+  if (!candidate.callsign && linksToSenderDomain(candidate.email, candidate.message)) {
+    return { spamReason: "links to sender's own domain" };
+  }
   if (hasSuspiciousInjection(combinedText)) return { spamReason: "injection pattern" };
 
   return {
     payload: {
       name: candidate.name,
       email: candidate.email.toLowerCase(),
-      callsign: candidate.callsign.toUpperCase(),
+      callsign: candidate.callsign,
       phone: candidate.phone,
       message: candidate.message,
     },
